@@ -50,6 +50,10 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+        <div className="uppercase text-sm sm:text-base text-center sm:text-left">
+          CIAO MBARI QUESTO SARà IL SITOOOOOOOOOOOOOOO
+        </div>
+        
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
