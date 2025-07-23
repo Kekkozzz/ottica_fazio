@@ -30,7 +30,7 @@ export default function Servizi() {
   ];
 
   return (
-    <main className="min-h-screen bg-cream-50">
+    <main className="min-h-screen">
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4">
         <div className="container mx-auto max-w-6xl">

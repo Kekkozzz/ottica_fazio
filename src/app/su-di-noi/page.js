@@ -56,7 +56,7 @@ export default function ChiSiamo() {
   ];
 
   return (
-    <main className="min-h-screen bg-cream-50">
+    <main className="min-h-screen">
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -154,7 +154,7 @@ export default function ChiSiamo() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {teamMembers.map((member, index) => (
                 <StaggerItem key={index}>
-                  <div className="bg-cream-50 rounded-2xl p-6 border border-warm-gray-200 text-center hover:shadow-lg transition-all duration-300">
+                  <div className="-50 rounded-2xl p-6 border border-warm-gray-200 text-center hover:shadow-lg transition-all duration-300">
                     <div className="w-24 h-24 bg-bordeaux rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </div>

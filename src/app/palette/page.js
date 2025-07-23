@@ -1,6 +1,6 @@
 export default function CustomTailwindExample() {
     return (
-        <div className="container mx-auto p-8 space-y-6 bg-cream-50 min-h-screen">
+        <div className="container mx-auto p-8 space-y-6 -50 min-h-screen">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-bordeaux to-gold bg-clip-text text-transparent text-center">
                 Ottica Fazio - Colori Brand
             </h1>
@@ -20,7 +20,7 @@ export default function CustomTailwindExample() {
 
             {/* Cards con palette ispirata all'insegna */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-cream-100 rounded-xl shadow-xl p-6 border border-warm-gray-200">
+                <div className="-100 rounded-xl shadow-xl p-6 border border-warm-gray-200">
                     <h3 className="text-xl font-bold mb-3 text-bordeaux">Optometria</h3>
                     <p className="text-warm-gray-600 leading-relaxed">
                         Servizi professionali per la cura della vista con tecnologie allavanguardia.
@@ -52,7 +52,7 @@ export default function CustomTailwindExample() {
             </div>
 
             {/* Palette ispirata all'insegna */}
-            <div className="bg-cream-100 rounded-xl shadow-xl p-8 border border-warm-gray-200">
+            <div className="-100 rounded-xl shadow-xl p-8 border border-warm-gray-200">
                 <h2 className="text-2xl font-bold mb-6 text-warm-gray-800 text-center">Palette Colori Ottica Fazio</h2>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -75,9 +75,9 @@ export default function CustomTailwindExample() {
                     {/* Cream */}
                     <div className="space-y-2">
                         <h4 className="font-semibold text-sm text-warm-gray-800 mb-2">Cream</h4>
-                        <div className="bg-cream h-12 rounded-lg shadow-md border border-warm-gray-300"></div>
-                        <div className="bg-cream-300 h-8 rounded"></div>
-                        <div className="bg-cream-700 h-8 rounded"></div>
+                        <div className=" h-12 rounded-lg shadow-md border border-warm-gray-300"></div>
+                        <div className="-300 h-8 rounded"></div>
+                        <div className="-700 h-8 rounded"></div>
                     </div>
 
                     {/* Gold */}
@@ -99,7 +99,7 @@ export default function CustomTailwindExample() {
             </div>
 
             {/* Replica dell'insegna */}
-            <div className="bg-cream-200 rounded-xl shadow-2xl p-12 border-4 border-gold-400">
+            <div className="-200 rounded-xl shadow-2xl p-12 border-4 border-gold-400">
                 <div className="text-center space-y-2">
                     <h1 className="text-4xl font-bold text-bordeaux tracking-wider">OTTICA</h1>
                     <h2 className="text-5xl font-light text-silver-warm-600 italic">Fazio</h2>

@@ -42,7 +42,7 @@ export default function Contatti() {
     ];
 
     return (
-        <main className="min-h-screen bg-cream-50">
+        <main className="min-h-screen -50">
             {/* Hero Section */}
             <section className="pt-32 pb-16 px-4">
                 <div className="container mx-auto max-w-6xl">
@@ -252,7 +252,7 @@ export default function Contatti() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {servizi.map((servizio, index) => (
                                 <StaggerItem key={index}>
-                                    <div className="text-center p-6 bg-cream-50 rounded-xl border border-warm-gray-200 hover:shadow-lg transition-all duration-300 group">
+                                    <div className="text-center p-6 -50 rounded-xl border border-warm-gray-200 hover:shadow-lg transition-all duration-300 group">
                                         <div className="text-bordeaux mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
                                             <servizio.icon size={48} />
                                         </div>
@@ -274,7 +274,7 @@ export default function Contatti() {
             </section>
 
             {/* Sezione Mappa */}
-            <section className="py-16 px-4 bg-cream-50">
+            <section className="py-16 px-4 -50">
                 <div className="container mx-auto max-w-6xl">
                     <FadeInView>
                         <div className="text-center mb-12">

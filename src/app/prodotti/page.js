@@ -52,7 +52,7 @@ export default function Prodotti() {
     ];
 
     return (
-        <main className="min-h-screen bg-cream-50">
+        <main className="min-h-screen -50">
             {/* Hero Section */}
             <section className="pt-32 pb-16 px-4">
                 <div className="container mx-auto max-w-6xl">
@@ -97,7 +97,7 @@ export default function Prodotti() {
                                                     </h4>
                                                     <div className="flex flex-wrap gap-2">
                                                         {categoria.brands.map((brand, brandIndex) => (
-                                                            <span key={brandIndex} className="px-3 py-1 bg-cream-100 text-warm-gray-700 rounded-full text-xs font-medium">
+                                                            <span key={brandIndex} className="px-3 py-1 -100 text-warm-gray-700 rounded-full text-xs font-medium">
                                                                 {brand}
                                                             </span>
                                                         ))}
@@ -146,7 +146,7 @@ export default function Prodotti() {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {lentiSpeciali.map((lente, index) => (
                                 <StaggerItem key={index}>
-                                    <div className="bg-cream-50 rounded-xl p-6 border border-warm-gray-200 hover:shadow-lg transition-all duration-300">
+                                    <div className="-50 rounded-xl p-6 border border-warm-gray-200 hover:shadow-lg transition-all duration-300">
                                         <h3 className="text-xl font-bold text-bordeaux mb-3">
                                             {lente.name}
                                         </h3>
