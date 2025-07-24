@@ -18,7 +18,7 @@ const logos = [
     { src: '/logos/GA.png', alt: 'Giorgio Armani' },
     { src: '/logos/sferoflex.png', alt: 'Sferoflex' },
     { src: '/logos/tiffany.png', alt: 'Tiffany & Co.' },
-    { src: '/logos/Gucci.png', alt: 'Gucci' },
+    { src: '/logos/gucci.png', alt: 'Gucci' },
     { src: '/logos/diesel.png', alt: 'Diesel' },
     { src: '/logos/Burb.png', alt: 'Burberry' },
     { src: '/logos/lux.png', alt: 'Luxottica' },
@@ -66,7 +66,7 @@ export default function LogosCarousel() {
                 }
                 
                 .animate-infinite-scroll {
-                    animation: infinite-scroll 120s linear infinite;
+                    animation: infinite-scroll 60s linear infinite;
                 }
             `}</style>
         </div>
