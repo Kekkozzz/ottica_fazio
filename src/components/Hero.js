@@ -5,8 +5,8 @@ import HoverEffect from '@/components/animations/HoverEffect';
 
 export default function Hero() {
     return (
-        <main className="min-h-screen w-full flex items-center justify-center p-0 m-0">
-            <section className="w-full flex flex-col md:flex-row overflow-hidden min-h-[400px] bg-gray-50">
+        <main className="w-full flex items-center justify-center p-0 m-0">
+            <section className="w-full flex flex-col md:flex-row overflow-hidden min-h-[600px] bg-gray-50">
                 {/* Colonna testo, bg grigio chiaro, testo centrato */}
                 <div className="flex-[2] flex flex-col justify-center items-center px-4 md:px-12 py-12 min-h-[600px]">
                     <FadeInView>
@@ -40,7 +40,7 @@ export default function Hero() {
                                     <Image
                                         src="/Nuance.webp"
                                         alt="Occhiali Nuance Audio"
-                                        width={600}
+                                        width={700}
                                         height={200}
                                         className="object-contain self-end"
                                         priority
