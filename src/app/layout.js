@@ -1,16 +1,20 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Josefin_Sans, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import LiquidGlassNavbar from "@/components/navigation/LiquidGlassNavbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const josefin = Josefin_Sans({
+  variable: "--font-josefin",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bevietnam = Be_Vietnam_Pro({
+  variable: "--font-bevietnam",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,7 +26,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="it">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${josefin.variable} ${bevietnam.variable} antialiased`}
+        style={{ fontFamily: 'var(--font-bevietnam), Arial, Helvetica, sans-serif' }}
       >
         <LiquidGlassNavbar />
         <SmoothScroll>
