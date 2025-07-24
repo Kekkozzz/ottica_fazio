@@ -23,7 +23,7 @@ export default function Hero() {
                             </StaggerItem>
                             <StaggerItem>
                                 <p className="text-base md:text-lg text-center text-black max-w-3xl leading-relaxed">
-                                    I prodotti Nuance Audio sono <span className="font-bold">disponibili presso il nostro store</span>. Vieni a provare e scopri un nuovo modo di ascoltare.
+                                    I prodotti Nuance Audio sono <span className="font-bold ">disponibili presso il nostro store</span>. Vieni a provare e scopri un nuovo modo di ascoltare.
                                 </p>
                             </StaggerItem>
                         </StaggerContainer>

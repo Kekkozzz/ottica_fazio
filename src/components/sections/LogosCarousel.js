@@ -66,7 +66,7 @@ export default function LogosCarousel() {
                 }
                 
                 .animate-infinite-scroll {
-                    animation: infinite-scroll 90s linear infinite;
+                    animation: infinite-scroll 120s linear infinite;
                 }
             `}</style>
         </div>
