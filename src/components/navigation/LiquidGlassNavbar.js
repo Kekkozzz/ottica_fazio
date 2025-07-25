@@ -30,15 +30,19 @@ export default function LiquidGlassNavbar() {
     return (
         <>
             {/* Logo fisso in alto a sinistra */}
-            <div className="fixed top-4 left-10 z-50 flex items-center">
+            <div className="fixed top-4 left-10 z-50 flex items-center gap-3 md:gap-4 cursor-pointer"
+                onClick={() => router.push('/')}
+            >
                 <button
-                    onClick={() => router.push('/')}
-                    className="focus:outline-none cursor-pointer"
+                    className="focus:outline-none"
                     aria-label="Vai alla Home"
                     type="button"
                 >
-                    <Image src="/LogoOttica.png" alt="Logo Ottica Fazio" width={52} height={52} priority className="drop-shadow-lg" />
+                    <Image src="/logos/LogoOttica.png" alt="Logo Ottica Fazio" width={52} height={52} priority className="drop-shadow-lg" />
                 </button>
+                <span className="hidden sm:inline-block font-josefin font-extrabold text-lg md:text-2xl tracking-tight text-[#2d3142] drop-shadow-sm select-none" style={{ letterSpacing: '0.04em' }}>
+                    OTTICA FAZIO
+                </span>
             </div>
 
             {/* Navbar centrata desktop */}
@@ -76,8 +80,8 @@ export default function LiquidGlassNavbar() {
 
                 {/* Mobile Menu Dropdown */}
                 <div className={`absolute top-16 right-0 w-64 transition-all duration-500 ease-out transform origin-top-right ${isMobileMenuOpen
-                        ? 'scale-100 opacity-100 translate-y-0'
-                        : 'scale-95 opacity-0 -translate-y-4 pointer-events-none'
+                    ? 'scale-100 opacity-100 translate-y-0'
+                    : 'scale-95 opacity-0 -translate-y-4 pointer-events-none'
                     }`}>
                     <div className="relative bg-white/95 backdrop-blur-xl border border-warm-gray-200 rounded-2xl shadow-2xl overflow-hidden">
                         <div className="relative p-4 space-y-2">

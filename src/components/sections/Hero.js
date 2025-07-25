@@ -5,7 +5,7 @@ import HoverEffect from '@/components/animations/HoverEffect';
 
 export default function Hero() {
     return (
-        <main className="w-full flex items-center justify-center p-0 m-0">
+        <main className="w-full h-[80vh] flex items-end justify-center p-0 m-0 bg-gray-50">
             <section className="w-full flex flex-col md:flex-row overflow-hidden min-h-[600px] bg-gray-50">
                 {/* Colonna testo, bg grigio chiaro, testo centrato */}
                 <div className="flex-[2] flex flex-col justify-center items-center px-4 md:px-12 py-12 min-h-[600px]">
@@ -38,7 +38,7 @@ export default function Hero() {
                                 {/* Immagine occhiali attaccata a destra */}
                                 <div className="relative flex flex-col items-end justify-center w-full h-full">
                                     <Image
-                                        src="/Nuance.webp"
+                                        src="/logos/Nuance.webp"
                                         alt="Occhiali Nuance Audio"
                                         width={700}
                                         height={200}

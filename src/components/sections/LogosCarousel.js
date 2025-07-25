@@ -29,15 +29,44 @@ const logos = [
     { src: '/logos/JC.png', alt: 'Just Cavalli' },
 ];
 
+import { useRef, useEffect } from 'react';
+
 export default function LogosCarousel() {
-    // Triplichiamo l'array per garantire un loop perfetto senza interruzioni
-    const triplicatedLogos = [...logos, ...logos, ...logos];
+    // Doppio array per loop continuo
+    const duplicatedLogos = [...logos, ...logos];
+    const trackRef = useRef(null);
+    const reqId = useRef();
+
+    useEffect(() => {
+        const track = trackRef.current;
+        if (!track) return;
+
+        let pos = 0;
+        let animationFrame;
+        const speed = 0.3; // px per frame, regola la velocità
+        const trackWidth = track.scrollWidth / 2;
+
+        function animate() {
+            pos -= speed;
+            if (Math.abs(pos) >= trackWidth) {
+                pos = 0;
+            }
+            track.style.transform = `translateX(${pos}px)`;
+            animationFrame = requestAnimationFrame(animate);
+        }
+        animationFrame = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(animationFrame);
+    }, []);
 
     return (
         <div className="w-full bg-white py-4 border-t border-b border-black overflow-hidden relative">
             {/* Container principale del carosello */}
-            <div className="flex animate-infinite-scroll">
-                {triplicatedLogos.map((logo, idx) => (
+            <div
+                className="flex"
+                ref={trackRef}
+                style={{ willChange: 'transform' }}
+            >
+                {duplicatedLogos.map((logo, idx) => (
                     <div key={idx} className="flex flex-col items-center min-w-[120px] mx-6 flex-shrink-0">
                         <Image
                             src={logo.src}
@@ -54,21 +83,6 @@ export default function LogosCarousel() {
             {/* Gradiente sfumato ai lati per nascondere i bordi */}
             <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
             <div className="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
-
-            <style jsx>{`
-                @keyframes infinite-scroll {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(calc(-100% / 0.5));
-                    }
-                }
-                
-                .animate-infinite-scroll {
-                    animation: infinite-scroll 60s linear infinite;
-                }
-            `}</style>
         </div>
     );
 }
