@@ -6,6 +6,8 @@ import Hero from "@/components/sections/Hero";
 import LogosCarousel from "@/components/sections/LogosCarousel";
 import MostSold from "@/components/sections/MostSold";
 import OurProducts from "@/components/sections/OurProducts";
+import OurServices from "@/components/sections/OurServices";
+import ContactUs from "@/components/sections/ContactUs";
 
 
 export default function Home() {
@@ -15,6 +17,8 @@ export default function Home() {
       <LogosCarousel />
       <MostSold />
       <OurProducts />
+      <OurServices />
+      <ContactUs />
     </>
   );
 }
