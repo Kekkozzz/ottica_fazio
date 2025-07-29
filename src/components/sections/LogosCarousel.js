@@ -23,10 +23,10 @@ const logos = [
     { src: '/logos/Burb.png', alt: 'Burberry' },
     { src: '/logos/lux.png', alt: 'Luxottica' },
     { src: '/logos/swa.png', alt: 'Swarovski' },
-    { src: '/logos/NuanceLogo.png', alt: 'Nuance' },
+    { src: '/logos/Nuancelogo.png', alt: 'Nuance' },
     { src: '/logos/jimmy.png', alt: 'Jimmy Choo' },
     { src: '/logos/SL.png', alt: 'Saint Laurent' },
-    { src: '/logos/JC.png', alt: 'Just Cavalli' },
+    { src: '/logos/Jc.png', alt: 'Just Cavalli' },
 ];
 
 import { useRef, useEffect } from 'react';
