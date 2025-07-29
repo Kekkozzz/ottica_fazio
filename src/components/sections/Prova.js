@@ -314,41 +314,8 @@ export default function EnhancedMostSold() {
                     ))}
                 </div>
 
-                {/* Footer migliorato */}
-                <div className="mt-12 text-center space-y-4">
-                    <div className="flex items-center justify-center gap-4 text-sm text-gray-600">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span>Spedizione gratuita sopra €99</span>
-                        </div>
-                        <div className="w-px h-4 bg-gray-300"></div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                            <span>Garanzia 2 anni</span>
-                        </div>
-                    </div>
-
-                    <button className="text-blue-600 hover:text-blue-700 font-semibold text-lg hover:underline transition-all duration-200">
-                        Visualizza tutti i prodotti →
-                    </button>
-                </div>
+                
             </section>
-
-            {/* Trust indicators */}
-            <div className="flex items-center justify-center gap-8 mt-8 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                    </div>
-                    <span>Oltre 1000+ clienti soddisfatti</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Star size={16} className="text-blue-600 fill-current" />
-                    </div>
-                    <span>4.9/5 stelle di valutazione</span>
-                </div>
-            </div>
         </section>
     );
 }

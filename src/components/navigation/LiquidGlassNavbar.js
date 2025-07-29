@@ -138,7 +138,7 @@ export default function LiquidGlassNavbar() {
                                     <div key={index} className="relative select-none">
                                         <button
                                             onClick={hasDropdown ? () => toggleDropdown(index) : () => router.push(item.href)}
-                                            className={`main-nav-button group relative flex items-center gap-2 px-6 py-2 text-base font-bold text-white transition-all duration-300 ease-out overflow-hidden rounded-full cursor-pointer shadow-lg bg-gradient-to-br from-black to-gray-800 hover:from-red-600 hover:to-red-700 hover:shadow-xl active:scale-95 ${hasDropdown ? 'pr-10' : ''}`}
+                                            className={`main-nav-button group relative flex items-center gap-2 px-6 py-2 text-base font-bold text-white transition-all transition-colors duration-300 ease-out overflow-hidden rounded-full cursor-pointer shadow-lg bg-gradient-to-br from-black to-gray-800 hover:from-red-600 hover:to-red-700 hover:shadow-xl active:scale-95 ${hasDropdown ? 'pr-10' : ''}`}
                                             style={{ minHeight: 44 }}
                                             aria-expanded={isOpen}
                                         >
