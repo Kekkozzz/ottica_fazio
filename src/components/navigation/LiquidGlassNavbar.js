@@ -38,6 +38,16 @@ export default function LiquidGlassNavbar() {
     const navItems = [
         { label: 'Home', href: '/' },
         {
+            label: 'Prodotti',
+            href: '/prodotti',
+            dropdown: [
+                { label: 'Occhiali da sole', href: '/prodotti/occhiali-sole' },
+                { label: 'Occhiali da vista', href: '/prodotti/occhiali-vista' },
+                { label: 'Lenti a contatto', href: '/prodotti/lenti-contatto' },
+                { label: 'Nuance Audio', href: '/prodotti/nuance-audio' },
+            ]
+        },
+        {
             label: 'Servizi',
             href: '/servizi',
             dropdown: [
@@ -46,16 +56,6 @@ export default function LiquidGlassNavbar() {
                 { label: 'Topografia corneale', href: '/servizi/topografia-corneale' },
                 { label: 'Applicazione e valutazione lenti a contatto', href: '/servizi/lenti-contatto' },
                 { label: 'Studio forma del viso', href: '/servizi/studio-forma-viso' },
-            ]
-        },
-        {
-            label: 'Prodotti',
-            href: '/prodotti',
-            dropdown: [
-                { label: 'Occhiali da sole', href: '/prodotti/occhiali-sole' },
-                { label: 'Occhiali da vista', href: '/prodotti/occhiali-vista' },
-                { label: 'Lenti a contatto', href: '/prodotti/lenti-contatto' },
-                { label: 'Nuance Audio', href: '/prodotti/nuance-audio' },
             ]
         },
         {
