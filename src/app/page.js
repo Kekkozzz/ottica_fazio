@@ -8,7 +8,7 @@ import MostSold from "@/components/sections/MostSold";
 import OurProducts from "@/components/sections/OurProducts";
 import OurServices from "@/components/sections/OurServices";
 import ContactUs from "@/components/sections/ContactUs";
-// import Prova from "@/components/sections/Prova";
+import Prova from "@/components/sections/Prova";
 
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       <Hero />
       <LogosCarousel />
       <MostSold />
-      {/* <Prova /> */}
+      <Prova />
       <OurProducts />
       <OurServices />
       <ContactUs />

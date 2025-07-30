@@ -1,8 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { Eye, Heart, ShoppingCart, Star, ArrowRight, Zap } from 'lucide-react';
+import { Eye, Heart, Star, ArrowRight, Zap, Shield, Award } from 'lucide-react';
+import Image from 'next/image';
+import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 
-export default function EnhancedMostSold() {
+export default function MostSold() {
     const [hoveredProduct, setHoveredProduct] = useState(null);
     const [likedProducts, setLikedProducts] = useState(new Set());
 
@@ -56,7 +58,7 @@ export default function EnhancedMostSold() {
         console.log('Prodotto cliccato:', product);
         // Analytics tracking
         if (typeof window !== 'undefined' && window.gtag) {
-            window.gtag('event', 'product_click', {
+            window.gtag('event', 'product_view', {
                 'product_id': product.id,
                 'product_name': product.brand + ' ' + product.model,
                 'value': parseFloat(product.price.replace('€', '').replace(',', '.'))
@@ -77,245 +79,230 @@ export default function EnhancedMostSold() {
         });
     };
 
-    const addToCart = (product, e) => {
-        e.stopPropagation();
-        console.log('Aggiunto al carrello:', product);
-        // Feedback visivo o toast notification
+    const getBadgeStyles = (badge) => {
+        switch (badge) {
+            case 'Bestseller':
+                return 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg';
+            case 'Nuovo':
+                return 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg';
+            case 'Limited':
+                return 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg';
+            default:
+                return 'bg-gray-600 text-white';
+        }
     };
 
     return (
-        <section className="min-h-screen flex flex-col items-center justify-center gap-6 relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-            {/* Background pattern decorativo */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute top-20 left-20 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-40 right-32 w-48 h-48 bg-purple-500 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-pink-500 rounded-full blur-2xl"></div>
-            </div>
-
-            {/* Header migliorato */}
-            <div className="text-center space-y-4 relative z-10 px-4">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                    <Zap className="w-6 h-6 text-yellow-500 animate-pulse" />
-                    <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider">Trending Now</span>
+        <section className="min-h-screen flex flex-col items-center justify-center gap-8 py-12">
+            {/* Header ottimizzato */}
+            <div className="text-center space-y-6 relative z-10 px-4 max-w-4xl mx-auto">
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full border border-amber-200 mb-4">
+                    <Award className="w-5 h-5 text-amber-600" />
+                    <span className="text-amber-800 font-semibold text-sm uppercase tracking-wide">I nostri bestseller</span>
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold font-josefin text-center tracking-tight">
-                    <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-                        I PIÙ VENDUTI
-                    </span>
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent">
+                    I PIÙ VENDUTI
                 </h2>
 
-                <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Scopri i modelli più amati dai nostri clienti, selezionati per stile e qualità
+                <p className="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
+                    Scopri i modelli più amati dai nostri clienti, selezionati per stile, qualità e design innovativo
                 </p>
             </div>
 
-            {/* Container prodotti migliorato */}
-            <section className="w-full py-8 md:py-16 flex flex-col items-center justify-center bg-white/90 backdrop-blur-md border border-gray-200/50 shadow-2xl rounded-none md:rounded-[48px] max-w-full md:max-w-[1800px] mx-auto relative z-10">
-
-                {/* Grid responsivo dei prodotti */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 w-full px-4 md:px-8">
-                    {mostSoldProducts.map((product, index) => (
-                        <div
-                            key={product.id}
-                            className={`
-                                group relative flex flex-col bg-white rounded-3xl p-6 shadow-lg
-                                cursor-pointer transition-all duration-500 ease-out
-                                hover:scale-105 hover:-translate-y-6 hover:shadow-2xl
-                                border-2 hover:border-blue-200
-                                ${hoveredProduct === product.id ? 'z-20 ring-4 ring-blue-200/50' : 'z-10'}
-                            `}
-                            onMouseEnter={() => setHoveredProduct(product.id)}
-                            onMouseLeave={() => setHoveredProduct(null)}
-                            onClick={() => handleProductClick(product)}
-                            role="button"
-                            tabIndex={0}
-                            aria-label={`Visualizza dettagli ${product.brand} ${product.model}`}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    handleProductClick(product);
-                                }
-                            }}
-                        >
-                            {/* Badge e Like button */}
-                            <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
-                                <span className={`
-                                    px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide
-                                    ${product.badge === 'Bestseller' ? 'bg-red-500 text-white' :
-                                        product.badge === 'Nuovo' ? 'bg-green-500 text-white' :
-                                            'bg-purple-500 text-white'}
-                                `}>
-                                    {product.badge}
-                                </span>
-
-                                <button
-                                    onClick={(e) => toggleLike(product.id, e)}
+            {/* Container prodotti completamente ridisegnato */}
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
+                <StaggerContainer>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {mostSoldProducts.map((product, index) => (
+                            <StaggerItem key={product.id} direction="up" blur>
+                                <article
                                     className={`
-                                        p-2 rounded-full transition-all duration-300 hover:scale-110
-                                        ${likedProducts.has(product.id)
-                                            ? 'bg-red-500 text-white shadow-lg'
-                                            : 'bg-white/80 text-gray-400 hover:text-red-500'
+                                        group relative overflow-hidden bg-white rounded-3xl 
+                                        border border-gray-100 shadow-xl hover:shadow-2xl
+                                        cursor-pointer transition-all duration-700 ease-out
+                                        ${hoveredProduct === product.id ?
+                                            'transform scale-105 z-20 shadow-3xl ring-2 ring-gray-200' :
+                                            'z-10 hover:scale-102'
                                         }
                                     `}
-                                    aria-label={likedProducts.has(product.id) ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}
+                                    onMouseEnter={() => setHoveredProduct(product.id)}
+                                    onMouseLeave={() => setHoveredProduct(null)}
+                                    onClick={() => handleProductClick(product)}
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-label={`Visualizza dettagli ${product.brand} ${product.model}`}
                                 >
-                                    <Heart size={16} className={likedProducts.has(product.id) ? 'fill-current' : ''} />
-                                </button>
-                            </div>
+                                    {/* Header card con badge e like */}
+                                    <div className="relative p-6 pb-0">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className={`
+                                                inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
+                                                text-xs font-bold uppercase tracking-wider
+                                                ${getBadgeStyles(product.badge)}
+                                                transform transition-all duration-300 group-hover:scale-110
+                                            `}>
+                                                {product.badge === 'Bestseller' && <Award className="w-3 h-3" />}
+                                                {product.badge === 'Nuovo' && <Zap className="w-3 h-3" />}
+                                                {product.badge === 'Limited' && <Star className="w-3 h-3" />}
+                                                {product.badge}
+                                            </span>
 
-                            {/* Sconto badge */}
-                            {product.discount > 0 && (
-                                <div className="absolute top-4 right-16 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold z-20">
-                                    -{product.discount}%
-                                </div>
-                            )}
-
-                            {/* Immagine prodotto migliorata */}
-                            <div className="relative mb-6 mt-8">
-                                <div className={`
-                                    w-full h-48 md:h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100
-                                    flex items-center justify-center transition-all duration-500
-                                    ${hoveredProduct === product.id
-                                        ? 'shadow-2xl ring-4 ring-blue-200/30'
-                                        : 'shadow-md'
-                                    }
-                                `}>
-                                    {/* Placeholder per l'immagine - sostituire con Image component */}
-                                    <div className={`
-                                        w-40 h-40 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full 
-                                        flex items-center justify-center transition-all duration-500
-                                        group-hover:scale-110 group-hover:rotate-6
-                                        ${hoveredProduct === product.id ? 'animate-pulse' : ''}
-                                    `}>
-                                        <Eye size={48} className="text-gray-600" />
-                                    </div>
-                                </div>
-
-                                {/* Quick actions overlay */}
-                                <div className={`
-                                    absolute inset-0 bg-black/20 rounded-2xl flex items-center justify-center gap-3
-                                    transition-all duration-300
-                                    ${hoveredProduct === product.id ? 'opacity-100' : 'opacity-0'}
-                                `}>
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            console.log('Anteprima rapida');
-                                        }}
-                                        className="bg-white/90 p-3 rounded-full hover:bg-white transition-colors duration-200"
-                                        aria-label="Anteprima rapida"
-                                    >
-                                        <Eye size={20} className="text-gray-700" />
-                                    </button>
-                                    <button
-                                        onClick={(e) => addToCart(product, e)}
-                                        className="bg-blue-600 p-3 rounded-full text-white hover:bg-blue-700 transition-colors duration-200"
-                                        aria-label="Aggiungi al carrello"
-                                    >
-                                        <ShoppingCart size={20} />
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Informazioni prodotto migliorate */}
-                            <div className="space-y-3 flex-1">
-                                {/* Rating */}
-                                <div className="flex items-center gap-2">
-                                    <div className="flex items-center">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star
-                                                key={i}
-                                                size={14}
-                                                className={`${i < Math.floor(product.rating)
-                                                    ? 'text-yellow-400 fill-current'
-                                                    : 'text-gray-300'
-                                                    }`}
-                                            />
-                                        ))}
-                                    </div>
-                                    <span className="text-sm text-gray-600">
-                                        {product.rating} ({product.reviews} recensioni)
-                                    </span>
-                                </div>
-
-                                {/* Brand e modello */}
-                                <div>
-                                    <h3 className={`
-                                        font-bold text-xl md:text-2xl transition-all duration-300
-                                        ${hoveredProduct === product.id
-                                            ? 'text-blue-700 scale-105'
-                                            : 'text-gray-900'
-                                        }
-                                    `}>
-                                        {product.brand}
-                                    </h3>
-                                    <p className="text-gray-600 font-medium">{product.model}</p>
-                                    <p className="text-sm text-gray-500">{product.serial}</p>
-                                </div>
-
-                                {/* Features */}
-                                <div className="space-y-1">
-                                    {product.features.slice(0, 2).map((feature, idx) => (
-                                        <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                                            {feature}
+                                            <button
+                                                onClick={(e) => toggleLike(product.id, e)}
+                                                className={`
+                                                    p-2 rounded-full transition-all duration-300 backdrop-blur-sm
+                                                    ${likedProducts.has(product.id) ?
+                                                        'bg-red-500 text-white shadow-lg' :
+                                                        'bg-white/80 text-gray-600 hover:bg-red-50 hover:text-red-500'
+                                                    }
+                                                `}
+                                                aria-label="Aggiungi ai preferiti"
+                                            >
+                                                <Heart
+                                                    className={`w-4 h-4 transition-all duration-300 ${likedProducts.has(product.id) ? 'fill-current scale-110' : ''
+                                                        }`}
+                                                />
+                                            </button>
                                         </div>
-                                    ))}
-                                </div>
 
-                                {/* Prezzo migliorato */}
-                                <div className="flex items-center gap-3 pt-2">
-                                    <span className={`
-                                        text-2xl md:text-3xl font-bold transition-all duration-300
-                                        ${hoveredProduct === product.id
-                                            ? 'text-blue-600 scale-110'
-                                            : 'text-gray-900'
-                                        }
-                                    `}>
-                                        {product.price}
-                                    </span>
-                                    {product.originalPrice && (
-                                        <span className="text-lg text-gray-500 line-through">
-                                            {product.originalPrice}
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
+                                        {/* Sconto badge ridisegnato */}
+                                        {product.discount > 0 && (
+                                            <div className="absolute top-6 right-16 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                                                -{product.discount}%
+                                            </div>
+                                        )}
+                                    </div>
 
-                            {/* CTA Button migliorato */}
-                            <div className={`
-                                mt-6 transition-all duration-500
-                                ${hoveredProduct === product.id
-                                    ? 'opacity-100 translate-y-0'
-                                    : 'opacity-70 translate-y-2'
-                                }
-                            `}>
-                                <button
-                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 px-6 rounded-2xl font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group focus:ring-4 focus:ring-blue-200"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleProductClick(product);
-                                    }}
-                                >
-                                    Scopri di più
-                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
-                                </button>
-                            </div>
+                                    {/* Sezione immagine completamente ridisegnata */}
+                                    <div className="relative px-6 mb-6">
+                                        <div className={`
+                                            relative w-full h-64 rounded-2xl overflow-hidden
+                                            bg-gradient-to-br from-gray-50 to-gray-100
+                                            transition-all duration-700 group-hover:shadow-inner
+                                            ${hoveredProduct === product.id ? 'bg-gradient-to-br from-blue-50 to-indigo-50' : ''}
+                                        `}>
+                                            {/* Decorazioni di sfondo */}
+                                            <div className="absolute inset-0 opacity-10">
+                                                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-amber-200 to-orange-200 rounded-full blur-xl"></div>
+                                                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-full blur-xl"></div>
+                                            </div>
 
-                            {/* Hover glow effect */}
-                            <div className={`
-                                absolute inset-0 rounded-3xl transition-all duration-500 pointer-events-none
-                                ${hoveredProduct === product.id
-                                    ? 'bg-gradient-to-r from-blue-400/5 via-purple-400/5 to-pink-400/5 shadow-2xl shadow-blue-500/10'
-                                    : 'bg-transparent'
-                                }
-                            `}></div>
+                                            <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
+                                                <Image
+                                                    src={product.image}
+                                                    alt={`${product.brand} ${product.model}`}
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 400px"
+                                                    style={{ objectFit: 'contain' }}
+                                                    priority={index === 0}
+                                                    className={`w-full h-full transition-all duration-700 ${hoveredProduct === product.id ? 'scale-110 filter drop-shadow-2xl' : 'scale-100 group-hover:scale-105'}`}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* Informazioni prodotto ridisegnate */}
+                                    <div className="px-6 pb-6 space-y-4">
+                                        {/* Brand e modello con stile moderno */}
+                                        <div className="space-y-1">
+                                            <h3 className="text-2xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors duration-300">
+                                                {product.brand}
+                                            </h3>
+                                            <p className="text-lg text-gray-600 font-medium">{product.model}</p>
+                                            <p className="text-sm text-gray-500 font-mono">{product.serial}</p>
+                                        </div>
+
+                                        {/* Features con icone */}
+                                        <div className="space-y-2">
+                                            {product.features.slice(0, 2).map((feature, idx) => (
+                                                <div key={idx} className="flex items-center gap-3 text-sm text-gray-600">
+                                                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+                                                    <span className="font-medium">{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Prezzo con design più prominente */}
+                                        <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
+                                            <span className="text-3xl font-black text-gray-900">
+                                                {product.price}
+                                            </span>
+                                            {product.originalPrice && (
+                                                <div className="flex flex-col">
+                                                    <span className="text-lg text-gray-500 line-through">
+                                                        {product.originalPrice}
+                                                    </span>
+                                                    <span className="text-xs text-green-600 font-semibold">
+                                                        Risparmi €{(parseFloat(product.originalPrice.replace('€', '').replace(',', '.')) -
+                                                            parseFloat(product.price.replace('€', '').replace(',', '.'))).toFixed(0)}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* CTA Button ridisegnato */}
+                                        <button
+                                            className={`
+                                                w-full mt-6 py-4 px-6 rounded-2xl font-bold text-base
+                                                bg-gradient-to-r from-gray-900 to-gray-800 text-white
+                                                hover:from-gray-800 hover:to-gray-700
+                                                transition-all duration-500 transform hover:scale-105
+                                                shadow-lg hover:shadow-xl
+                                                flex items-center justify-center gap-3 group/btn
+                                                ${hoveredProduct === product.id ? 'scale-105 shadow-xl' : ''}
+                                            `}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleProductClick(product);
+                                            }}
+                                        >
+                                            <Eye className="w-5 h-5" />
+                                            Scopri di più
+                                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                                        </button>
+                                    </div>
+                                </article>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
+
+                {/* Footer ridisegnato */}
+                <div className="mt-16 text-center space-y-6">
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+                        <div className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-amber-50 to-orange-50 rounded-full border border-amber-200">
+                            <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+                            <span className="text-amber-800 font-semibold">Consulenza gratuita in negozio</span>
                         </div>
-                    ))}
-                </div>
+                        <div className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-full border border-emerald-200">
+                            <Shield className="w-4 h-4 text-emerald-600" />
+                            <span className="text-emerald-800 font-semibold">Garanzia 2 anni</span>
+                        </div>
+                    </div>
 
-                
+                    <button className="group inline-flex items-center gap-2 text-gray-900 hover:text-gray-700 font-bold text-lg transition-all duration-300 hover:scale-105">
+                        Visualizza tutti i prodotti
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    </button>
+                </div>
             </section>
+
+            <style jsx>{`
+                @keyframes fade-in-up {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .animate-fade-in-up {
+                    animation: fade-in-up 0.8s ease-out forwards;
+                }
+            `}</style>
         </section>
     );
 }
