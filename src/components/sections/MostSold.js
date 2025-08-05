@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Eye, Heart, Star, ArrowRight, Zap } from 'lucide-react';
+import { Eye, Heart, Star, ArrowRight, Zap, Shield, Award } from 'lucide-react';
+import Image from 'next/image';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
-import Image from "next/image";
 
 export default function MostSold() {
     const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -66,47 +66,34 @@ export default function MostSold() {
         }
     };
 
-    const toggleLike = (productId, e) => {
-        e.stopPropagation();
-        setLikedProducts(prev => {
-            const newSet = new Set(prev);
-            if (newSet.has(productId)) {
-                newSet.delete(productId);
-            } else {
-                newSet.add(productId);
-            }
-            return newSet;
-        });
-    };
-
     return (
-        <section className="min-h-screen flex flex-col items-center justify-center gap-6">
-            {/* Header migliorato */}
-            <div className="text-center space-y-4 relative z-10 px-4 mt-4 md:mt-8 lg:mt-18">
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold font-josefin text-center tracking-tight">
-                    <span className="">
-                        I PIÙ VENDUTI
-                    </span>
+        <section className="min-h-screen flex flex-col items-center justify-center gap-8 py-12">
+            {/* Header ottimizzato */}
+            <div className="text-center space-y-6 relative z-10 px-4 max-w-4xl mx-auto">
+                {/* <div className="inline-flex items-center gap-3 px-4 py-2 bg-warm-gray-50 border border-warm-gray-200 rounded-full mb-4">
+                    <Award className="w-5 h-5 text-primary" />
+                    <span className="text-warm-gray-800 font-semibold text-sm uppercase tracking-wide">I nostri bestseller</span>
+                </div> */}
+
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-warm-gray-900">
+                    I PIÙ VENDUTI
                 </h2>
 
-                <p className="text-warm-gray-600 text-lg max-w-2xl mx-auto">
-                    Scopri i modelli più amati dai nostri clienti, selezionati per stile e qualità
+                <p className="text-warm-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
+                    Scopri i modelli più amati dai nostri clienti, selezionati per stile, qualità e design innovativo
                 </p>
-            </div>
-
-            {/* Container prodotti migliorato */}
-            <section className="w-full py-8 md:py-16 flex flex-col items-center justify-center  bg-[#fafafa] border border-warm-gray-200/50 shadow-2xl rounded-none md:rounded-[48px] max-w-full md:max-w-[1600px] mx-auto relative z-10">
-
+            </div>            {/* Container prodotti completamente ridisegnato */}
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
                 <StaggerContainer>
-                    {/* Grid responsivo dei prodotti */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-24 w-full px-4 md:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {mostSoldProducts.map((product, index) => (
-                            <StaggerItem key={product.id} delay={index * 200}>
-                                <div
+                            <StaggerItem key={product.id} direction="up">
+                                <article
                                     className={`
-                                        group relative flex flex-col bg-white rounded-3xl p-6 shadow-lg
+                                        group relative overflow-hidden bg-white rounded-2xl 
+                                        border border-warm-gray-200/50 shadow-sm hover:shadow-lg
                                         cursor-pointer transition-all duration-500 ease-out
-                                        ${hoveredProduct === product.id ? 'z-20 ring-2 ring-black/30 scale-105 shadow-2xl' : 'z-10'}
+                                        hover:border-warm-gray-300/50
                                     `}
                                     onMouseEnter={() => setHoveredProduct(product.id)}
                                     onMouseLeave={() => setHoveredProduct(null)}
@@ -114,132 +101,87 @@ export default function MostSold() {
                                     role="button"
                                     tabIndex={0}
                                     aria-label={`Visualizza dettagli ${product.brand} ${product.model}`}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') {
-                                            handleProductClick(product);
-                                        }
-                                    }}
                                 >
-                                    {/* Badge e Like button */}
-                                    <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
-                                        <span className={`
-                                            px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide
-                                            ${product.badge === 'Bestseller' ? 'bg-bordeaux-500 text-white' :
-                                                product.badge === 'Nuovo' ? 'bg-gold-500 text-white' :
-                                                    'bg-warm-gray-600 text-white'}
-                                        `}>
-                                            {product.badge}
-                                        </span>
-                                    </div>
-
-                                    {/* Sconto badge */}
-                                    {product.discount > 0 && (
-                                        <div className="absolute top-4 right-4 bg-gold-500 text-white px-2 py-1 rounded-full text-xs font-bold z-20">
-                                            -{product.discount}%
-                                        </div>
-                                    )}
-
-                                    {/* Immagine prodotto migliorata */}
-                                    <div className="relative mb-6 mt-8">
-                                        <div className={`
-                                            w-full h-48 md:h-56 rounded-2xl overflow-hidden bg-cream-50
-                                            flex items-center justify-center transition-all duration-500
-                                                        group-hover:scale-105
-                                            ${hoveredProduct === product.id
-                                                ? 'shadow-2xl'
-                                                : 'shadow-md'
-                                            }
-                                        `}>
-                                            <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 flex items-center justify-center">
+                                    {/* Sezione immagine minimal */}
+                                    <div className="relative p-8">
+                                        <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-warm-gray-50/50 to-blue-50/30">
+                                            <div className="relative z-10 w-full h-full flex items-center justify-center p-6">
                                                 <Image
                                                     src={product.image}
-                                                    alt={product.brand + ' ' + product.serial}
-                                                    width={220}
-                                                    height={220}
-                                                    className={`
-                                                        object-contain w-full h-full transition-all duration-500
-                                                        group-hover:scale-110 relative z-10
-                                                        ${hoveredProduct === product.id ? 'filter brightness-110 contrast-110' : ''}
-                                                    `}
+                                                    alt={`${product.brand} ${product.model}`}
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 400px"
+                                                    style={{ objectFit: 'contain' }}
+                                                    priority={index === 0}
+                                                    className="w-full h-full transition-all duration-500 group-hover:scale-110"
                                                 />
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Informazioni prodotto migliorate */}
-                                    <div className="space-y-3 flex-1">
-                                        {/* Brand e modello */}
-                                        <div>
-                                            <h3 className={`
-                                                font-bold text-xl md:text-2xl transition-all duration-300 font-bevietnam
-                                                text-warm-gray-900
-                                            `}>
-                                                {product.brand}
-                                            </h3>
-                                            <p className="text-warm-gray-600 font-medium">{product.model}</p>
-                                            <p className="text-sm text-warm-gray-500">{product.serial}</p>
+                                        {/* Badge minimal in alto a destra */}
+                                        <div className="absolute top-4 right-4">
+                                            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary text-white text-xs font-semibold rounded-full">
+                                                {product.badge}
+                                            </span>
                                         </div>
 
-                                        {/* Features */}
+                                        {/* Sconto badge */}
+                                        {/* {product.discount > 0 && (
+                                            <div className="absolute top-4 left-4 bg-gold-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                                -{product.discount}%
+                                            </div>
+                                        )} */}
+                                    </div>
+
+                                    {/* Informazioni prodotto minimal */}
+                                    <div className="px-8 pb-8 space-y-4">
+                                        {/* Brand e modello */}
                                         <div className="space-y-1">
+                                            <h3 className="text-2xl font-bold text-warm-gray-900 group-hover:text-primary transition-colors duration-300">
+                                                {product.brand}
+                                            </h3>
+                                            <p className="text-lg text-warm-gray-600 font-medium">{product.model}</p>
+                                        </div>
+
+                                        {/* Features minimal */}
+                                        <div className="flex flex-wrap gap-6">
                                             {product.features.slice(0, 2).map((feature, idx) => (
                                                 <div key={idx} className="flex items-center gap-2 text-sm text-warm-gray-600">
-                                                    <div className="w-1.5 h-1.5 bg-bordeaux-500 rounded-full"></div>
-                                                    {feature}
+                                                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                                                    <span className="font-medium">{feature}</span>
                                                 </div>
                                             ))}
                                         </div>
 
-                                        {/* Prezzo migliorato */}
-                                        <div className="flex items-center gap-3 pt-2">
-                                            <span className="text-2xl md:text-3xl font-bold transition-all duration-300 text-warm-gray-900">
+                                        {/* Prezzo */}
+                                        <div className="flex items-center gap-3 pt-4 border-t border-warm-gray-200/50">
+                                            <span className="text-3xl font-bold text-warm-gray-900">
                                                 {product.price}
                                             </span>
                                             {product.originalPrice && (
-                                                <span className="text-lg text-warm-gray-500 line-through">
+                                                <span className="text-lg line-through text-warm-gray-500">
                                                     {product.originalPrice}
                                                 </span>
                                             )}
                                         </div>
-                                    </div>
 
-                                    {/* CTA Button migliorato */}
-                                    <div className={`mt-6 transition-all duration-500 ${hoveredProduct === product.id ? 'opacity-100 translate-y-0 scale-105' : 'opacity-70 translate-y-2'}`}>
+                                        {/* CTA Button minimal */}
                                         <button
-                                            className="w-full bg-bordeaux-600 hover:bg-bordeaux-700 text-white py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-102 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+                                            className="w-full mt-6 py-4 px-6 border border-black hover:bg-black hover:text-white text-black font-semibold rounded-2xl transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-3 group/btn cursor-pointer"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleProductClick(product);
                                             }}
                                         >
                                             Scopri di più
-                                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
+                                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
                                         </button>
                                     </div>
-                                </div>
+                                </article>
                             </StaggerItem>
                         ))}
                     </div>
                 </StaggerContainer>
-
-                {/* Footer migliorato */}
-                <div className="mt-12 text-center space-y-4">
-                    <div className="flex items-center justify-center gap-4 text-sm text-warm-gray-600">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></div>
-                            <span>Consulenza gratuita in negozio</span>
-                        </div>
-                        <div className="w-px h-4 bg-warm-gray-300"></div>
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-bordeaux-500 rounded-full animate-pulse"></div>
-                            <span>Garanzia 2 anni</span>
-                        </div>
-                    </div>
-
-                    <button className="text-bordeaux-600 hover:text-bordeaux-700 font-semibold text-lg hover:underline transition-all duration-200">
-                        Visualizza tutti i prodotti →
-                    </button>
-                </div>
             </section>
         </section>
     );

@@ -8,7 +8,6 @@ import Image from 'next/image';
 export default function LiquidGlassNavbar() {
     const [dropdownReady, setDropdownReady] = useState(false);
     const navRef = useRef(null);
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openDropdowns, setOpenDropdowns] = useState({});
     const router = useRouter();
@@ -16,10 +15,6 @@ export default function LiquidGlassNavbar() {
     useEffect(() => {
         // Attiva le animazioni dropdown solo dopo il mount
         setTimeout(() => setDropdownReady(true), 10);
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
 
         // Chiudi dropdown desktop al click fuori
         const handleClickOutside = (event) => {
@@ -30,7 +25,6 @@ export default function LiquidGlassNavbar() {
         document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
@@ -115,16 +109,12 @@ export default function LiquidGlassNavbar() {
                 </span>
             </div>
 
-            {/* Navbar centrata desktop - con responsive positioning e sizing */}
-            <nav ref={navRef} className={`fixed top-4 z-40 w-full flex justify-center pointer-events-none transition-all duration-700 ease-out ${isScrolled ? 'scale-95 opacity-95' : 'scale-100 opacity-100'} 
-                /* Responsive positioning per evitare sovrapposizione */
-                left-1/2 -translate-x-1/2
-                sm:left-[calc(50%+60px)] sm:-translate-x-1/2
-                lg:left-1/2 lg:-translate-x-1/2
-            `}>
-                <div className="hidden lg:flex items-center w-full max-w-4xl mx-auto px-6 pointer-events-auto">
-                    <div className="flex-1 flex justify-center">
-                        <div className="relative flex items-center space-x-4 bg-white/90 rounded-2xl px-8 py-3">
+            {/* Navbar centrata desktop - SENZA spazio sopra */}
+            <nav ref={navRef} className="fixed top-0 z-40 w-full transition-all duration-700 ease-out">
+                {/* Sfondo completo che copre tutta la larghezza */}
+                <div className="w-full bg-white/70 backdrop-blur-xl py-5">
+                    <div className="flex justify-center">
+                        <div className="hidden lg:flex items-center space-x-4">
                             {navItems.map((item, index) => {
                                 // Icone per categoria
                                 let Icon = null;
@@ -156,8 +146,8 @@ export default function LiquidGlassNavbar() {
                                         {/* Dropdown Menu */}
                                         {hasDropdown && (
                                             <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64 z-30 transition-all duration-300 ease-in-out transform origin-top ${dropdownReady && isOpen
-                                                    ? 'opacity-100 scale-100 translate-y-0'
-                                                    : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                                                ? 'opacity-100 scale-100 translate-y-0'
+                                                : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                                                 }`}>
                                                 <div className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-2xl rounded-2xl overflow-hidden">
                                                     <div className="py-2">
@@ -220,8 +210,8 @@ export default function LiquidGlassNavbar() {
                                         {/* Dropdown Menu per tablet */}
                                         {hasDropdown && (
                                             <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-56 z-30 transition-all duration-300 ease-in-out transform origin-top ${dropdownReady && isOpen
-                                                    ? 'opacity-100 scale-100 translate-y-0'
-                                                    : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                                                ? 'opacity-100 scale-100 translate-y-0'
+                                                : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                                                 }`}>
                                                 <div className="bg-white/95 backdrop-blur-xl border border-gray-200 shadow-2xl rounded-2xl overflow-hidden">
                                                     <div className="py-1">
@@ -306,8 +296,8 @@ export default function LiquidGlassNavbar() {
                                         {/* Mobile Dropdown Items */}
                                         {hasDropdown && (
                                             <div className={`overflow-hidden transition-all duration-300 ease-in-out ${dropdownReady && isOpen
-                                                    ? 'max-h-96 opacity-100'
-                                                    : 'max-h-0 opacity-0'
+                                                ? 'max-h-96 opacity-100'
+                                                : 'max-h-0 opacity-0'
                                                 }`}>
                                                 <div className="pt-2 space-y-1">
                                                     {item.dropdown.map((dropdownItem, dropdownIndex) => (

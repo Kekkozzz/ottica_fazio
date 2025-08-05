@@ -17,7 +17,7 @@ export default function Home() {
       <Hero />
       <LogosCarousel />
       <MostSold />
-      <Prova />
+      {/* <Prova /> */}
       <OurProducts />
       <OurServices />
       <ContactUs />

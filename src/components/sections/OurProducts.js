@@ -58,10 +58,13 @@ export default function OurProducts() {
     };
 
     return (
-        <section className='min-h-screen flex flex-col items-center justify-center gap-6'>
-            <h2 className="my-8 md:my-16 text-2xl sm:text-3xl md:text-5xl font-extrabold font-josefin text-center mb-8 md:mb-12 tracking-tight text-black">
+        <section className='min-h-screen flex flex-col items-center justify-center gap-2 bg-[#fafafa]'>
+            <h2 className="my-8 md:my-16 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-warm-gray-900 mb-4 md:mb-6">
                 I NOSTRI PRODOTTI
             </h2>
+            <p className="text-warm-gray-600 text-xl max-w-3xl mx-auto leading-relaxed text-center">
+                Scopri la nostra selezione di prodotti esclusivi, pensati per offrirti il massimo del comfort e dello stile.
+            </p>
             <section className="w-full py-8 md:py-16 my-8 md:my-16 flex flex-col items-center justify-center bg-[#fafafa] border border-gray-200 shadow-lg rounded-[0px] md:rounded-[48px] max-w-full md:max-w-[1600px] mx-auto">
                 <StaggerContainer>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12 w-full px-4 flex-wrap">
