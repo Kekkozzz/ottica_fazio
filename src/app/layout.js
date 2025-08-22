@@ -26,6 +26,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="it">
       <body
+        // Suppress hydration warnings on the <body> because some browser extensions
+        // inject attributes (for example `cz-shortcut-listen`) that differ between
+        // the server-rendered HTML and the client DOM before React hydrates.
+        // See: https://react.dev/link/hydration-mismatch
+        suppressHydrationWarning
         className={`${josefin.variable} ${bevietnam.variable} antialiased`}
         style={{ fontFamily: 'var(--font-bevietnam), Arial, Helvetica, sans-serif' }}
       >
