@@ -1,52 +1,48 @@
 'use client';
 
-import { useState } from 'react';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import Image from "next/image";
 
 export default function OurProducts() {
-    // Stato per tracciare quale card è capovolta
-    const [flippedCards, setFlippedCards] = useState({});
-
     // Dati delle card prodotti
     const products = [
         {
             id: 1,
-            name: "Prodotto 1",
+            name: "Occhiali da sole",
             image: "/models/mod1.jpg",
-            description: "Descrizione del prodotto 1",
-            link: "/prodotto-1"
+            description: "Protezione UV completa con stile e comfort per ogni occasione.",
+            features: ["✅ Protezione UV400", "🎨 50+ modelli disponibili", "🏷️ Da €89"],
+            cta: "Prova in negozio",
+            link: "/prodotti/occhiali-sole"
         },
         {
             id: 2,
-            name: "Prodotto 2",
+            name: "Occhiali da vista",
             image: "/models/mod2.avif",
-            description: "Descrizione del prodotto 2",
-            link: "/prodotto-2"
+            description: "Correzione visiva personalizzata per una visione perfetta.",
+            features: ["👀 Esame della vista incluso", "🔍 Lenti progressive disponibili", "⚡ Consegna in 48h"],
+            cta: "Prenota visita",
+            link: "/prodotti/occhiali-vista"
         },
         {
             id: 3,
-            name: "Prodotto 3",
+            name: "Lenti a contatto",
             image: "/models/mod3.webp",
-            description: "Descrizione del prodotto 3",
-            link: "/prodotto-3"
+            description: "Comfort e libertà di movimento per ogni stile di vita.",
+            features: ["🎯 Prova gratuita", "📦 Consegna mensile", "💧 Giornaliere e mensili"],
+            cta: "Ordina online",
+            link: "/prodotti/lenti-contatto"
         },
         {
             id: 4,
-            name: "Prodotto 4",
+            name: "Nuance Audio",
             image: "/models/mod4.avif",
-            description: "Descrizione del prodotto 4",
-            link: "/prodotto-4"
+            description: "Tecnologia audio innovativa integrata nei tuoi occhiali.",
+            features: ["🔊 Audio HD integrato", "🔋 8h di autonomia", "📱 Bluetooth 5.0"],
+            cta: "Scopri l'innovazione",
+            link: "/prodotti/nuance-audio"
         }
     ];
-
-    // Funzione per gestire il click sulla card
-    const handleCardClick = (productId) => {
-        setFlippedCards(prev => ({
-            ...prev,
-            [productId]: !prev[productId]
-        }));
-    };
 
     // Funzione per gestire la navigazione
     const handleNavigation = (link, e) => {
@@ -59,7 +55,7 @@ export default function OurProducts() {
 
     return (
         <section className='min-h-screen flex flex-col items-center justify-center gap-2 bg-[#fafafa]'>
-            <h2 className="my-8 md:my-16 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-warm-gray-900 mb-4 md:mb-6">
+            <h2 className="my-8 md:my-16 text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-warm-gray-900 mb-4 md:mb-6">
                 I NOSTRI PRODOTTI
             </h2>
             <p className="text-warm-gray-600 text-xl max-w-3xl mx-auto leading-relaxed text-center">
@@ -72,16 +68,13 @@ export default function OurProducts() {
                         {products.map((product) => (
                             <StaggerItem key={product.id}>
                                 <div
-                                    className="relative w-56 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[32rem] cursor-pointer"
+                                    className="relative w-56 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[32rem] cursor-pointer group"
                                     style={{ perspective: '1000px' }}
-                                    onClick={() => handleCardClick(product.id)}
                                 >
                                     <div
-                                        className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${flippedCards[product.id] ? 'rotate-y-180' : ''
-                                            }`}
+                                        className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180"
                                         style={{
-                                            transformStyle: 'preserve-3d',
-                                            transform: flippedCards[product.id] ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                                            transformStyle: 'preserve-3d'
                                         }}
                                     >
                                         {/* Fronte della card */}
@@ -106,17 +99,25 @@ export default function OurProducts() {
                                                 transform: 'rotateY(180deg)'
                                             }}
                                         >
-                                            <h3 className="font-bold text-lg md:text-xl mb-2 text-center font-bevietnam">
+                                            <h3 className="font-bold text-xl md:text-2xl mb-3 text-center font-bevietnam">
                                                 {product.name}
                                             </h3>
-                                            <p className="text-sm md:text-base mb-4 text-center opacity-90">
-                                                {product.description}
-                                            </p>
+                                            
+                                            {/* Features list */}
+                                            <div className="mb-4 space-y-2 w-full">
+                                                {product.features.map((feature, index) => (
+                                                    <div key={index} className="text-sm md:text-base text-center opacity-95 font-medium">
+                                                        {feature}
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            {/* Call to action button */}
                                             <button
                                                 onClick={(e) => handleNavigation(product.link, e)}
-                                                className="bg-white text-[#2d3142] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-sm md:text-base"
+                                                className="bg-white text-[#2d3142] px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all duration-200 text-sm md:text-base shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
                                             >
-                                                Scopri di più
+                                                {product.cta}
                                             </button>
                                         </div>
                                     </div>
@@ -128,6 +129,9 @@ export default function OurProducts() {
             </section>
 
             <style jsx>{`
+                .group-hover\\:rotate-y-180:hover {
+                    transform: rotateY(180deg);
+                }
                 .rotate-y-180 {
                     transform: rotateY(180deg);
                 }

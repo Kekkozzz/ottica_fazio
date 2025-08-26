@@ -75,7 +75,7 @@ export default function MostSold() {
                     <span className="text-warm-gray-800 font-semibold text-sm uppercase tracking-wide">I nostri bestseller</span>
                 </div> */}
 
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-warm-gray-900">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-warm-gray-900">
                     I PIÙ VENDUTI
                 </h2>
 

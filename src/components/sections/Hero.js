@@ -91,7 +91,7 @@ export default function Hero() {
 
                 {/* Sezione Inferiore - Contenuto */}
                 <div className="w-full flex items-center justify-center p-6 py-8 relative bg-white min-h-[45vh]">
-                    <div className="max-w-md w-full text-center">
+                    <div className="max-w-lg w-full text-center">
                         <StaggerContainer staggerDelay={0.2}>
                             <StaggerItem direction="up">
                                 <h1 className="text-4xl md:text-5xl font-bold mb-4">NOVITÀ</h1>
@@ -126,12 +126,7 @@ export default function Hero() {
                         </StaggerContainer>
                     </div>
 
-                    {/* Logo N in basso a sinistra */}
-                    <div className="absolute bottom-6 left-6">
-                        <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            N
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -140,7 +135,7 @@ export default function Hero() {
 
                 {/* Sezione Sinistra - Contenuto */}
                 <div className="w-1/2 flex items-center justify-center p-8 lg:p-16 relative">
-                    <div className="max-w-md w-full">
+                    <div className="max-w-lg w-full">
                         <StaggerContainer staggerDelay={0.2}>
                             <StaggerItem direction="up">
                                 <h1 className="xl:text-8xl lg:text-6xl font-bold mb-6">NOVITÀ</h1>
@@ -164,22 +159,15 @@ export default function Hero() {
 
                             <StaggerItem direction="up">
                                 <div className="flex flex-col sm:flex-row gap-4">
-                                    <button className="bg-black text-white py-5 px-8 rounded-full cursor-pointer hover:shadow-xl transition duration-300">
+                                    <button className="bg-black text-white py-5 px-8 rounded-full cursor-pointer hover:shadow-xl transition duration-300 text-lg">
                                         Prenota un appuntamento
                                     </button>
-                                    <button className="border border-gray-400 text-gray-800 py-5 px-5 rounded-full transition cursor-pointer hover:bg-black hover:text-white">
+                                    <button className="border border-gray-400 text-gray-800 py-5 px-5 rounded-full transition cursor-pointer hover:bg-gray-100 hover:text-black text-lg">
                                         Guarda il video
                                     </button>
                                 </div>
                             </StaggerItem>
                         </StaggerContainer>
-                    </div>
-
-                    {/* Logo N in basso a sinistra */}
-                    <div className="absolute bottom-8 left-8">
-                        <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white font-bold">
-                            N
-                        </div>
                     </div>
                 </div>
 
