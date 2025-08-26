@@ -1,5 +1,5 @@
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
-import { Eye, Microscope, Map, ContactRound, Palette } from 'lucide-react';
+import { Eye, Microscope, Map, ContactRound, Palette, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function OurServices() {
@@ -76,9 +76,16 @@ export default function OurServices() {
                                         <h3 className="font-bold text-xl mb-4 text-warm-gray-900 group-hover:text-primary transition-colors duration-300">
                                             {service.title}
                                         </h3>
-                                        <p className="text-warm-gray-600 leading-relaxed">
+                                        <p className="text-warm-gray-600 leading-relaxed mb-6">
                                             {service.description}
                                         </p>
+
+                                        {/* CTA Button - Bottom Right */}
+                                        <div className="absolute bottom-6 right-6">
+                                            <button className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer">
+                                                <ArrowRight size={16} strokeWidth={2} />
+                                            </button>
+                                        </div>
 
                                         {/* Immagine in alto a destra */}
                                         <div className="absolute top-4 right-4 w-16 h-16 rounded-2xl overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-300">
@@ -112,9 +119,16 @@ export default function OurServices() {
                                         <h3 className="font-bold text-xl mb-4 text-warm-gray-900 group-hover:text-primary transition-colors duration-300">
                                             {service.title}
                                         </h3>
-                                        <p className="text-warm-gray-600 leading-relaxed">
+                                        <p className="text-warm-gray-600 leading-relaxed mb-6">
                                             {service.description}
                                         </p>
+
+                                        {/* CTA Button - Bottom Right */}
+                                        <div className="absolute bottom-6 right-6">
+                                            <button className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer">
+                                                <ArrowRight size={16} strokeWidth={2} />
+                                            </button>
+                                        </div>
 
                                         {/* Immagine in alto a destra */}
                                         <div className="absolute top-4 right-4 w-16 h-16 rounded-2xl overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-300">
