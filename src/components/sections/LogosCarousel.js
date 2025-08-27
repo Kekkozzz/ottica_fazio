@@ -61,8 +61,8 @@ export default function LogosCarousel() {
         
         // Velocità responsive
         const getSpeed = () => {
-            if (isMobile) return 0.2; // Più lento su mobile
-            if (isTablet) return 0.25; // Velocità media su tablet
+            if (isMobile) return 0.7; // Più lento su mobile
+            if (isTablet) return 0.5; // Velocità media su tablet
             return 0.3; // Velocità normale su desktop
         };
 
