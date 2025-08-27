@@ -22,7 +22,6 @@ export default function Hero() {
                                 aria-label="Video promozionale Nuance Audio - dispositivi acustici integrati negli occhiali"
                             >
                                 <source src="/videos/NUANCE_Banner.webm" type="video/webm" />
-                                <track kind="captions" src="/captions/nuance_banner_it.vtt" srcLang="it" label="Italiano" default />
                                 Il tuo browser non supporta il tag video.
                             </video>
                         </div>
@@ -94,7 +93,6 @@ export default function Hero() {
                                 aria-label="Video promozionale Nuance Audio - dispositivi acustici integrati negli occhiali"
                             >
                                 <source src="/videos/NUANCE_Banner.webm" type="video/webm" />
-                                <track kind="captions" src="/captions/nuance_banner_it.vtt" srcLang="it" label="Italiano" default />
                                 Il tuo browser non supporta il tag video.
                             </video>
                         </div>
@@ -212,7 +210,6 @@ export default function Hero() {
                                 aria-label="Video promozionale Nuance Audio - dispositivi acustici integrati negli occhiali"
                             >
                                 <source src="/videos/NUANCE_Banner.webm" type="video/webm" />
-                                <track kind="captions" src="/captions/nuance_banner_it.vtt" srcLang="it" label="Italiano" default />
                                 Il tuo browser non supporta il tag video.
                             </video>
                         </div>
