@@ -194,45 +194,6 @@ export default function EsameAcuitaVisiva() {
                 </div>
             </section>
 
-            {/* Sezione Come si svolge */}
-            <section className="py-16 px-4 bg-gradient-to-br from-warm-gray-50 to-cream-50">
-                <div className="max-w-6xl mx-auto">
-                    <StaggerContainer>
-                        <div className="text-center mb-16">
-                            <StaggerItem direction="up">
-                                <h2 className="text-3xl sm:text-4xl font-bold text-warm-gray-900 mb-6">
-                                    Come si Svolge l&apos;Esame
-                                </h2>
-                                <p className="text-xl text-warm-gray-600 max-w-3xl mx-auto leading-relaxed">
-                                    Il nostro protocollo di esame prevede diverse fasi per garantire 
-                                    la massima precisione nella valutazione della tua vista.
-                                </p>
-                            </StaggerItem>
-                        </div>
-
-                        <div className="space-y-8">
-                            {fasi.map((fase, index) => (
-                                <StaggerItem key={fase.numero} direction={index % 2 === 0 ? "left" : "right"}>
-                                    <div className="flex items-center gap-8 p-8 bg-white rounded-2xl shadow-lg border border-warm-gray-100 hover:shadow-xl transition-shadow duration-300">
-                                        <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
-                                            <span className="text-white font-bold text-xl">{fase.numero}</span>
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className="font-bold text-xl text-warm-gray-900 mb-2">
-                                                {fase.title}
-                                            </h3>
-                                            <p className="text-warm-gray-600 leading-relaxed">
-                                                {fase.descrizione}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </StaggerItem>
-                            ))}
-                        </div>
-                    </StaggerContainer>
-                </div>
-            </section>
-
             {/* Sezione Quando farlo */}
             <section className="py-16 px-4 bg-white">
                 <div className="max-w-6xl mx-auto">
