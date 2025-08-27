@@ -28,7 +28,7 @@ export default function Hero() {
                 </div>
 
                 {/* Contenuto mobile - sotto il video */}
-                <div className="w-full flex flex-col justify-center items-center text-center px-8 md:px-16 py-12">
+                <div className="w-full flex flex-col justify-center items-center text-center px-8 md:px-16 py-12 -mt-4 sm:-mt-0">
                     <StaggerContainer staggerDelay={0.2}>
                         <StaggerItem direction="up">
                             <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
