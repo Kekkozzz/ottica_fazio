@@ -41,11 +41,25 @@ export default function ContactUs() {
                             <div className="space-y-4 text-gray-300">
                                 <div>
                                     <p className="font-medium text-white">Augusta</p>
-                                    <p className="text-sm">Via Principe Umberto 76<br />96011 Augusta (SR)</p>
+                                    <a 
+                                        href="https://www.google.com/maps/dir/?api=1&destination=Via%20Principe%20Umberto%2076%2C%2096011%20Augusta%20SR%2C%20Italy"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm hover:text-white transition-colors duration-200 cursor-pointer inline-block"
+                                    >
+                                        Via Principe Umberto 76<br />96011 Augusta (SR)
+                                    </a>
                                 </div>
                                 <div>
                                     <p className="font-medium text-white">Villasmundo</p>
-                                    <p className="text-sm">Via Vittorio Emanuele 67<br />96010 Villasmundo (SR)</p>
+                                    <a 
+                                        href="https://www.google.com/maps/dir/?api=1&destination=Via%20Vittorio%20Emanuele%2067%2C%2096010%20Villasmundo%20SR%2C%20Italy"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm hover:text-white transition-colors duration-200 cursor-pointer inline-block"
+                                    >
+                                        Via Vittorio Emanuele 67<br />96010 Villasmundo (SR)
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -81,11 +95,21 @@ export default function ContactUs() {
                             <div className="space-y-3 text-gray-300">
                                 <div>
                                     <p className="font-medium text-white">Augusta</p>
-                                    <p className="text-sm">0931 521985</p>
+                                    <a 
+                                        href="tel:0931521985" 
+                                        className="text-sm hover:text-white transition-colors duration-200 cursor-pointer"
+                                    >
+                                        0931 521985
+                                    </a>
                                 </div>
                                 <div>
                                     <p className="font-medium text-white">Villasmundo</p>
-                                    <p className="text-sm">0931 959425</p>
+                                    <a 
+                                        href="tel:0931959425" 
+                                        className="text-sm hover:text-white transition-colors duration-200 cursor-pointer"
+                                    >
+                                        0931 959425
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -184,7 +208,7 @@ export default function ContactUs() {
                                     required
                                     className="mt-1 w-4 h-4 text-white border-gray-600 rounded focus:ring-0 focus:ring-offset-0 bg-black/50"
                                 />
-                                <label htmlFor="privacy" className="text-sm text-gray-300">
+                                <label htmlFor="privacy" className="text-xs text-gray-300">
                                     Accetto il trattamento dei dati personali secondo la privacy policy *
                                 </label>
                             </div>

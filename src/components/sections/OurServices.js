@@ -66,19 +66,21 @@ export default function OurServices() {
                             const IconComponent = service.icon;
                             return (
                                 <StaggerItem key={service.id}>
-                                    <div className="group relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                                    <div className="group relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-70 sm:h-85 lg:h-[320px] flex flex-col">
                                         {/* Icona con gradient background */}
-                                        <div className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                                        <div className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                                             <IconComponent className="w-8 h-8 text-white" strokeWidth={2} />
                                         </div>
                                         
                                         {/* Contenuto */}
-                                        <h3 className="font-bold text-xl mb-4 text-warm-gray-900 group-hover:text-primary transition-colors duration-300">
-                                            {service.title}
-                                        </h3>
-                                        <p className="text-warm-gray-600 leading-relaxed mb-6">
-                                            {service.description}
-                                        </p>
+                                        <div className="flex-1 flex flex-col">
+                                            <h3 className="font-bold text-xl mb-4 text-warm-gray-900 group-hover:text-primary transition-colors duration-300 flex-shrink-0">
+                                                {service.title}
+                                            </h3>
+                                            <p className="text-warm-gray-600 leading-relaxed mb-6 flex-1 text-sm sm:text-base">
+                                                {service.description}
+                                            </p>
+                                        </div>
 
                                         {/* CTA Button - Bottom Right */}
                                         <div className="absolute bottom-6 right-6">
@@ -109,19 +111,21 @@ export default function OurServices() {
                             const IconComponent = service.icon;
                             return (
                                 <StaggerItem key={service.id}>
-                                    <div className="group relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                                    <div className="group relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-70 sm:h-85 lg:h-[320px]] flex flex-col">
                                         {/* Icona con gradient background */}
-                                        <div className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                                        <div className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
                                             <IconComponent className="w-8 h-8 text-white" strokeWidth={2} />
                                         </div>
                                         
                                         {/* Contenuto */}
-                                        <h3 className="font-bold text-xl mb-4 text-warm-gray-900 group-hover:text-primary transition-colors duration-300">
-                                            {service.title}
-                                        </h3>
-                                        <p className="text-warm-gray-600 leading-relaxed mb-6">
-                                            {service.description}
-                                        </p>
+                                        <div className="flex-1 flex flex-col">
+                                            <h3 className="font-bold text-xl mb-4 text-warm-gray-900 group-hover:text-primary transition-colors duration-300 flex-shrink-0">
+                                                {service.title}
+                                            </h3>
+                                            <p className="text-warm-gray-600 leading-relaxed mb-6 flex-1 text-sm sm:text-base">
+                                                {service.description}
+                                            </p>
+                                        </div>
 
                                         {/* CTA Button - Bottom Right */}
                                         <div className="absolute bottom-6 right-6">

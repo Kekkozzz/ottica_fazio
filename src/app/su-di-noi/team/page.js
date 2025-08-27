@@ -7,7 +7,7 @@ import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerCo
 export default function Team() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const images = ['/team/dina.jpg', '/team/dina.jpg', '/team/dina.jpg'];
+    const images = ['/team/dinaNovo.jpg', '/team/dinaNovo.jpg', '/team/dinaNovo.jpg'];
 
     useEffect(() => {
         const id = setInterval(() => {
