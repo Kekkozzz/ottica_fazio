@@ -92,12 +92,17 @@ export default function LogosCarousel() {
     const logoSizes = getLogoSizes();
 
     return (
-        <div className="w-full bg-white py-2 sm:py-3 lg:py-4 border-t border-b border-black overflow-hidden relative">
+        <div 
+            className="w-full bg-white py-2 sm:py-3 lg:py-4 border-t border-b border-black overflow-hidden relative"
+            role="region"
+            aria-label="Carosello marchi partner"
+        >
             {/* Container principale del carosello */}
             <div
                 className="flex"
                 ref={trackRef}
                 style={{ willChange: 'transform' }}
+                aria-hidden="true"
             >
                 {duplicatedLogos.map((logo, idx) => (
                     <div key={idx} className={`flex flex-col items-center ${logoSizes.minWidth} ${logoSizes.margin} flex-shrink-0`}>

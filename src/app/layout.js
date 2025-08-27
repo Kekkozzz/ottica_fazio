@@ -34,9 +34,20 @@ export default function RootLayout({ children }) {
         className={`${josefin.variable} ${bevietnam.variable} antialiased`}
         style={{ fontFamily: 'var(--font-bevietnam), Arial, Helvetica, sans-serif' }}
       >
+        {/* Skip link for keyboard navigation */}
+        <a 
+          href="#main-content" 
+          className="skip-link"
+          aria-label="Vai al contenuto principale"
+        >
+          Vai al contenuto principale
+        </a>
+        
         <LiquidGlassNavbar />
         <SmoothScroll>
-          {children}
+          <main id="main-content" role="main">
+            {children}
+          </main>
         </SmoothScroll>
       </body>
     </html>

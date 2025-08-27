@@ -84,8 +84,12 @@ export default function OurServices() {
 
                                         {/* CTA Button - Bottom Right */}
                                         <div className="absolute bottom-6 right-6">
-                                            <button className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer">
-                                                <ArrowRight size={16} strokeWidth={2} />
+                                            <button 
+                                                className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer"
+                                                aria-label={`Scopri di più su ${service.title}`}
+                                                type="button"
+                                            >
+                                                <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
                                             </button>
                                         </div>
 
@@ -129,8 +133,12 @@ export default function OurServices() {
 
                                         {/* CTA Button - Bottom Right */}
                                         <div className="absolute bottom-6 right-6">
-                                            <button className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer">
-                                                <ArrowRight size={16} strokeWidth={2} />
+                                            <button 
+                                                className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer"
+                                                aria-label={`Scopri di più su ${service.title}`}
+                                                type="button"
+                                            >
+                                                <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
                                             </button>
                                         </div>
 

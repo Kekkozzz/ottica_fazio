@@ -185,16 +185,24 @@ export default function Contatti() {
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-warm-gray-700 mb-2">
+                                        <label htmlFor="subject-contatti" className="block text-sm font-medium text-warm-gray-700 mb-2">
                                             Oggetto
                                         </label>
-                                        <select className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300 bg-white text-warm-gray-900">
+                                        <select 
+                                            id="subject-contatti"
+                                            name="subject"
+                                            className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300 bg-white text-warm-gray-900"
+                                            aria-describedby="subject-contatti-help"
+                                        >
                                             <option value="">Seleziona un oggetto</option>
                                             <option value="informazioni">Richiesta Informazioni</option>
                                             <option value="appuntamento">Prenotazione Appuntamento</option>
                                             <option value="assistenza">Assistenza Post-Vendita</option>
                                             <option value="altro">Altro</option>
                                         </select>
+                                        <div id="subject-contatti-help" className="sr-only">
+                                            Seleziona la categoria che meglio descrive la tua richiesta
+                                        </div>
                                     </div>
 
                                     <div>

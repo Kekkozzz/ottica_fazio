@@ -98,6 +98,38 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Josefin Sans', Arial, Helvetica, sans-serif !important;
 }
 
+/* Screen reader only utility class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: 1000;
+  padding: 8px;
+  background: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
 p {
   font-family: 'Be Vietnam', Arial, Helvetica, sans-serif !important;
 }

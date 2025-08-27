@@ -127,26 +127,32 @@ export default function ContactUs() {
                             Inviaci un Messaggio
                         </h3>
 
-                        <form className="space-y-6">
+                        <form className="space-y-6" role="form" aria-label="Modulo di contatto">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-200 mb-2">
                                         Nome *
                                     </label>
                                     <input
                                         type="text"
+                                        id="firstName"
+                                        name="firstName"
                                         required
+                                        aria-required="true"
                                         className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
                                         placeholder="Il tuo nome"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-200 mb-2">
                                         Cognome *
                                     </label>
                                     <input
                                         type="text"
+                                        id="lastName"
+                                        name="lastName"
                                         required
+                                        aria-required="true"
                                         className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
                                         placeholder="Il tuo cognome"
                                     />
@@ -154,47 +160,63 @@ export default function ContactUs() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
                                     Email *
                                 </label>
                                 <input
                                     type="email"
+                                    id="email"
+                                    name="email"
                                     required
+                                    aria-required="true"
                                     className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
                                     placeholder="la-tua-email@esempio.com"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="phone" className="block text-sm font-medium text-gray-200 mb-2">
                                     Telefono
                                 </label>
                                 <input
                                     type="tel"
+                                    id="phone"
+                                    name="phone"
                                     className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
                                     placeholder="+39 123 456 7890"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="subject" className="block text-sm font-medium text-gray-200 mb-2">
                                     Oggetto
                                 </label>
-                                <select className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white">
+                                <select 
+                                    id="subject"
+                                    name="subject"
+                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white"
+                                    aria-describedby="subject-help"
+                                >
                                     <option value="">Seleziona un oggetto</option>
                                     <option value="informazioni">Richiesta Informazioni</option>
                                     <option value="appuntamento">Prenotazione Appuntamento</option>
                                     <option value="assistenza">Assistenza Post-Vendita</option>
                                     <option value="altro">Altro</option>
                                 </select>
+                                <div id="subject-help" className="sr-only">
+                                    Seleziona la categoria che meglio descrive la tua richiesta
+                                </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-2">
                                     Messaggio *
                                 </label>
                                 <textarea
+                                    id="message"
+                                    name="message"
                                     required
+                                    aria-required="true"
                                     rows={5}
                                     className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 resize-none text-white placeholder-gray-400"
                                     placeholder="Scrivi qui il tuo messaggio..."
@@ -205,10 +227,12 @@ export default function ContactUs() {
                                 <input
                                     type="checkbox"
                                     id="privacy"
+                                    name="privacy"
                                     required
+                                    aria-required="true"
                                     className="mt-1 w-4 h-4 text-white border-gray-600 rounded focus:ring-0 focus:ring-offset-0 bg-black/50"
                                 />
-                                <label htmlFor="privacy" className="text-xs text-gray-300">
+                                <label htmlFor="privacy" className="text-xs text-gray-200">
                                     Accetto il trattamento dei dati personali secondo la privacy policy *
                                 </label>
                             </div>
@@ -216,9 +240,13 @@ export default function ContactUs() {
                             <button
                                 type="submit"
                                 className="w-full bg-white hover:bg-gray-200 text-black py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-[1.02]"
+                                aria-describedby="submit-help"
                             >
                                 Invia Messaggio
                             </button>
+                            <div id="submit-help" className="sr-only">
+                                Invia il modulo di contatto per ricevere una risposta entro 24 ore
+                            </div>
                         </form>
                     </div>
 
