@@ -2,6 +2,7 @@ import { Josefin_Sans, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import LiquidGlassNavbar from "@/components/navigation/LiquidGlassNavbar";
+import { Analytics } from "@vercel/analytics/next"
 
 const josefin = Josefin_Sans({
   variable: "--font-josefin",
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
