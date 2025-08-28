@@ -1,37 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ottica Fazio
 
-## Getting Started
+Sito web ufficiale di Ottica Fazio - Il tuo partner di fiducia per la cura della vista e l'eleganza dell'occhiale.
 
-First, run the development server:
+## Descrizione del Progetto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Questo è il sito web di Ottica Fazio, un'ottica specializzata che offre:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Occhiali da Vista e da Sole**: Collezioni delle migliori marche internazionali
+- **Lenti a Contatto**: Soluzioni personalizzate per ogni esigenza visiva
+- **Servizi Specializzati**: Esami della vista, topografia corneale, lampada a fessura
+- **Audio Nuance**: Soluzioni audio innovative
+- **Consulenza Personalizzata**: Team di esperti per la scelta dell'occhiale perfetto
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Il sito è sviluppato con [Next.js](https://nextjs.org) e presenta un'interfaccia moderna e responsive per offrire la migliore esperienza utente.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Copyright
 
-## Learn More
+© 2025 Ottica Fazio. Tutti i diritti riservati.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# ottica_fazio
+Sviluppato da Francesco Romito.
