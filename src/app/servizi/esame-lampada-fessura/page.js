@@ -87,7 +87,7 @@ export default function EsameLampadaFessura() {
     ];
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-warm-gray-50 via-white to-cream-50">
+        <main className="min-h-screen">
             {/* Hero Section */}
             <section className="relative pt-24 pb-16 px-4 overflow-hidden">
                 <div className="max-w-7xl mx-auto">
