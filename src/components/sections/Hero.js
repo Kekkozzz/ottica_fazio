@@ -1,10 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import Image from "next/image";
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import LogosCarousel from '@/components/sections/LogosCarousel';
-import { Mail } from 'lucide-react';
+import { Mail, X, Play } from 'lucide-react';
 
 export default function Hero() {
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+    const openVideoModal = () => setIsVideoModalOpen(true);
+    const closeVideoModal = () => setIsVideoModalOpen(false);
     return (
         <main className="relative w-full bg-white overflow-hidden mt-0 md:mt-16">
             {/* Layout mobile - Stack verticale (solo < 600px) */}
@@ -69,6 +76,7 @@ export default function Hero() {
                                     className="group px-8 py-3 border border-black hover:bg-black hover:text-white text-black font-medium rounded-full transition-all duration-300 cursor-pointer"
                                     aria-label="Guarda il video promozionale Nuance Audio"
                                     type="button"
+                                    onClick={openVideoModal}
                                 >
                                     Guarda il video
                                 </button>
@@ -136,6 +144,7 @@ export default function Hero() {
                                         className="border border-gray-400 text-gray-800 py-3 px-5 rounded-full transition cursor-pointer hover:bg-black hover:text-white text-sm"
                                         aria-label="Guarda il video promozionale Nuance Audio"
                                         type="button"
+                                        onClick={openVideoModal}
                                     >
                                         Guarda il video
                                     </button>
@@ -188,6 +197,7 @@ export default function Hero() {
                                         className="border border-gray-400 text-gray-800 py-5 px-5 rounded-full transition cursor-pointer hover:bg-gray-100 hover:text-black text-lg"
                                         aria-label="Guarda il video promozionale Nuance Audio"
                                         type="button"
+                                        onClick={openVideoModal}
                                     >
                                         Guarda il video
                                     </button>
@@ -216,6 +226,51 @@ export default function Hero() {
                     </FadeInView>
                 </div>
             </div>
+
+            {/* Modale Video */}
+            {isVideoModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+                    <div className="relative w-full h-full max-w-4xl max-h-[80vh] m-4">
+                        {/* Pulsante Chiudi */}
+                        <button
+                            onClick={closeVideoModal}
+                            className="absolute -top-12 right-0 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+                            aria-label="Chiudi video"
+                            type="button"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
+
+                        {/* Container Video */}
+                        <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden shadow-2xl">
+                            <video
+                                className="w-full h-full object-contain"
+                                controls
+                                autoPlay
+                                muted
+                                preload="metadata"
+                                aria-label="Video promozionale completo Nuance Audio"
+                            >
+                                <source src="/videos/NUANCE_v.mp4" type="video/mp4" />
+                                Il tuo browser non supporta la riproduzione video.
+                            </video>
+                        </div>
+
+                        {/* Overlay informativo */}
+                        <div className="absolute top-4 left-4 right-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 text-white">
+                            <h3 className="font-semibold text-lg mb-1">Nuance Audio by EssilorLuxottica</h3>
+                            <p className="text-sm opacity-90">Dispositivi acustici integrati negli occhiali per una nuova esperienza di ascolto</p>
+                        </div>
+                    </div>
+
+                    {/* Click outside per chiudere */}
+                    <div 
+                        className="absolute inset-0 -z-10"
+                        onClick={closeVideoModal}
+                        aria-label="Chiudi modale cliccando fuori"
+                    ></div>
+                </div>
+            )}
         </main>
     )
 }
