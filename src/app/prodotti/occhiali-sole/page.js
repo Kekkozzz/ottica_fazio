@@ -57,7 +57,7 @@ export default function OcchialiSole() {
     }, [images.length]);
 
     return (
-        <main className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-amber-50">
+        <main className="min-h-screen relative overflow-hidden">
             <div className="relative z-10 flex items-center justify-center min-h-screen pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 w-full">
                 <StaggerContainer staggerDelay={0.12} className="w-full">
 
