@@ -14,7 +14,7 @@ export default function ContactUs() {
     };
 
     return (
-        <section className="min-h-screen py-16 px-4 bg-black">
+        <section className="min-h-screen pt-16 pb-6 px-4 bg-black">
             {/* Header */}
             <div className="text-center mb-16">
                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">

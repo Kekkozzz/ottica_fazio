@@ -1,8 +1,13 @@
+'use client';
+
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { Eye, Microscope, Map, ContactRound, Palette, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function OurServices() {
+    const router = useRouter();
+
     // Dati dei servizi
     const services = [
         {
@@ -11,7 +16,8 @@ export default function OurServices() {
             description: "Controllo completo della vista con strumentazione all'avanguardia per valutare la tua capacità visiva.",
             icon: Eye,
             color: "from-primary to-bordeaux-600",
-            image: "/services/acuita-visiva.png"
+            image: "/services/acuita-visiva.png",
+            link: "/servizi/esame-acuita-visiva"
         },
         {
             id: 2,
@@ -19,7 +25,8 @@ export default function OurServices() {
             description: "Analisi dettagliata delle strutture oculari per individuare eventuali patologie o anomalie.",
             icon: Microscope,
             color: "from-warm-gray-600 to-warm-gray-700",
-            image: "/services/lampada-a-fessura.jpg"
+            image: "/services/lampada-a-fessura.jpg",
+            link: "/servizi/esame-lampada-fessura"
         },
         {
             id: 3,
@@ -27,7 +34,8 @@ export default function OurServices() {
             description: "Mappatura precisa della superficie corneale per una correzione visiva ottimale.",
             icon: Map,
             color: "from-primary to-bordeaux-600",
-            image: "/services/topografia-corneale.webp"
+            image: "/services/topografia-corneale.webp",
+            link: "/servizi/topografia-corneale"
         },
         {
             id: 4,
@@ -35,7 +43,8 @@ export default function OurServices() {
             description: "Consulenza specializzata per la scelta e l'applicazione delle lenti a contatto più adatte.",
             icon: ContactRound,
             color: "from-warm-gray-600 to-warm-gray-700",
-            image: "/services/lenti.jpg"
+            image: "/services/lenti.jpg",
+            link: "/servizi/lenti-contatto"
         },
         {
             id: 5,
@@ -43,7 +52,8 @@ export default function OurServices() {
             description: "Analisi personalizzata per identificare la montatura perfetta che valorizzi i tuoi lineamenti.",
             icon: Palette,
             color: "from-primary to-bordeaux-600",
-            image: "/services/Forma-viso.webp"
+            image: "/services/Forma-viso.webp",
+            link: "/servizi/studio-forma-viso"
         }
     ];
 
@@ -85,6 +95,7 @@ export default function OurServices() {
                                         {/* CTA Button - Bottom Right */}
                                         <div className="absolute bottom-6 right-6">
                                             <button 
+                                                onClick={() => router.push(service.link)}
                                                 className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer"
                                                 aria-label={`Scopri di più su ${service.title}`}
                                                 type="button"
@@ -134,6 +145,7 @@ export default function OurServices() {
                                         {/* CTA Button - Bottom Right */}
                                         <div className="absolute bottom-6 right-6">
                                             <button 
+                                                onClick={() => router.push(service.link)}
                                                 className="bg-primary hover:bg-bordeaux-600 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl cursor-pointer"
                                                 aria-label={`Scopri di più su ${service.title}`}
                                                 type="button"

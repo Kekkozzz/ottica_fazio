@@ -9,6 +9,46 @@ export default function OcchialiSole() {
 
     const images = ['/models/mod1.jpg', '/models/mod2.avif', '/models/mod3.webp'];
 
+    // Bestseller occhiali da sole
+    const bestsellers = [
+        {
+            id: 1,
+            brand: "Ray-Ban",
+            model: "Aviator Classic",
+            image: "/logos/RayBann.png",
+            price: "€ 180",
+            description: "Il modello iconico che ha fatto la storia",
+            badge: "BESTSELLER"
+        },
+        {
+            id: 2,
+            brand: "Persol",
+            model: "714 Steve McQueen",
+            image: "/logos/persoll.png",
+            price: "€ 320",
+            description: "Eleganza italiana senza tempo",
+            badge: "ICONICO"
+        },
+        {
+            id: 3,
+            brand: "Gucci",
+            model: "GG Collection",
+            image: "/logos/gucci.png",
+            price: "€ 450",
+            description: "Lusso e stile contemporaneo",
+            badge: "PREMIUM"
+        },
+        {
+            id: 4,
+            brand: "Versace",
+            model: "Medusa Charm",
+            image: "/logos/versace.png",
+            price: "€ 380",
+            description: "Design audace e distintivo",
+            badge: "NUOVO"
+        }
+    ];
+
     useEffect(() => {
         const id = setInterval(() => {
             setCurrentImageIndex((p) => (p + 1) % images.length);
@@ -226,6 +266,103 @@ export default function OcchialiSole() {
                     </section>
                 </StaggerContainer>
             </div>
+
+            {/* Sezione Bestsellers */}
+            <section className="py-16 px-4 bg-white">
+                <div className="max-w-6xl mx-auto">
+                    <StaggerContainer>
+                        <div className="text-center mb-12">
+                            <StaggerItem direction="up">
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                                    I Nostri <span className="text-primary">Bestseller</span>
+                                </h2>
+                                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                                    Scopri i modelli iconici dei brand più prestigiosi al mondo
+                                </p>
+                            </StaggerItem>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {bestsellers.map((item, index) => (
+                                <StaggerItem key={item.id} direction="up">
+                                    <div className="group bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                                        {/* Badge */}
+                                        <div className="relative p-6 pb-4">
+                                            <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold ${
+                                                item.badge === 'BESTSELLER' ? 'bg-primary text-white' :
+                                                item.badge === 'ICONICO' ? 'bg-warm-gray-600 text-white' :
+                                                item.badge === 'PREMIUM' ? 'bg-yellow-500 text-white' :
+                                                'bg-green-500 text-white'
+                                            }`}>
+                                                {item.badge}
+                                            </div>
+                                            
+                                            {/* Logo Brand */}
+                                            <div className="w-full h-16 mb-4 flex items-center justify-center">
+                                                <Image
+                                                    src={item.image}
+                                                    alt={item.brand}
+                                                    width={80}
+                                                    height={40}
+                                                    className="max-h-12 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Contenuto */}
+                                        <div className="px-6 pb-6">
+                                            <h3 className="font-bold text-lg text-gray-900 mb-1">
+                                                {item.brand}
+                                            </h3>
+                                            <h4 className="text-primary font-semibold mb-2">
+                                                {item.model}
+                                            </h4>
+                                            <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                                                {item.description}
+                                            </p>
+                                            
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xl font-bold text-primary">
+                                                    {item.price}
+                                                </span>
+                                                <button className="bg-primary hover:bg-primary-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-sm">
+                                                    Scopri
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </StaggerItem>
+                            ))}
+                        </div>
+
+                        {/* Call to Action */}
+                        <div className="text-center mt-12">
+                            <StaggerItem direction="up">
+                                <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 max-w-4xl mx-auto">
+                                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                                        Vieni a Scoprire l&apos;Intera Collezione in Negozio
+                                    </h3>
+                                    <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+                                        Oltre 500 modelli ti aspettano nei nostri store di Augusta e Villasmundo. 
+                                        Prova, tocca e scegli gli occhiali perfetti per te.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                        <button className="group px-8 py-4 bg-primary hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2 justify-center">
+                                            Vieni in Negozio
+                                            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
+                                            </svg>
+                                        </button>
+                                        <button className="px-8 py-4 border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300">
+                                            Prenota Appuntamento
+                                        </button>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        </div>
+                    </StaggerContainer>
+                </div>
+            </section>
         </main>
     );
 }
