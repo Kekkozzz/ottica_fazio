@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
-import { X, ShoppingCart, Star, Check, MapPin, Phone, Filter, XCircle } from 'lucide-react';
+import { X, ShoppingCart, Star, Check, MapPin, Phone, Filter, XCircle, ChevronDown } from 'lucide-react';
 
 export default function OcchialiSole() {
     const router = useRouter();
@@ -17,6 +17,7 @@ export default function OcchialiSole() {
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [selectedBadges, setSelectedBadges] = useState([]);
     const [selectedPriceRange, setSelectedPriceRange] = useState(null);
+    const [showFilters, setShowFilters] = useState(false);
 
     const images = ['/models/mod1.jpg', '/models/mod2.avif', '/models/mod3.webp'];
 
@@ -490,11 +491,14 @@ export default function OcchialiSole() {
                         </p>
                     </div>
 
-                    {/* Filtri */}
-                    <div className="mb-8 space-y-4">
-                        {/* Header filtri con contatore */}
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
+                    {/* Filtri Dropdown */}
+                    <div className="mb-8">
+                        {/* Header con toggle */}
+                        <div className="flex items-center justify-between mb-4">
+                            <button
+                                onClick={() => setShowFilters(!showFilters)}
+                                className="flex items-center gap-3 px-4 py-3 bg-white border-2 border-gray-200 hover:border-primary rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                            >
                                 <Filter className="w-5 h-5 text-gray-600" />
                                 <span className="font-semibold text-gray-900">Filtri</span>
                                 {hasActiveFilters && (
@@ -502,11 +506,13 @@ export default function OcchialiSole() {
                                         {selectedBrands.length + selectedBadges.length + (selectedPriceRange ? 1 : 0)}
                                     </span>
                                 )}
-                            </div>
+                                <ChevronDown className={`w-4 h-4 text-gray-600 transition-transform duration-200 ${showFilters ? 'rotate-180' : ''}`} />
+                            </button>
+
                             {hasActiveFilters && (
                                 <button
                                     onClick={clearAllFilters}
-                                    className="flex items-center gap-1 text-sm text-gray-600 hover:text-primary transition-colors cursor-pointer"
+                                    className="flex items-center gap-1 text-sm text-gray-600 hover:text-primary transition-colors"
                                 >
                                     <XCircle className="w-4 h-4" />
                                     Cancella tutto
@@ -514,62 +520,70 @@ export default function OcchialiSole() {
                             )}
                         </div>
 
-                        {/* Filtri Brand */}
-                        <div>
-                            <p className="text-sm font-medium text-gray-700 mb-2">Brand</p>
-                            <div className="flex flex-wrap gap-2">
-                                {brands.map(brand => (
-                                    <button
-                                        key={brand}
-                                        onClick={() => toggleBrand(brand)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${selectedBrands.includes(brand)
-                                                ? 'bg-primary text-white shadow-md'
-                                                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary'
-                                            }`}
-                                    >
-                                        {brand}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                        {/* Dropdown Content */}
+                        {showFilters && (
+                            <div className="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-lg space-y-6 animate-in fade-in slide-in-from-top-2 duration-300">
+                                {/* Filtri Brand */}
+                                <div>
+                                    <p className="text-sm font-medium text-gray-700 mb-3">Brand</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {brands.map(brand => (
+                                            <button
+                                                key={brand}
+                                                onClick={() => toggleBrand(brand)}
+                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                                                    selectedBrands.includes(brand)
+                                                        ? 'bg-primary text-white shadow-md'
+                                                        : 'bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-primary'
+                                                }`}
+                                            >
+                                                {brand}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
 
-                        {/* Filtri Badge */}
-                        <div>
-                            <p className="text-sm font-medium text-gray-700 mb-2">Tipo</p>
-                            <div className="flex flex-wrap gap-2">
-                                {badges.map(badge => (
-                                    <button
-                                        key={badge}
-                                        onClick={() => toggleBadge(badge)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${selectedBadges.includes(badge)
-                                                ? 'bg-primary text-white shadow-md'
-                                                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary'
-                                            }`}
-                                    >
-                                        {badge}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                                {/* Filtri Badge */}
+                                <div>
+                                    <p className="text-sm font-medium text-gray-700 mb-3">Tipo</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {badges.map(badge => (
+                                            <button
+                                                key={badge}
+                                                onClick={() => toggleBadge(badge)}
+                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                                                    selectedBadges.includes(badge)
+                                                        ? 'bg-primary text-white shadow-md'
+                                                        : 'bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-primary'
+                                                }`}
+                                            >
+                                                {badge}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
 
-                        {/* Filtri Prezzo */}
-                        <div>
-                            <p className="text-sm font-medium text-gray-700 mb-2">Fascia di Prezzo</p>
-                            <div className="flex flex-wrap gap-2">
-                                {priceRanges.map(range => (
-                                    <button
-                                        key={range.label}
-                                        onClick={() => togglePriceRange(range)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${selectedPriceRange?.label === range.label
-                                                ? 'bg-primary text-white shadow-md'
-                                                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary'
-                                            }`}
-                                    >
-                                        {range.label}
-                                    </button>
-                                ))}
+                                {/* Filtri Prezzo */}
+                                <div>
+                                    <p className="text-sm font-medium text-gray-700 mb-3">Fascia di Prezzo</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {priceRanges.map(range => (
+                                            <button
+                                                key={range.label}
+                                                onClick={() => togglePriceRange(range)}
+                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                                                    selectedPriceRange?.label === range.label
+                                                        ? 'bg-primary text-white shadow-md'
+                                                        : 'bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-primary'
+                                                }`}
+                                            >
+                                                {range.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
 
                     {/* Grid Prodotti - Layout Minimalista */}
