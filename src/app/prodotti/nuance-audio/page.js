@@ -123,11 +123,6 @@ export default function OcchialiSole() {
                     <section className="hidden lg:flex w-full max-w-7xl mx-auto flex-col lg:flex-row items-center lg:items-center gap-6 sm:gap-8 lg:gap-16">
                         {/* Colonna testo (come nel tuo codice originale) */}
                         <div className="flex-1 flex flex-col justify-center items-start w-full">
-                            <StaggerItem direction="up" blur className="mb-6">
-                                <span className="inline-block px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white text-sm font-medium rounded-full shadow-lg">
-                                    ✨ Collezione Estiva 2025
-                                </span>
-                            </StaggerItem>
 
                             <StaggerItem direction="up" blur>
                                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold tracking-tight leading-[0.9] mb-4 sm:mb-6 lg:mb-8">
