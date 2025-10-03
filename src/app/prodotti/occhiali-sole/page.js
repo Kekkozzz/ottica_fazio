@@ -1,14 +1,17 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { X, ShoppingCart, Star, Check, MapPin, Phone } from 'lucide-react';
 
 export default function OcchialiSole() {
+    const router = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [showStoreModal, setShowStoreModal] = useState(false);
 
     const images = ['/models/mod1.jpg', '/models/mod2.avif', '/models/mod3.webp'];
 
@@ -749,11 +752,17 @@ export default function OcchialiSole() {
 
                                 {/* CTA Buttons */}
                                 <div className="space-y-2">
-                                    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                                    <button
+                                        onClick={() => setShowStoreModal(true)}
+                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm"
+                                    >
                                         <Phone className="w-4 h-4" />
                                         Prenota Appuntamento
                                     </button>
-                                    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-gray-300 hover:border-primary text-gray-900 font-semibold rounded-xl transition-all duration-300 text-sm">
+                                    <button
+                                        onClick={() => router.push('/su-di-noi/dove-trovarci')}
+                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-gray-300 hover:border-primary text-gray-900 font-semibold rounded-xl transition-all duration-300 text-sm"
+                                    >
                                         <MapPin className="w-4 h-4" />
                                         Vieni in Negozio
                                     </button>
@@ -779,6 +788,79 @@ export default function OcchialiSole() {
                             </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modale Scelta Sede */}
+            {showStoreModal && (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+                    {/* Overlay per chiudere */}
+                    <div
+                        className="absolute inset-0"
+                        onClick={() => setShowStoreModal(false)}
+                        aria-label="Chiudi modale"
+                    />
+
+                    {/* Container Modale */}
+                    <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in fade-in zoom-in duration-300">
+                        {/* Header */}
+                        <div className="flex items-center justify-between mb-6">
+                            <h3 className="text-xl font-bold text-gray-900">Scegli la Sede</h3>
+                            <button
+                                onClick={() => setShowStoreModal(false)}
+                                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                                aria-label="Chiudi"
+                            >
+                                <X className="w-5 h-5 text-gray-600" />
+                            </button>
+                        </div>
+
+                        {/* Sedi */}
+                        <div className="space-y-3">
+                            {/* Augusta */}
+                            <a
+                                href="tel:0931521985"
+                                className="block p-4 bg-gradient-to-r from-red-50 to-red-100 border-2 border-red-200 hover:border-primary rounded-xl transition-all duration-300 group"
+                            >
+                                <div className="flex items-start gap-3">
+                                    <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                        <Phone className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="font-bold text-gray-900 mb-1">Augusta</h4>
+                                        <p className="text-sm text-gray-600 mb-2">Via Principe Umberto 76</p>
+                                        <p className="text-lg font-bold text-primary group-hover:underline">
+                                            0931 521985
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            {/* Villasmundo */}
+                            <a
+                                href="tel:0931959425"
+                                className="block p-4 bg-gradient-to-r from-red-50 to-red-100 border-2 border-red-200 hover:border-primary rounded-xl transition-all duration-300 group"
+                            >
+                                <div className="flex items-start gap-3">
+                                    <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                                        <Phone className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="font-bold text-gray-900 mb-1">Villasmundo</h4>
+                                        <p className="text-sm text-gray-600 mb-2">Via Vittorio Emanuele 67</p>
+                                        <p className="text-lg font-bold text-primary group-hover:underline">
+                                            0931 959425
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        {/* Footer Info */}
+                        <p className="mt-6 text-center text-xs text-gray-500">
+                            Clicca per chiamare direttamente
+                        </p>
                     </div>
                 </div>
             )}
