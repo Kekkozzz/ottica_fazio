@@ -20,6 +20,7 @@ export default function OcchialiSole() {
             brand: "Dolce & Gabbana",
             model: "DG4501",
             image: "/occhiali/sole/DG4501.jpeg",
+            images: ["/occhiali/sole/DG4501.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 285",
             description: "Glamour italiano in ogni dettaglio",
             badge: "NUOVO",
@@ -31,6 +32,7 @@ export default function OcchialiSole() {
             brand: "Emporio Armani",
             model: "EA4245U",
             image: "/occhiali/sole/EA4245U.jpeg",
+            images: ["/occhiali/sole/EA4245U.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 165",
             description: "Eleganza contemporanea",
             badge: "BESTSELLER",
@@ -42,6 +44,7 @@ export default function OcchialiSole() {
             brand: "Emporio Armani",
             model: "EA4252U",
             image: "/occhiali/sole/EA4252U.jpeg",
+            images: ["/occhiali/sole/EA4252U.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 175",
             description: "Stile urbano raffinato",
             badge: null,
@@ -53,6 +56,7 @@ export default function OcchialiSole() {
             brand: "Emporio Armani",
             model: "EA4253U",
             image: "/occhiali/sole/EA4253U.jpeg",
+            images: ["/occhiali/sole/EA4253U.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 180",
             description: "Modernità senza tempo",
             badge: null,
@@ -64,6 +68,7 @@ export default function OcchialiSole() {
             brand: "Gucci",
             model: "GG1793S",
             image: "/occhiali/sole/GG1793S.jpeg",
+            images: ["/occhiali/sole/GG1793S.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 450",
             description: "Lusso e stile inconfondibile",
             badge: "PREMIUM",
@@ -75,6 +80,7 @@ export default function OcchialiSole() {
             brand: "Gucci",
             model: "GG1868S",
             image: "/occhiali/sole/GG1868S.jpeg",
+            images: ["/occhiali/sole/GG1868S.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 480",
             description: "Alta moda per gli occhi",
             badge: "PREMIUM",
@@ -86,6 +92,7 @@ export default function OcchialiSole() {
             brand: "Persol",
             model: "649 Steve McQueen",
             image: "/occhiali/sole/PERSOL 649.jpeg",
+            images: ["/occhiali/sole/PERSOL 649.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 320",
             description: "L'icona del cinema",
             badge: "ICONICO",
@@ -97,6 +104,7 @@ export default function OcchialiSole() {
             brand: "Ray-Ban",
             model: "RB0840-S",
             image: "/occhiali/sole/RB0840-S.jpeg",
+            images: ["/occhiali/sole/RB0840-S.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 185",
             description: "Il classico che non tramonta",
             badge: "BESTSELLER",
@@ -108,6 +116,7 @@ export default function OcchialiSole() {
             brand: "Ray-Ban",
             model: "RB2186",
             image: "/occhiali/sole/RB2186.jpeg",
+            images: ["/occhiali/sole/RB2186.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 165",
             description: "Stile americano autentico",
             badge: null,
@@ -119,6 +128,7 @@ export default function OcchialiSole() {
             brand: "Saint Laurent",
             model: "SJC141V",
             image: "/occhiali/sole/SJC141V.jpeg",
+            images: ["/occhiali/sole/SJC141V.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 380",
             description: "Chic parigino contemporaneo",
             badge: "NUOVO",
@@ -130,6 +140,7 @@ export default function OcchialiSole() {
             brand: "Saint Laurent",
             model: "SL276",
             image: "/occhiali/sole/SL276.jpeg",
+            images: ["/occhiali/sole/SL276.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 420",
             description: "Eleganza rock'n'roll",
             badge: "PREMIUM",
@@ -141,6 +152,7 @@ export default function OcchialiSole() {
             brand: "Saint Laurent",
             model: "SL657",
             image: "/occhiali/sole/SL657.jpeg",
+            images: ["/occhiali/sole/SL657.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 390",
             description: "Minimalismo sofisticato",
             badge: null,
@@ -152,6 +164,7 @@ export default function OcchialiSole() {
             brand: "Saint Laurent",
             model: "SLM103",
             image: "/occhiali/sole/SLM103.jpeg",
+            images: ["/occhiali/sole/SLM103.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 360",
             description: "Stile urbano moderno",
             badge: null,
@@ -163,6 +176,7 @@ export default function OcchialiSole() {
             brand: "Saint Laurent",
             model: "SLM94",
             image: "/occhiali/sole/SLM94.jpeg",
+            images: ["/occhiali/sole/SLM94.jpeg", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
             price: "€ 370",
             description: "Raffinatezza francese",
             badge: null,
@@ -200,33 +214,29 @@ export default function OcchialiSole() {
     }, []);
 
     return (
-        <main className="min-h-screen relative overflow-hidden">
-            <div className="relative z-10 flex items-center justify-center min-h-screen pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 w-full">
-                <StaggerContainer staggerDelay={0.12} className="w-full">
+        <main className="relative">
+            <div className="relative z-10 flex items-center justify-center lg:min-h-screen pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 w-full pb-12 lg:pb-0">
+                <div className="w-full">
 
                     {/* =============== <= md : NUOVO LAYOUT =============== */}
                     <section className="lg:hidden w-full">
                         <div className="mx-auto w-full max-w-md">
                             {/* Badge */}
-                            <StaggerItem direction="up" blur>
-                                <div className="flex justify-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-red-600 px-3 py-1.5 text-[11px] font-semibold text-white shadow">
-                                        🏷️ Collezione Estiva 2025
-                                    </span>
-                                </div>
-                            </StaggerItem>
+                            <div className="flex justify-center">
+                                <span className="inline-flex items-center gap-2 rounded-full bg-red-600 px-3 py-1.5 text-[11px] font-semibold text-white shadow">
+                                    🏷️ Collezione Estiva 2025
+                                </span>
+                            </div>
 
                             {/* Titolo */}
-                            <StaggerItem direction="up" blur>
-                                <h1 className="mt-4 text-center font-extrabold leading-[0.95] tracking-tight">
-                                    <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-zinc-900">I NOSTRI</span>
-                                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-red-600">OCCHIALI</span>
-                                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-red-600">DA SOLE</span>
-                                </h1>
-                            </StaggerItem>
+                            <h1 className="mt-4 text-center font-extrabold leading-[0.95] tracking-tight">
+                                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-zinc-900">I NOSTRI</span>
+                                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-red-600">OCCHIALI</span>
+                                <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-red-600">DA SOLE</span>
+                            </h1>
 
                             {/* Card immagine */}
-                            <FadeInView direction="up" blur duration={0.9} className="mt-4">
+                            <div className="mt-4">
                                 <div className="relative rounded-3xl bg-white shadow-xl">
                                     <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
                                         {images.map((image, i) => (
@@ -250,7 +260,7 @@ export default function OcchialiSole() {
                                         NUOVO
                                     </span>
                                 </div>
-                            </FadeInView>
+                            </div>
 
                             {/* Dots */}
                             <div className="mt-3 flex justify-center gap-2">
@@ -265,16 +275,13 @@ export default function OcchialiSole() {
                             </div>
 
                             {/* Testo */}
-                            <StaggerItem direction="up" blur>
-                                <p className="mt-5 text-center text-sm leading-relaxed text-gray-600">
-                                    Proteggi i tuoi occhi con stile. Scopri la nostra collezione di occhiali di alta qualità,
-                                    dove eleganza e funzionalità si incontrano.
-                                </p>
-                            </StaggerItem>
+                            <p className="mt-5 text-center text-sm leading-relaxed text-gray-600">
+                                Proteggi i tuoi occhi con stile. Scopri la nostra collezione di occhiali di alta qualità,
+                                dove eleganza e funzionalità si incontrano.
+                            </p>
 
                             {/* CTA */}
-                            <StaggerItem direction="up" blur>
-                                <div className="mt-5 space-y-3">
+                            <div className="mt-5 space-y-3">
                                     <button className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99]">
                                         Scopri la Collezione
                                         <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -285,11 +292,9 @@ export default function OcchialiSole() {
                                         Prenota Appuntamento
                                     </button>
                                 </div>
-                            </StaggerItem>
 
                             {/* Stats */}
-                            <StaggerItem direction="up" blur>
-                                <div className="mt-6 rounded-2xl bg-white p-4 shadow">
+                            <div className="mt-6 rounded-2xl bg-white p-4 shadow">
                                     <div className="grid grid-cols-3 gap-3">
                                         <div className="text-center">
                                             <div className="text-xl font-extrabold text-red-600">500+</div>
@@ -305,12 +310,11 @@ export default function OcchialiSole() {
                                         </div>
                                     </div>
                                 </div>
-                            </StaggerItem>
                         </div>
                     </section>
 
                     {/* =============== >= lg : LAYOUT DESKTOP ORIGINALE =============== */}
-                    <section className="hidden lg:flex w-full max-w-7xl mx-auto flex-col lg:flex-row items-center lg:items-center gap-6 sm:gap-8 lg:gap-16">
+                    <StaggerContainer staggerDelay={0.12} className="hidden lg:flex w-full max-w-7xl mx-auto flex-col lg:flex-row items-center lg:items-center gap-6 sm:gap-8 lg:gap-16">
                         {/* Colonna testo (come nel tuo codice originale) */}
                         <div className="flex-1 flex flex-col justify-center items-start w-full">
                             <StaggerItem direction="up" blur className="mb-6">
@@ -406,38 +410,34 @@ export default function OcchialiSole() {
                                 </div>
                             </div>
                         </FadeInView>
-                    </section>
-                </StaggerContainer>
+                    </StaggerContainer>
+                </div>
             </div>
 
             {/* Collezione Completa - Design Minimalista Moderno */}
             <section className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
                 <div className="max-w-7xl mx-auto">
-                    <StaggerContainer>
-                        {/* Header */}
-                        <div className="text-center mb-16">
-                            <StaggerItem direction="up">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+                    {/* Header */}
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                                     <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                                     <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                                         Collezione Completa
                                     </span>
                                 </div>
-                                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                                    Esplora la <span className="text-primary">Collezione</span>
-                                </h2>
-                                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                                    14 modelli esclusivi dai brand più prestigiosi al mondo.
-                                    Qualità, stile e protezione UV garantita.
-                                </p>
-                            </StaggerItem>
+                            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                                Esplora la <span className="text-primary">Collezione</span>
+                            </h2>
+                            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                                14 modelli esclusivi dai brand più prestigiosi al mondo.
+                                Qualità, stile e protezione UV garantita.
+                            </p>
                         </div>
 
-                        {/* Grid Prodotti - Layout Minimalista */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                            {sunglassesCollection.map((product, index) => (
-                                <StaggerItem key={product.id} direction="up">
-                                    <article className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20">
+                    {/* Grid Prodotti - Layout Minimalista */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                        {sunglassesCollection.map((product, index) => (
+                            <article key={product.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20">
                                         {/* Badge */}
                                         {product.badge && (
                                             <div className="absolute top-4 right-4 z-10">
@@ -523,13 +523,11 @@ export default function OcchialiSole() {
                                             </div>
                                         </div>
                                     </article>
-                                </StaggerItem>
-                            ))}
-                        </div>
+                        ))}
+                    </div>
 
-                        {/* Stats Bar */}
-                        <StaggerItem direction="up">
-                            <div className="mt-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-8 lg:p-12">
+                    {/* Stats Bar */}
+                    <div className="mt-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-8 lg:p-12">
                                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                                     <div className="text-center">
                                         <div className="text-4xl lg:text-5xl font-bold text-white mb-2">14</div>
@@ -549,12 +547,10 @@ export default function OcchialiSole() {
                                     </div>
                                 </div>
                             </div>
-                        </StaggerItem>
 
-                        {/* CTA Final */}
-                        <div className="text-center mt-16">
-                            <StaggerItem direction="up">
-                                <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 lg:p-14 border border-primary/20">
+                    {/* CTA Final */}
+                    <div className="text-center mt-16">
+                        <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 lg:p-14 border border-primary/20">
                                     <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                                         Prova Prima di Acquistare
                                     </h3>
@@ -581,9 +577,7 @@ export default function OcchialiSole() {
                                         </button>
                                     </div>
                                 </div>
-                            </StaggerItem>
-                        </div>
-                    </StaggerContainer>
+                    </div>
                 </div>
             </section>
 
@@ -598,7 +592,7 @@ export default function OcchialiSole() {
                     />
 
                     {/* Container Modale */}
-                    <div className="relative w-full max-w-6xl h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in duration-300 flex flex-col">
+                    <div className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in duration-300 flex flex-col">
                         {/* Header Mobile */}
                         <div className="lg:hidden flex-shrink-0 flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200">
                             <h2 className="font-bold text-base text-gray-900 truncate pr-4">
@@ -615,7 +609,7 @@ export default function OcchialiSole() {
 
                         {/* Contenuto Principale - Scrollable */}
                         <div className="flex-1 overflow-y-auto">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 lg:p-6 pb-0">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 lg:p-6">
                                 {/* Sezione Sinistra - Galleria Immagini */}
                                 <div className="space-y-3 lg:sticky lg:top-0 lg:self-start">
                                 {/* Badge */}
@@ -635,8 +629,8 @@ export default function OcchialiSole() {
                                 {/* Immagine Principale */}
                                 <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200">
                                     <Image
-                                        src={selectedProduct.image}
-                                        alt={`${selectedProduct.brand} ${selectedProduct.model}`}
+                                        src={selectedProduct.images[selectedImageIndex]}
+                                        alt={`${selectedProduct.brand} ${selectedProduct.model} - Vista ${selectedImageIndex + 1}`}
                                         fill
                                         sizes="(max-width: 1024px) 100vw, 50vw"
                                         style={{ objectFit: 'contain' }}
@@ -645,33 +639,27 @@ export default function OcchialiSole() {
                                     />
                                 </div>
 
-                                {/* Thumbnail Gallery (per ora mostra solo 1 immagine, ma struttura pronta per multiple) */}
+                                {/* Thumbnail Gallery */}
                                 <div className="flex gap-3 overflow-x-auto pb-2">
-                                    <button
-                                        onClick={() => setSelectedImageIndex(0)}
-                                        className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                                            selectedImageIndex === 0
-                                                ? 'border-primary shadow-lg'
-                                                : 'border-gray-200 hover:border-gray-300'
-                                        }`}
-                                    >
-                                        <Image
-                                            src={selectedProduct.image}
-                                            alt="Vista 1"
-                                            fill
-                                            sizes="80px"
-                                            style={{ objectFit: 'cover' }}
-                                            className="p-2"
-                                        />
-                                    </button>
-                                    {/* Placeholder per future immagini */}
-                                    {[1, 2, 3].map((idx) => (
-                                        <div
+                                    {selectedProduct.images.map((img, idx) => (
+                                        <button
                                             key={idx}
-                                            className="relative flex-shrink-0 w-20 h-20 rounded-lg bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center"
+                                            onClick={() => setSelectedImageIndex(idx)}
+                                            className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 bg-gradient-to-br from-gray-50 to-gray-100 ${
+                                                selectedImageIndex === idx
+                                                    ? 'border-primary shadow-lg'
+                                                    : 'border-gray-200 hover:border-gray-300'
+                                            }`}
                                         >
-                                            <span className="text-xs text-gray-400">+</span>
-                                        </div>
+                                            <Image
+                                                src={img}
+                                                alt={`Vista ${idx + 1}`}
+                                                fill
+                                                sizes="80px"
+                                                style={{ objectFit: 'contain' }}
+                                                className="p-2"
+                                            />
+                                        </button>
                                     ))}
                                 </div>
                             </div>
