@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
-import { X, ShoppingCart, Star, Check, MapPin, Phone } from 'lucide-react';
+import { X, ShoppingCart, Star, Check, MapPin, Phone, Filter, XCircle } from 'lucide-react';
 
 export default function OcchialiSole() {
     const router = useRouter();
@@ -13,7 +13,21 @@ export default function OcchialiSole() {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [showStoreModal, setShowStoreModal] = useState(false);
 
+    // Stati filtri
+    const [selectedBrands, setSelectedBrands] = useState([]);
+    const [selectedBadges, setSelectedBadges] = useState([]);
+    const [selectedPriceRange, setSelectedPriceRange] = useState(null);
+
     const images = ['/models/mod1.jpg', '/models/mod2.avif', '/models/mod3.webp'];
+
+    // Opzioni filtri
+    const brands = ["Dolce & Gabbana", "Emporio Armani", "Gucci", "Persol", "Ray-Ban", "Saint Laurent"];
+    const badges = ["NUOVO", "BESTSELLER", "PREMIUM", "ICONICO"];
+    const priceRanges = [
+        { label: "€ 0 - 200", min: 0, max: 200 },
+        { label: "€ 200 - 350", min: 200, max: 350 },
+        { label: "€ 350+", min: 350, max: 9999 }
+    ];
 
     // Database completo occhiali da sole
     const sunglassesCollection = [
@@ -187,6 +201,56 @@ export default function OcchialiSole() {
         }
     ];
 
+    // Logica di filtraggio
+    const filteredProducts = sunglassesCollection.filter(product => {
+        // Filtro brand
+        if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
+            return false;
+        }
+
+        // Filtro badge
+        if (selectedBadges.length > 0 && !selectedBadges.includes(product.badge)) {
+            return false;
+        }
+
+        // Filtro prezzo
+        if (selectedPriceRange) {
+            const priceValue = parseInt(product.price.replace(/[^0-9]/g, ''));
+            if (priceValue < selectedPriceRange.min || priceValue > selectedPriceRange.max) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+
+    // Toggle filtri
+    const toggleBrand = (brand) => {
+        setSelectedBrands(prev =>
+            prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
+        );
+    };
+
+    const toggleBadge = (badge) => {
+        setSelectedBadges(prev =>
+            prev.includes(badge) ? prev.filter(b => b !== badge) : [...prev, badge]
+        );
+    };
+
+    const togglePriceRange = (range) => {
+        setSelectedPriceRange(prev =>
+            prev?.label === range.label ? null : range
+        );
+    };
+
+    const clearAllFilters = () => {
+        setSelectedBrands([]);
+        setSelectedBadges([]);
+        setSelectedPriceRange(null);
+    };
+
+    const hasActiveFilters = selectedBrands.length > 0 || selectedBadges.length > 0 || selectedPriceRange !== null;
+
     useEffect(() => {
         const id = setInterval(() => {
             setCurrentImageIndex((p) => (p + 1) % images.length);
@@ -224,12 +288,7 @@ export default function OcchialiSole() {
                     {/* =============== <= md : NUOVO LAYOUT =============== */}
                     <section className="lg:hidden w-full">
                         <div className="mx-auto w-full max-w-md">
-                            {/* Badge */}
-                            <div className="flex justify-center">
-                                <span className="inline-flex items-center gap-2 rounded-full bg-red-600 px-3 py-1.5 text-[11px] font-semibold text-white shadow">
-                                    🏷️ Collezione Estiva 2025
-                                </span>
-                            </div>
+
 
                             {/* Titolo */}
                             <h1 className="mt-4 text-center font-extrabold leading-[0.95] tracking-tight">
@@ -272,7 +331,7 @@ export default function OcchialiSole() {
                                         key={i}
                                         onClick={() => setCurrentImageIndex(i)}
                                         aria-label={`Vai all'immagine ${i + 1}`}
-                                        className={`h-2 w-2 rounded-full transition-all duration-300 ${i === currentImageIndex ? 'w-2 bg-red-600' : 'bg-gray-300 hover:bg-gray-400'}`}
+                                        className={`h-2 w-2 rounded-full transition-all duration-300 cursor-pointer ${i === currentImageIndex ? 'w-2 bg-red-600' : 'bg-gray-300 hover:bg-gray-400'}`}
                                     />
                                 ))}
                             </div>
@@ -285,34 +344,34 @@ export default function OcchialiSole() {
 
                             {/* CTA */}
                             <div className="mt-5 space-y-3">
-                                    <button className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99]">
-                                        Scopri la Collezione
-                                        <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0-4 4m4-4H3" />
-                                        </svg>
-                                    </button>
-                                    <button className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:border-red-600 hover:text-red-600 active:scale-[0.99]">
-                                        Prenota Appuntamento
-                                    </button>
-                                </div>
+                                <button className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99] cursor-pointer">
+                                    Scopri la Collezione
+                                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0-4 4m4-4H3" />
+                                    </svg>
+                                </button>
+                                <button className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:border-red-600 hover:text-red-600 active:scale-[0.99] cursor-pointer">
+                                    Prenota Appuntamento
+                                </button>
+                            </div>
 
                             {/* Stats */}
                             <div className="mt-6 rounded-2xl bg-white p-4 shadow">
-                                    <div className="grid grid-cols-3 gap-3">
-                                        <div className="text-center">
-                                            <div className="text-xl font-extrabold text-red-600">500+</div>
-                                            <div className="text-[11px] text-gray-600">Modelli</div>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="text-xl font-extrabold text-red-600">25+</div>
-                                            <div className="text-[11px] text-gray-600">Anni Esperienza</div>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="text-xl font-extrabold text-red-600">100%</div>
-                                            <div className="text-[11px] text-gray-600">UV Protection</div>
-                                        </div>
+                                <div className="grid grid-cols-3 gap-3">
+                                    <div className="text-center">
+                                        <div className="text-xl font-extrabold text-red-600">500+</div>
+                                        <div className="text-[11px] text-gray-600">Modelli</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="text-xl font-extrabold text-red-600">25+</div>
+                                        <div className="text-[11px] text-gray-600">Anni Esperienza</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="text-xl font-extrabold text-red-600">100%</div>
+                                        <div className="text-[11px] text-gray-600">UV Protection</div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </section>
 
@@ -320,11 +379,6 @@ export default function OcchialiSole() {
                     <StaggerContainer staggerDelay={0.12} className="hidden lg:flex w-full max-w-7xl mx-auto flex-col lg:flex-row items-center lg:items-center gap-6 sm:gap-8 lg:gap-16">
                         {/* Colonna testo (come nel tuo codice originale) */}
                         <div className="flex-1 flex flex-col justify-center items-start w-full">
-                            <StaggerItem direction="up" blur className="mb-6">
-                                <span className="inline-block px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white text-sm font-medium rounded-full shadow-lg">
-                                    ✨ Collezione Estiva 2025
-                                </span>
-                            </StaggerItem>
 
                             <StaggerItem direction="up" blur>
                                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold tracking-tight leading-[0.9] mb-4 sm:mb-6 lg:mb-8">
@@ -348,13 +402,13 @@ export default function OcchialiSole() {
 
                             <StaggerItem direction="up" blur>
                                 <div className="flex gap-4">
-                                    <button className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2">
+                                    <button className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
                                         Scopri la Collezione
                                         <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
                                         </svg>
                                     </button>
-                                    <button className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-red-600 hover:text-red-600 transition-all duration-300">
+                                    <button className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-red-600 hover:text-red-600 transition-all duration-300 cursor-pointer">
                                         Prenota Appuntamento
                                     </button>
                                 </div>
@@ -407,7 +461,7 @@ export default function OcchialiSole() {
                                         <button
                                             key={index}
                                             onClick={() => setCurrentImageIndex(index)}
-                                            className={`h-3 rounded-full transition-all duration-300 ${index === currentImageIndex ? 'bg-red-600 w-10' : 'bg-gray-300 hover:bg-gray-400 w-3'}`}
+                                            className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${index === currentImageIndex ? 'bg-red-600 w-10' : 'bg-gray-300 hover:bg-gray-400 w-3'}`}
                                         />
                                     ))}
                                 </div>
@@ -421,165 +475,239 @@ export default function OcchialiSole() {
             <section className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-                                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                                    <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                                        Collezione Completa
-                                    </span>
-                                </div>
-                            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                                Esplora la <span className="text-primary">Collezione</span>
-                            </h2>
-                            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                                14 modelli esclusivi dai brand più prestigiosi al mondo.
-                                Qualità, stile e protezione UV garantita.
-                            </p>
+                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                                Collezione Completa
+                            </span>
                         </div>
-
-                    {/* Grid Prodotti - Layout Minimalista */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                        {sunglassesCollection.map((product, index) => (
-                            <article key={product.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20">
-                                        {/* Badge */}
-                                        {product.badge && (
-                                            <div className="absolute top-4 right-4 z-10">
-                                                <span className={`inline-block px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg ${
-                                                    product.badge === 'BESTSELLER' ? 'bg-primary text-white' :
-                                                    product.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
-                                                    product.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
-                                                    'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
-                                                }`}>
-                                                    {product.badge}
-                                                </span>
-                                            </div>
-                                        )}
-
-                                        {/* Immagine Prodotto */}
-                                        <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-                                            <div className="absolute inset-0 flex items-center justify-center p-8">
-                                                <Image
-                                                    src={product.image}
-                                                    alt={`${product.brand} ${product.model}`}
-                                                    fill
-                                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                                    style={{ objectFit: 'contain' }}
-                                                    className="group-hover:scale-110 transition-transform duration-700 ease-out"
-                                                    loading={index < 8 ? 'eager' : 'lazy'}
-                                                />
-                                            </div>
-
-                                            {/* Overlay Hover */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                                    <div className="space-y-1">
-                                                        {product.features.slice(0, 2).map((feature, idx) => (
-                                                            <div key={idx} className="flex items-center gap-2 text-white text-xs">
-                                                                <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                                </svg>
-                                                                <span className="font-medium">{feature}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Info Prodotto */}
-                                        <div className="p-6 space-y-3">
-                                            {/* Brand & Codice */}
-                                            <div className="space-y-1">
-                                                <h3 className="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
-                                                    {product.brand}
-                                                </h3>
-                                                <p className="text-sm text-gray-500 font-mono tracking-wide">
-                                                    {product.model}
-                                                </p>
-                                            </div>
-
-                                            {/* Descrizione */}
-                                            <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
-                                                {product.description}
-                                            </p>
-
-                                            {/* Prezzo & CTA */}
-                                            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                                                <div>
-                                                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Prezzo</p>
-                                                    <p className="text-2xl font-bold text-primary">
-                                                        {product.price}
-                                                    </p>
-                                                </div>
-                                                <button
-                                                    onClick={() => openProductModal(product)}
-                                                    className="group/btn relative px-5 py-2.5 bg-gray-900 hover:bg-primary text-white text-sm font-semibold rounded-xl transition-all duration-300 overflow-hidden"
-                                                    aria-label={`Scopri ${product.brand} ${product.model}`}
-                                                >
-                                                    <span className="relative z-10 flex items-center gap-2">
-                                                        Scopri
-                                                        <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </article>
-                        ))}
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                            Esplora la <span className="text-primary">Collezione</span>
+                        </h2>
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                            {filteredProducts.length} modelli {hasActiveFilters ? 'trovati' : 'disponibili'} dai brand più prestigiosi al mondo.
+                        </p>
                     </div>
 
-                    {/* Stats Bar */}
-                    <div className="mt-16 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-8 lg:p-12">
-                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                                    <div className="text-center">
-                                        <div className="text-4xl lg:text-5xl font-bold text-white mb-2">14</div>
-                                        <div className="text-gray-400 text-sm uppercase tracking-wider">Modelli Disponibili</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-4xl lg:text-5xl font-bold text-white mb-2">5</div>
-                                        <div className="text-gray-400 text-sm uppercase tracking-wider">Brand Luxury</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-4xl lg:text-5xl font-bold text-white mb-2">100%</div>
-                                        <div className="text-gray-400 text-sm uppercase tracking-wider">UV Protection</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-4xl lg:text-5xl font-bold text-white mb-2">25+</div>
-                                        <div className="text-gray-400 text-sm uppercase tracking-wider">Anni Esperienza</div>
-                                    </div>
-                                </div>
+                    {/* Filtri */}
+                    <div className="mb-8 space-y-4">
+                        {/* Header filtri con contatore */}
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <Filter className="w-5 h-5 text-gray-600" />
+                                <span className="font-semibold text-gray-900">Filtri</span>
+                                {hasActiveFilters && (
+                                    <span className="px-2 py-0.5 bg-primary text-white text-xs font-bold rounded-full">
+                                        {selectedBrands.length + selectedBadges.length + (selectedPriceRange ? 1 : 0)}
+                                    </span>
+                                )}
                             </div>
+                            {hasActiveFilters && (
+                                <button
+                                    onClick={clearAllFilters}
+                                    className="flex items-center gap-1 text-sm text-gray-600 hover:text-primary transition-colors cursor-pointer"
+                                >
+                                    <XCircle className="w-4 h-4" />
+                                    Cancella tutto
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Filtri Brand */}
+                        <div>
+                            <p className="text-sm font-medium text-gray-700 mb-2">Brand</p>
+                            <div className="flex flex-wrap gap-2">
+                                {brands.map(brand => (
+                                    <button
+                                        key={brand}
+                                        onClick={() => toggleBrand(brand)}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${selectedBrands.includes(brand)
+                                                ? 'bg-primary text-white shadow-md'
+                                                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary'
+                                            }`}
+                                    >
+                                        {brand}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Filtri Badge */}
+                        <div>
+                            <p className="text-sm font-medium text-gray-700 mb-2">Tipo</p>
+                            <div className="flex flex-wrap gap-2">
+                                {badges.map(badge => (
+                                    <button
+                                        key={badge}
+                                        onClick={() => toggleBadge(badge)}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${selectedBadges.includes(badge)
+                                                ? 'bg-primary text-white shadow-md'
+                                                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary'
+                                            }`}
+                                    >
+                                        {badge}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Filtri Prezzo */}
+                        <div>
+                            <p className="text-sm font-medium text-gray-700 mb-2">Fascia di Prezzo</p>
+                            <div className="flex flex-wrap gap-2">
+                                {priceRanges.map(range => (
+                                    <button
+                                        key={range.label}
+                                        onClick={() => togglePriceRange(range)}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer ${selectedPriceRange?.label === range.label
+                                                ? 'bg-primary text-white shadow-md'
+                                                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary'
+                                            }`}
+                                    >
+                                        {range.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Grid Prodotti - Layout Minimalista */}
+                    {filteredProducts.length > 0 ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                            {filteredProducts.map((product, index) => (
+                                <article key={product.id} className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary/20">
+                                    {/* Badge */}
+                                    {product.badge && (
+                                        <div className="absolute top-4 right-4 z-10">
+                                            <span className={`inline-block px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg ${product.badge === 'BESTSELLER' ? 'bg-primary text-white' :
+                                                    product.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
+                                                        product.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
+                                                            'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
+                                                }`}>
+                                                {product.badge}
+                                            </span>
+                                        </div>
+                                    )}
+
+                                    {/* Immagine Prodotto */}
+                                    <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                                        <div className="absolute inset-0 flex items-center justify-center p-8">
+                                            <Image
+                                                src={product.image}
+                                                alt={`${product.brand} ${product.model}`}
+                                                fill
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                                style={{ objectFit: 'contain' }}
+                                                className="group-hover:scale-110 transition-transform duration-700 ease-out"
+                                                loading={index < 8 ? 'eager' : 'lazy'}
+                                            />
+                                        </div>
+
+                                        {/* Overlay Hover */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                                <div className="space-y-1">
+                                                    {product.features.slice(0, 2).map((feature, idx) => (
+                                                        <div key={idx} className="flex items-center gap-2 text-white text-xs">
+                                                            <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                            </svg>
+                                                            <span className="font-medium">{feature}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Info Prodotto */}
+                                    <div className="p-6 space-y-3">
+                                        {/* Brand & Codice */}
+                                        <div className="space-y-1">
+                                            <h3 className="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
+                                                {product.brand}
+                                            </h3>
+                                            <p className="text-sm text-gray-500 font-mono tracking-wide">
+                                                {product.model}
+                                            </p>
+                                        </div>
+
+                                        {/* Descrizione */}
+                                        <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+                                            {product.description}
+                                        </p>
+
+                                        {/* Prezzo & CTA */}
+                                        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <div>
+                                                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Prezzo</p>
+                                                <p className="text-2xl font-bold text-primary">
+                                                    {product.price}
+                                                </p>
+                                            </div>
+                                            <button
+                                                onClick={() => openProductModal(product)}
+                                                className="group/btn relative px-5 py-2.5 bg-gray-900 hover:bg-primary text-white text-sm font-semibold rounded-xl transition-all duration-300 overflow-hidden cursor-pointer"
+                                                aria-label={`Scopri ${product.brand} ${product.model}`}
+                                            >
+                                                <span className="relative z-10 flex items-center gap-2">
+                                                    Scopri
+                                                    <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-16">
+                            <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+                                <Filter className="w-8 h-8 text-gray-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Nessun prodotto trovato</h3>
+                            <p className="text-gray-600 mb-6">Prova a modificare i filtri di ricerca</p>
+                            <button
+                                onClick={clearAllFilters}
+                                className="px-6 py-3 bg-primary hover:bg-primary-600 text-white font-semibold rounded-xl transition-all duration-300 cursor-pointer"
+                            >
+                                Cancella tutti i filtri
+                            </button>
+                        </div>
+                    )}
 
                     {/* CTA Final */}
                     <div className="text-center mt-16">
                         <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-3xl p-10 lg:p-14 border border-primary/20">
-                                    <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                                        Prova Prima di Acquistare
-                                    </h3>
-                                    <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                                        Vieni nei nostri store di <strong>Augusta</strong> e <strong>Villasmundo</strong>.
-                                        I nostri esperti ti aiuteranno a scegliere l&#39;occhiale perfetto per te.
-                                    </p>
-                                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                        <button className="group px-8 py-4 bg-primary hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3 justify-center">
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-                                            Vieni in Negozio
-                                            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
-                                            </svg>
-                                        </button>
-                                        <button className="px-8 py-4 bg-white border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 flex items-center gap-3 justify-center">
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                            Prenota Appuntamento
-                                        </button>
-                                    </div>
-                                </div>
+                            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                                Prova Prima di Acquistare
+                            </h3>
+                            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                                Vieni nei nostri store di <strong>Augusta</strong> e <strong>Villasmundo</strong>.
+                                I nostri esperti ti aiuteranno a scegliere l&#39;occhiale perfetto per te.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button className="group px-8 py-4 bg-primary hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3 justify-center cursor-pointer">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Vieni in Negozio
+                                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
+                                    </svg>
+                                </button>
+                                <button className="px-8 py-4 bg-white border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 flex items-center gap-3 justify-center cursor-pointer">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    Prenota Appuntamento
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -603,7 +731,7 @@ export default function OcchialiSole() {
                             </h2>
                             <button
                                 onClick={closeProductModal}
-                                className="flex-shrink-0 p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                                className="flex-shrink-0 p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 cursor-pointer"
                                 aria-label="Chiudi"
                             >
                                 <X className="w-5 h-5 text-gray-600" />
@@ -615,177 +743,175 @@ export default function OcchialiSole() {
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 lg:p-6">
                                 {/* Sezione Sinistra - Galleria Immagini */}
                                 <div className="space-y-3 lg:sticky lg:top-0 lg:self-start">
-                                {/* Badge */}
-                                {selectedProduct.badge && (
-                                    <div className="absolute top-8 left-8 z-10">
-                                        <span className={`inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg ${
-                                            selectedProduct.badge === 'BESTSELLER' ? 'bg-primary text-white' :
-                                            selectedProduct.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
-                                            selectedProduct.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
-                                            'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
-                                        }`}>
-                                            {selectedProduct.badge}
-                                        </span>
-                                    </div>
-                                )}
+                                    {/* Badge */}
+                                    {selectedProduct.badge && (
+                                        <div className="absolute top-8 left-8 z-10">
+                                            <span className={`inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg ${selectedProduct.badge === 'BESTSELLER' ? 'bg-primary text-white' :
+                                                    selectedProduct.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
+                                                        selectedProduct.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
+                                                            'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
+                                                }`}>
+                                                {selectedProduct.badge}
+                                            </span>
+                                        </div>
+                                    )}
 
-                                {/* Immagine Principale */}
-                                <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200">
-                                    <Image
-                                        src={selectedProduct.images[selectedImageIndex]}
-                                        alt={`${selectedProduct.brand} ${selectedProduct.model} - Vista ${selectedImageIndex + 1}`}
-                                        fill
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
-                                        style={{ objectFit: 'contain' }}
-                                        className="p-8"
-                                        priority
-                                    />
+                                    {/* Immagine Principale */}
+                                    <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200">
+                                        <Image
+                                            src={selectedProduct.images[selectedImageIndex]}
+                                            alt={`${selectedProduct.brand} ${selectedProduct.model} - Vista ${selectedImageIndex + 1}`}
+                                            fill
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                            style={{ objectFit: 'contain' }}
+                                            className="p-8"
+                                            priority
+                                        />
+                                    </div>
+
+                                    {/* Thumbnail Gallery */}
+                                    <div className="flex gap-3 overflow-x-auto pb-2">
+                                        {selectedProduct.images.map((img, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => setSelectedImageIndex(idx)}
+                                                className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 bg-gradient-to-br from-gray-50 to-gray-100 cursor-pointer ${selectedImageIndex === idx
+                                                        ? 'border-primary shadow-lg'
+                                                        : 'border-gray-200 hover:border-gray-300'
+                                                    }`}
+                                            >
+                                                <Image
+                                                    src={img}
+                                                    alt={`Vista ${idx + 1}`}
+                                                    fill
+                                                    sizes="80px"
+                                                    style={{ objectFit: 'contain' }}
+                                                    className="p-2"
+                                                />
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
 
-                                {/* Thumbnail Gallery */}
-                                <div className="flex gap-3 overflow-x-auto pb-2">
-                                    {selectedProduct.images.map((img, idx) => (
+                                {/* Sezione Destra - Dettagli Prodotto */}
+                                <div className="space-y-4">
+                                    {/* Close Button Desktop */}
+                                    <button
+                                        onClick={closeProductModal}
+                                        className="hidden lg:block absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 z-20 cursor-pointer"
+                                        aria-label="Chiudi"
+                                    >
+                                        <X className="w-5 h-5 text-gray-600" />
+                                    </button>
+
+                                    {/* Brand e Modello */}
+                                    <div className="space-y-1">
+                                        <p className="text-xs text-primary font-semibold uppercase tracking-wider">
+                                            {selectedProduct.brand}
+                                        </p>
+                                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                            {selectedProduct.model}
+                                        </h2>
+                                        <p className="text-sm text-gray-600 leading-relaxed">
+                                            {selectedProduct.description}
+                                        </p>
+                                    </div>
+
+                                    {/* Rating e Reviews */}
+                                    <div className="flex items-center gap-2">
+                                        <div className="flex items-center gap-0.5">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                                            ))}
+                                        </div>
+                                        <span className="text-xs text-gray-600">4.8 (234 recensioni)</span>
+                                    </div>
+
+                                    {/* Prezzo */}
+                                    <div className="space-y-1 py-3 border-y border-gray-200">
+                                        <p className="text-xs text-gray-500 uppercase tracking-wider">Prezzo</p>
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-3xl font-bold text-primary">
+                                                {selectedProduct.price}
+                                            </span>
+                                        </div>
+                                        <p className="text-xs text-green-600 font-medium">
+                                            ✓ Disponibile in negozio
+                                        </p>
+                                    </div>
+
+                                    {/* Features */}
+                                    <div className="space-y-2">
+                                        <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wider">Caratteristiche</h3>
+                                        <ul className="space-y-1.5">
+                                            {selectedProduct.features.map((feature, idx) => (
+                                                <li key={idx} className="flex items-start gap-2">
+                                                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                                                    <span className="text-sm text-gray-700">{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Info Negozio */}
+                                    <div className="space-y-2 p-3 bg-gray-50 rounded-xl border border-gray-200">
+                                        <h3 className="font-bold text-gray-900 text-xs uppercase tracking-wider">
+                                            Disponibile nei nostri Store
+                                        </h3>
+                                        <div className="space-y-1.5 text-xs">
+                                            <div className="flex items-start gap-2">
+                                                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                                                <div>
+                                                    <p className="font-semibold text-gray-900">Augusta</p>
+                                                    <p className="text-gray-600">Via Principe Umberto 76</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-start gap-2">
+                                                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
+                                                <div>
+                                                    <p className="font-semibold text-gray-900">Villasmundo</p>
+                                                    <p className="text-gray-600">Via Vittorio Emanuele 67</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* CTA Buttons */}
+                                    <div className="space-y-2">
                                         <button
-                                            key={idx}
-                                            onClick={() => setSelectedImageIndex(idx)}
-                                            className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 bg-gradient-to-br from-gray-50 to-gray-100 ${
-                                                selectedImageIndex === idx
-                                                    ? 'border-primary shadow-lg'
-                                                    : 'border-gray-200 hover:border-gray-300'
-                                            }`}
+                                            onClick={() => setShowStoreModal(true)}
+                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm cursor-pointer"
                                         >
-                                            <Image
-                                                src={img}
-                                                alt={`Vista ${idx + 1}`}
-                                                fill
-                                                sizes="80px"
-                                                style={{ objectFit: 'contain' }}
-                                                className="p-2"
-                                            />
+                                            <Phone className="w-4 h-4" />
+                                            Prenota Appuntamento
                                         </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Sezione Destra - Dettagli Prodotto */}
-                            <div className="space-y-4">
-                                {/* Close Button Desktop */}
-                                <button
-                                    onClick={closeProductModal}
-                                    className="hidden lg:block absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 z-20"
-                                    aria-label="Chiudi"
-                                >
-                                    <X className="w-5 h-5 text-gray-600" />
-                                </button>
-
-                                {/* Brand e Modello */}
-                                <div className="space-y-1">
-                                    <p className="text-xs text-primary font-semibold uppercase tracking-wider">
-                                        {selectedProduct.brand}
-                                    </p>
-                                    <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                                        {selectedProduct.model}
-                                    </h2>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        {selectedProduct.description}
-                                    </p>
-                                </div>
-
-                                {/* Rating e Reviews */}
-                                <div className="flex items-center gap-2">
-                                    <div className="flex items-center gap-0.5">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                        ))}
+                                        <button
+                                            onClick={() => router.push('/su-di-noi/dove-trovarci')}
+                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-gray-300 hover:border-primary text-gray-900 font-semibold rounded-xl transition-all duration-300 text-sm cursor-pointer"
+                                        >
+                                            <MapPin className="w-4 h-4" />
+                                            Vieni in Negozio
+                                        </button>
                                     </div>
-                                    <span className="text-xs text-gray-600">4.8 (234 recensioni)</span>
-                                </div>
 
-                                {/* Prezzo */}
-                                <div className="space-y-1 py-3 border-y border-gray-200">
-                                    <p className="text-xs text-gray-500 uppercase tracking-wider">Prezzo</p>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-3xl font-bold text-primary">
-                                            {selectedProduct.price}
-                                        </span>
-                                    </div>
-                                    <p className="text-xs text-green-600 font-medium">
-                                        ✓ Disponibile in negozio
-                                    </p>
-                                </div>
-
-                                {/* Features */}
-                                <div className="space-y-2">
-                                    <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wider">Caratteristiche</h3>
-                                    <ul className="space-y-1.5">
-                                        {selectedProduct.features.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start gap-2">
-                                                <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                                                <span className="text-sm text-gray-700">{feature}</span>
+                                    {/* Info Aggiuntive */}
+                                    <div className="pt-3 border-t border-gray-200">
+                                        <ul className="space-y-1.5 text-xs text-gray-600">
+                                            <li className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-green-600" />
+                                                <span>Garanzia ufficiale 2 anni</span>
                                             </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                {/* Info Negozio */}
-                                <div className="space-y-2 p-3 bg-gray-50 rounded-xl border border-gray-200">
-                                    <h3 className="font-bold text-gray-900 text-xs uppercase tracking-wider">
-                                        Disponibile nei nostri Store
-                                    </h3>
-                                    <div className="space-y-1.5 text-xs">
-                                        <div className="flex items-start gap-2">
-                                            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
-                                            <div>
-                                                <p className="font-semibold text-gray-900">Augusta</p>
-                                                <p className="text-gray-600">Via Principe Umberto 76</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start gap-2">
-                                            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
-                                            <div>
-                                                <p className="font-semibold text-gray-900">Villasmundo</p>
-                                                <p className="text-gray-600">Via Vittorio Emanuele 67</p>
-                                            </div>
-                                        </div>
+                                            <li className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-green-600" />
+                                                <span>Esame della vista gratuito</span>
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <Check className="w-3.5 h-3.5 text-green-600" />
+                                                <span>Custodia e panno inclusi</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-
-                                {/* CTA Buttons */}
-                                <div className="space-y-2">
-                                    <button
-                                        onClick={() => setShowStoreModal(true)}
-                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm"
-                                    >
-                                        <Phone className="w-4 h-4" />
-                                        Prenota Appuntamento
-                                    </button>
-                                    <button
-                                        onClick={() => router.push('/su-di-noi/dove-trovarci')}
-                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-gray-300 hover:border-primary text-gray-900 font-semibold rounded-xl transition-all duration-300 text-sm"
-                                    >
-                                        <MapPin className="w-4 h-4" />
-                                        Vieni in Negozio
-                                    </button>
-                                </div>
-
-                                {/* Info Aggiuntive */}
-                                <div className="pt-3 border-t border-gray-200">
-                                    <ul className="space-y-1.5 text-xs text-gray-600">
-                                        <li className="flex items-center gap-2">
-                                            <Check className="w-3.5 h-3.5 text-green-600" />
-                                            <span>Garanzia ufficiale 2 anni</span>
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <Check className="w-3.5 h-3.5 text-green-600" />
-                                            <span>Esame della vista gratuito</span>
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <Check className="w-3.5 h-3.5 text-green-600" />
-                                            <span>Custodia e panno inclusi</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -809,7 +935,7 @@ export default function OcchialiSole() {
                             <h3 className="text-xl font-bold text-gray-900">Scegli la Sede</h3>
                             <button
                                 onClick={() => setShowStoreModal(false)}
-                                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 cursor-pointer"
                                 aria-label="Chiudi"
                             >
                                 <X className="w-5 h-5 text-gray-600" />

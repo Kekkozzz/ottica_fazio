@@ -134,6 +134,12 @@ p {
   font-family: 'Be Vietnam', Arial, Helvetica, sans-serif !important;
 }
 
+/* Cursor pointer per tutti i bottoni e link */
+button,
+a {
+  cursor: pointer;
+}
+
 @theme inline {
   --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
 
