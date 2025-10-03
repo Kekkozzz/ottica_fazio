@@ -206,10 +206,18 @@ Large Desktop: ≥ 1500px (navbar desktop mode)
 ### Prodotti Principali
 
 1. **Occhiali da Sole**
-   - 500+ modelli disponibili
+   - 500+ modelli disponibili (14 prodotti visualizzati in pagina)
    - Protezione UV400
-   - Prezzi da €89
-   - Brand: Ray-Ban, Persol, Gucci, Versace, etc.
+   - Prezzi da €165 a €480
+   - Brand: Ray-Ban, Persol, Gucci, Versace, Dolce & Gabbana, Emporio Armani, Saint Laurent
+   - **Features pagina dedicata:**
+     - Hero section responsive con carosello immagini
+     - Sistema filtri dropdown (Brand, Tipo, Fascia Prezzo)
+     - Griglia prodotti responsive (1/2/3/4 colonne)
+     - Modale prodotto con galleria 4 immagini
+     - Modale scelta sede per prenotazioni
+     - Link diretto a pagina "Dove trovarci"
+     - Animazioni rimosse su mobile per performance
 
 2. **Occhiali da Vista**
    - Esame della vista incluso
@@ -306,6 +314,10 @@ npm run lint
 8. ✅ Fully responsive (mobile-first)
 9. ✅ Accessibile (WCAG compliant)
 10. ✅ SEO optimized
+11. ✅ Sistema filtri prodotti avanzato (dropdown)
+12. ✅ Modale prodotto con galleria immagini
+13. ✅ Modale scelta sede per prenotazioni
+14. ✅ Cursor pointer globale per tutti i bottoni
 
 ---
 
@@ -317,6 +329,10 @@ npm run lint
 - File componenti: .js (non .jsx)
 - CSS: Tailwind utility-first
 - Animazioni: Framer Motion preferito su CSS
+- **CSS Globale (globals.css):**
+  - `cursor: pointer` applicato automaticamente a tutti i `<button>` e `<a>`
+  - Fonts custom: Josefin Sans (headings), Be Vietnam (body)
+  - Palette colori custom Tailwind con variabili CSS
 
 ### Git Status (Ultimo Snapshot)
 - Main branch: `main`
@@ -328,7 +344,7 @@ npm run lint
 - [ ] Implementare form submission backend
 - [ ] Aggiungere CMS per gestione prodotti
 - [ ] Ottimizzare immagini (convertire in WebP/AVIF)
-- [ ] Aggiungere filtri prodotti
+- [x] Aggiungere filtri prodotti (completato - occhiali-sole)
 - [ ] Sistema prenotazione appuntamenti online
 - [ ] Integrazione e-commerce (futuro)
 
@@ -343,3 +359,33 @@ npm run lint
 ---
 
 **Ultimo aggiornamento:** 3 Ottobre 2025
+
+---
+
+## 🆕 Ultime Modifiche (3 Ottobre 2025)
+
+### Pagina Occhiali da Sole (/prodotti/occhiali-sole)
+- ✅ Implementato sistema filtri dropdown avanzato
+  - Filtri per Brand (6 opzioni)
+  - Filtri per Tipo/Badge (4 opzioni: NUOVO, BESTSELLER, PREMIUM, ICONICO)
+  - Filtri per Fascia Prezzo (3 range)
+  - Toggle apertura/chiusura con animazione
+  - Contatore filtri attivi
+  - Bottone "Cancella tutto"
+- ✅ Modale prodotto dettagliato
+  - Galleria 4 immagini con thumbnail cliccabili
+  - Badge dinamici per tipo prodotto
+  - Rating e recensioni placeholder
+  - Informazioni sedi disponibilità
+  - CTA "Prenota Appuntamento" e "Vieni in Negozio"
+- ✅ Modale scelta sede
+  - Selezione tra Augusta e Villasmundo
+  - Link diretti `tel:` per chiamate
+  - Design minimal e user-friendly
+- ✅ Ottimizzazioni mobile
+  - Animazioni Framer Motion rimosse su mobile (<lg)
+  - Layout responsive ottimizzato
+  - Altezza modale adattiva con `max-h-[90vh]`
+- ✅ CSS Globale
+  - Aggiunto `cursor: pointer` per tutti i button e link
+  - Miglioramento UX su tutto il sito
