@@ -635,11 +635,11 @@ export default function OcchialiSole() {
                                         </div>
                                     </div>
 
-                                    {/* Info Prodotto */}
-                                    <div className="p-6 space-y-3">
+                                    {/* Info Prodotto - Design Minimal */}
+                                    <div className="p-5 space-y-4">
                                         {/* Brand & Codice */}
-                                        <div className="space-y-1">
-                                            <h3 className="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
+                                        <div className="space-y-1.5 min-h-[60px] flex flex-col justify-center">
+                                            <h3 className="font-bold text-base text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">
                                                 {product.brand}
                                             </h3>
                                             <p className="text-sm text-gray-500 font-mono tracking-wide">
@@ -647,32 +647,19 @@ export default function OcchialiSole() {
                                             </p>
                                         </div>
 
-                                        {/* Descrizione */}
-                                        <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
-                                            {product.description}
-                                        </p>
-
-                                        {/* Prezzo & CTA */}
-                                        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                                            <div>
-                                                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Prezzo</p>
-                                                <p className="text-2xl font-bold text-primary">
-                                                    {product.price}
-                                                </p>
-                                            </div>
-                                            <button
-                                                onClick={() => openProductModal(product)}
-                                                className="group/btn relative px-5 py-2.5 bg-gray-900 hover:bg-primary text-white text-sm font-semibold rounded-xl transition-all duration-300 overflow-hidden cursor-pointer"
-                                                aria-label={`Scopri ${product.brand} ${product.model}`}
-                                            >
-                                                <span className="relative z-10 flex items-center gap-2">
-                                                    Scopri
-                                                    <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                    </svg>
-                                                </span>
-                                            </button>
-                                        </div>
+                                        {/* CTA Centrato */}
+                                        <button
+                                            onClick={() => openProductModal(product)}
+                                            className="group/btn w-full px-5 py-3 bg-gray-900 hover:bg-primary text-white text-sm font-semibold rounded-xl transition-all duration-300 cursor-pointer"
+                                            aria-label={`Scopri ${product.brand} ${product.model}`}
+                                        >
+                                            <span className="flex items-center justify-center gap-2">
+                                                Scopri di più
+                                                <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </span>
+                                        </button>
                                     </div>
                                 </article>
                             ))}
@@ -807,8 +794,8 @@ export default function OcchialiSole() {
                                     </div>
                                 </div>
 
-                                {/* Sezione Destra - Dettagli Prodotto */}
-                                <div className="space-y-4">
+                                {/* Sezione Destra - Dettagli Prodotto Minimal */}
+                                <div className="space-y-6">
                                     {/* Close Button Desktop */}
                                     <button
                                         onClick={closeProductModal}
@@ -819,45 +806,27 @@ export default function OcchialiSole() {
                                     </button>
 
                                     {/* Brand e Modello */}
-                                    <div className="space-y-1">
+                                    <div className="space-y-2 pb-6 border-b border-gray-200">
                                         <p className="text-xs text-primary font-semibold uppercase tracking-wider">
                                             {selectedProduct.brand}
                                         </p>
                                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">
                                             {selectedProduct.model}
                                         </h2>
-                                        <p className="text-sm text-gray-600 leading-relaxed">
-                                            {selectedProduct.description}
-                                        </p>
                                     </div>
 
-                                    {/* Rating e Reviews */}
-                                    <div className="flex items-center gap-2">
-                                        <div className="flex items-center gap-0.5">
-                                            {[...Array(5)].map((_, i) => (
-                                                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                            ))}
-                                        </div>
-                                        <span className="text-xs text-gray-600">4.8 (234 recensioni)</span>
-                                    </div>
-
-                                    {/* Prezzo */}
-                                    <div className="space-y-1 py-3 border-y border-gray-200">
-                                        <p className="text-xs text-gray-500 uppercase tracking-wider">Prezzo</p>
-                                        <div className="flex items-baseline gap-2">
-                                            <span className="text-3xl font-bold text-primary">
-                                                {selectedProduct.price}
-                                            </span>
-                                        </div>
-                                        <p className="text-xs text-green-600 font-medium">
-                                            ✓ Disponibile in negozio
+                                    {/* Disponibilità */}
+                                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-lg">
+                                        <Check className="w-4 h-4 text-green-600" />
+                                        <p className="text-sm text-green-700 font-medium">
+                                            Disponibile in negozio
                                         </p>
                                     </div>
 
                                     {/* Features */}
-                                    <div className="space-y-2">
+                                    <div className="space-y-3">
                                         <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wider">Caratteristiche</h3>
-                                        <ul className="space-y-1.5">
+                                        <ul className="space-y-2">
                                             {selectedProduct.features.map((feature, idx) => (
                                                 <li key={idx} className="flex items-start gap-2">
                                                     <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
