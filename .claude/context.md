@@ -358,11 +358,75 @@ npm run lint
 
 ---
 
-**Ultimo aggiornamento:** 3 Ottobre 2025
+**Ultimo aggiornamento:** 4 Ottobre 2025
 
 ---
 
-## 🆕 Ultime Modifiche (3 Ottobre 2025)
+## 🆕 Ultime Modifiche (4 Ottobre 2025)
+
+### Design Minimal - Pagine Prodotti (Occhiali da Sole & Vista)
+- ✅ **Redesign catalogo prodotti con approccio minimal**
+  - ❌ Rimosso prezzo dalle card prodotto
+  - ❌ Rimossa descrizione dalle card prodotto
+  - ✅ Layout essenziale: Badge → Immagine → Brand/Modello → CTA
+  - ✅ Button "Scopri di più" full-width centrato
+  - ✅ Spaziatura ottimizzata con `min-h-[60px]` per uniformità card
+  - ✅ Focus sull'immagine del prodotto
+
+- ✅ **Modale prodotto minimal**
+  - ❌ Rimosso prezzo dal modale
+  - ❌ Rimossa descrizione prodotto
+  - ❌ Rimosso rating e recensioni
+  - ✅ Focus su: Brand/Modello → Disponibilità → Caratteristiche → CTA
+  - ✅ Badge disponibilità verde con check icon
+  - ✅ Informazioni essenziali e pulite
+  - ✅ Design coerente tra occhiali-sole e occhiali-vista
+
+### Pagina Occhiali da Vista (/prodotti/occhiali-vista) - NUOVO
+- ✅ **Sistema filtri completo** (replicato da occhiali-sole)
+  - Filtri per Brand (4 opzioni: Emporio Armani, Persol, Polo Ralph Lauren, Ray-Ban)
+  - Filtri per Tipo/Badge (4 opzioni: NUOVO, BESTSELLER, PREMIUM, ICONICO)
+  - Filtri per Fascia Prezzo (3 range: €0-150, €150-250, €250+)
+  - Toggle dropdown con animazione e chevron
+  - Contatore filtri attivi
+  - Bottone "Cancella tutto" con icona XCircle
+
+- ✅ **Database prodotti completo**
+  - 9 modelli occhiali da vista con immagini reali
+  - Immagini da `/public/occhiali/vista/`
+  - Brand coverage: Persol (2), Emporio Armani (4), Polo Ralph Lauren (2), Ray-Ban (1)
+  - Features tecniche dettagliate per ogni modello
+
+- ✅ **Caption ottimizzate per occhiali da vista**
+  - Mobile: "Vedi il mondo con chiarezza e stile. Scopri la nostra collezione di montature da vista che uniscono comfort, design e qualità ottica superiore."
+  - Desktop: "Vedi il mondo con chiarezza e stile. Montature da vista che combinano design contemporaneo, comfort eccezionale e precisione ottica."
+  - Messaging focalizzato su correzione visiva, chiarezza e qualità ottica
+
+- ✅ **Smooth scroll to collection**
+  - Funzione `scrollToCollection()` con `scrollIntoView({ behavior: 'smooth' })`
+  - Scroll fluido al click su "Scopri la Collezione"
+  - ID `collection-section` aggiunto alla sezione catalogo
+  - ✅ Implementato su entrambe le pagine (occhiali-sole + occhiali-vista)
+
+- ✅ **Modale prodotto & scelta sede**
+  - Galleria 4 immagini con thumbnail cliccabili
+  - Modale scelta sede tra Augusta e Villasmundo
+  - Link `tel:` per chiamate dirette (click-to-call)
+  - CTA dual: "Prenota Appuntamento" + "Vieni in Negozio"
+  - Router navigation verso `/su-di-noi/dove-trovarci`
+  - Design minimal consistente tra tutte le pagine prodotti
+
+### UX & Performance Improvements
+- ✅ Scroll automatico dalla hero section al catalogo
+- ✅ Design coerente e consistente tra occhiali-sole e occhiali-vista
+- ✅ Esperienza utente focalizzata sull'immagine prodotto
+- ✅ CTA chiare per guidare verso visite in negozio (no e-commerce)
+- ✅ Performance ottimizzate con lazy loading (`loading="lazy"` dopo 8 prodotti)
+- ✅ Cursor pointer su tutti i pulsanti interattivi
+
+---
+
+## 🆕 Modifiche Precedenti (3 Ottobre 2025)
 
 ### Pagina Occhiali da Sole (/prodotti/occhiali-sole)
 - ✅ Implementato sistema filtri dropdown avanzato
@@ -372,10 +436,9 @@ npm run lint
   - Toggle apertura/chiusura con animazione
   - Contatore filtri attivi
   - Bottone "Cancella tutto"
-- ✅ Modale prodotto dettagliato
+- ✅ Modale prodotto dettagliato (ora minimal)
   - Galleria 4 immagini con thumbnail cliccabili
   - Badge dinamici per tipo prodotto
-  - Rating e recensioni placeholder
   - Informazioni sedi disponibilità
   - CTA "Prenota Appuntamento" e "Vieni in Negozio"
 - ✅ Modale scelta sede
