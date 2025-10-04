@@ -281,6 +281,14 @@ export default function OcchialiSole() {
         return () => window.removeEventListener('keydown', handleEsc);
     }, []);
 
+    // Scroll to collection
+    const scrollToCollection = () => {
+        const collectionSection = document.getElementById('collection-section');
+        if (collectionSection) {
+            collectionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <main className="relative">
             <div className="relative z-10 flex items-center justify-center lg:min-h-screen pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 w-full pb-12 lg:pb-0">
@@ -345,7 +353,7 @@ export default function OcchialiSole() {
 
                             {/* CTA */}
                             <div className="mt-5 space-y-3">
-                                <button className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99] cursor-pointer">
+                                <button onClick={scrollToCollection} className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99] cursor-pointer">
                                     Scopri la Collezione
                                     <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0-4 4m4-4H3" />
@@ -403,7 +411,7 @@ export default function OcchialiSole() {
 
                             <StaggerItem direction="up" blur>
                                 <div className="flex gap-4">
-                                    <button className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
+                                    <button onClick={scrollToCollection} className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
                                         Scopri la Collezione
                                         <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
@@ -473,7 +481,7 @@ export default function OcchialiSole() {
             </div>
 
             {/* Collezione Completa - Design Minimalista Moderno */}
-            <section className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
+            <section id="collection-section" className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-12">
