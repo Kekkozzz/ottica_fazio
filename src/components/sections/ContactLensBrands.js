@@ -38,6 +38,11 @@ export default function ContactLensBrands() {
             name: 'Bausch + Lomb',
             logo: '/lenti-contatto/bausch-lomb.svg',
             alt: 'Bausch + Lomb - Lenti a Contatto'
+        },
+        {
+            name: 'OxoLens',
+            logo: '/lenti-contatto/oxolens.svg',
+            alt: 'OxoLens - Lenti a Contatto'
         }
     ];
 
