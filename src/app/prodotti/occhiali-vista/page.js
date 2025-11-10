@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
 import { X, Check, MapPin, Phone, Filter, XCircle, ChevronDown } from 'lucide-react';
+import LensPartners from '@/components/sections/LensPartners';
 
 export default function OcchialiVista() {
     const router = useRouter();
@@ -307,26 +308,6 @@ export default function OcchialiVista() {
                                     </button>
                                 </div>
                             </StaggerItem>
-
-                            {/* Stats */}
-                            <StaggerItem direction="up" blur>
-                                <div className="mt-6 rounded-2xl bg-white p-4 shadow">
-                                    <div className="grid grid-cols-3 gap-3">
-                                        <div className="text-center">
-                                            <div className="text-xl font-extrabold text-red-600">500+</div>
-                                            <div className="text-[11px] text-gray-600">Modelli</div>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="text-xl font-extrabold text-red-600">25+</div>
-                                            <div className="text-[11px] text-gray-600">Anni Esperienza</div>
-                                        </div>
-                                        <div className="text-center">
-                                            <div className="text-xl font-extrabold text-red-600">100%</div>
-                                            <div className="text-[11px] text-gray-600">UV Protection</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </StaggerItem>
                         </div>
                     </section>
 
@@ -368,22 +349,6 @@ export default function OcchialiVista() {
                                 </div>
                             </StaggerItem>
 
-                            <StaggerItem direction="up" blur>
-                                <div className="flex gap-8 mt-12">
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-red-600">500+</div>
-                                        <div className="text-sm text-gray-600">Modelli</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-red-600">25+</div>
-                                        <div className="text-sm text-gray-600">Anni Esperienza</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-red-600">100%</div>
-                                        <div className="text-sm text-gray-600">UV Protection</div>
-                                    </div>
-                                </div>
-                            </StaggerItem>
                         </div>
 
                         {/* Colonna immagine (come nel tuo codice originale) */}
@@ -424,6 +389,9 @@ export default function OcchialiVista() {
                     </section>
                 </StaggerContainer>
             </div>
+
+            {/* Sezione Partner Lenti Oftalmiche */}
+            <LensPartners />
 
             {/* Collezione Completa - Design Minimalista Moderno */}
             <section id="collection-section" className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white">
@@ -484,11 +452,10 @@ export default function OcchialiVista() {
                                             <button
                                                 key={brand}
                                                 onClick={() => toggleBrand(brand)}
-                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                                                    selectedBrands.includes(brand)
+                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedBrands.includes(brand)
                                                         ? 'bg-primary text-white shadow-md'
                                                         : 'bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-primary'
-                                                }`}
+                                                    }`}
                                             >
                                                 {brand}
                                             </button>
@@ -504,11 +471,10 @@ export default function OcchialiVista() {
                                             <button
                                                 key={badge}
                                                 onClick={() => toggleBadge(badge)}
-                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                                                    selectedBadges.includes(badge)
+                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedBadges.includes(badge)
                                                         ? 'bg-primary text-white shadow-md'
                                                         : 'bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-primary'
-                                                }`}
+                                                    }`}
                                             >
                                                 {badge}
                                             </button>
@@ -524,11 +490,10 @@ export default function OcchialiVista() {
                                             <button
                                                 key={range.label}
                                                 onClick={() => togglePriceRange(range)}
-                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                                                    selectedPriceRange?.label === range.label
+                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedPriceRange?.label === range.label
                                                         ? 'bg-primary text-white shadow-md'
                                                         : 'bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-primary'
-                                                }`}
+                                                    }`}
                                             >
                                                 {range.label}
                                             </button>
@@ -548,9 +513,9 @@ export default function OcchialiVista() {
                                     {product.badge && (
                                         <div className="absolute top-4 right-4 z-10">
                                             <span className={`inline-block px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg ${product.badge === 'BESTSELLER' ? 'bg-primary text-white' :
-                                                    product.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
-                                                        product.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
-                                                            'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
+                                                product.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
+                                                    product.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
+                                                        'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
                                                 }`}>
                                                 {product.badge}
                                             </span>
@@ -666,6 +631,7 @@ export default function OcchialiVista() {
                 </div>
             </section>
 
+
             {/* Modale Prodotto */}
             {selectedProduct && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
@@ -701,9 +667,9 @@ export default function OcchialiVista() {
                                     {selectedProduct.badge && (
                                         <div className="absolute top-8 left-8 z-10">
                                             <span className={`inline-block px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg ${selectedProduct.badge === 'BESTSELLER' ? 'bg-primary text-white' :
-                                                    selectedProduct.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
-                                                        selectedProduct.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
-                                                            'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
+                                                selectedProduct.badge === 'ICONICO' ? 'bg-warm-gray-800 text-white' :
+                                                    selectedProduct.badge === 'PREMIUM' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white' :
+                                                        'bg-gradient-to-r from-green-400 to-emerald-600 text-white'
                                                 }`}>
                                                 {selectedProduct.badge}
                                             </span>
@@ -730,8 +696,8 @@ export default function OcchialiVista() {
                                                 key={idx}
                                                 onClick={() => setSelectedImageIndex(idx)}
                                                 className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 bg-gradient-to-br from-gray-50 to-gray-100 cursor-pointer ${selectedImageIndex === idx
-                                                        ? 'border-primary shadow-lg'
-                                                        : 'border-gray-200 hover:border-gray-300'
+                                                    ? 'border-primary shadow-lg'
+                                                    : 'border-gray-200 hover:border-gray-300'
                                                     }`}
                                             >
                                                 <Image

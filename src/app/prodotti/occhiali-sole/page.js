@@ -363,24 +363,6 @@ export default function OcchialiSole() {
                                     Prenota Appuntamento
                                 </button>
                             </div>
-
-                            {/* Stats */}
-                            <div className="mt-6 rounded-2xl bg-white p-4 shadow">
-                                <div className="grid grid-cols-3 gap-3">
-                                    <div className="text-center">
-                                        <div className="text-xl font-extrabold text-red-600">500+</div>
-                                        <div className="text-[11px] text-gray-600">Modelli</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-xl font-extrabold text-red-600">25+</div>
-                                        <div className="text-[11px] text-gray-600">Anni Esperienza</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-xl font-extrabold text-red-600">100%</div>
-                                        <div className="text-[11px] text-gray-600">UV Protection</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </section>
 
@@ -420,23 +402,6 @@ export default function OcchialiSole() {
                                     <button className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-red-600 hover:text-red-600 transition-all duration-300 cursor-pointer">
                                         Prenota Appuntamento
                                     </button>
-                                </div>
-                            </StaggerItem>
-
-                            <StaggerItem direction="up" blur>
-                                <div className="flex gap-8 mt-12">
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-red-600">500+</div>
-                                        <div className="text-sm text-gray-600">Modelli</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-red-600">25+</div>
-                                        <div className="text-sm text-gray-600">Anni Esperienza</div>
-                                    </div>
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-red-600">100%</div>
-                                        <div className="text-sm text-gray-600">UV Protection</div>
-                                    </div>
                                 </div>
                             </StaggerItem>
                         </div>
