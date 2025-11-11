@@ -31,7 +31,7 @@ export default function ContactLensBrands() {
         },
         {
             name: 'Schalcon',
-            logo: '/lenti-contatto/schalcon.png',
+            logo: '/lenti-contatto/Schalcon.png',
             alt: 'Schalcon - Lenti a Contatto'
         },
         {
