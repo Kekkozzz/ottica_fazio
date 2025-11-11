@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
-import { X, ShoppingCart, Star, Check, MapPin, Phone, Filter, XCircle, ChevronDown } from 'lucide-react';
+import { X, Check, MapPin, Phone, Filter, XCircle, ChevronDown } from 'lucide-react';
 
 export default function OcchialiSole() {
     const router = useRouter();
@@ -352,15 +352,12 @@ export default function OcchialiSole() {
                             </p>
 
                             {/* CTA */}
-                            <div className="mt-5 space-y-3">
+                            <div className="mt-5">
                                 <button onClick={scrollToCollection} className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99] cursor-pointer">
                                     Scopri la Collezione
                                     <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0-4 4m4-4H3" />
                                     </svg>
-                                </button>
-                                <button className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:border-red-600 hover:text-red-600 active:scale-[0.99] cursor-pointer">
-                                    Prenota Appuntamento
                                 </button>
                             </div>
                         </div>
@@ -392,17 +389,12 @@ export default function OcchialiSole() {
                             </StaggerItem>
 
                             <StaggerItem direction="up" blur>
-                                <div className="flex gap-4">
-                                    <button onClick={scrollToCollection} className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
-                                        Scopri la Collezione
-                                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
-                                        </svg>
-                                    </button>
-                                    <button className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-red-600 hover:text-red-600 transition-all duration-300 cursor-pointer">
-                                        Prenota Appuntamento
-                                    </button>
-                                </div>
+                                <button onClick={scrollToCollection} className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
+                                    Scopri la Collezione
+                                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
+                                    </svg>
+                                </button>
                             </StaggerItem>
                         </div>
 
@@ -663,7 +655,7 @@ export default function OcchialiSole() {
                                 Vieni nei nostri store di <strong>Augusta</strong> e <strong>Villasmundo</strong>.
                                 I nostri esperti ti aiuteranno a scegliere l&#39;occhiale perfetto per te.
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <div className="flex justify-center">
                                 <button className="group px-8 py-4 bg-primary hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3 justify-center cursor-pointer">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -673,12 +665,6 @@ export default function OcchialiSole() {
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
                                     </svg>
-                                </button>
-                                <button className="px-8 py-4 bg-white border-2 border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 flex items-center gap-3 justify-center cursor-pointer">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    Prenota Appuntamento
                                 </button>
                             </div>
                         </div>
@@ -832,23 +818,14 @@ export default function OcchialiSole() {
                                         </div>
                                     </div>
 
-                                    {/* CTA Buttons */}
-                                    <div className="space-y-2">
-                                        <button
-                                            onClick={() => setShowStoreModal(true)}
-                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm cursor-pointer"
-                                        >
-                                            <Phone className="w-4 h-4" />
-                                            Prenota Appuntamento
-                                        </button>
-                                        <button
-                                            onClick={() => router.push('/su-di-noi/dove-trovarci')}
-                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-gray-300 hover:border-primary text-gray-900 font-semibold rounded-xl transition-all duration-300 text-sm cursor-pointer"
-                                        >
-                                            <MapPin className="w-4 h-4" />
-                                            Vieni in Negozio
-                                        </button>
-                                    </div>
+                                    {/* CTA Button */}
+                                    <button
+                                        onClick={() => router.push('/su-di-noi/dove-trovarci')}
+                                        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm cursor-pointer"
+                                    >
+                                        <MapPin className="w-4 h-4" />
+                                        Vieni in Negozio
+                                    </button>
 
                                     {/* Info Aggiuntive */}
                                     <div className="pt-3 border-t border-gray-200">

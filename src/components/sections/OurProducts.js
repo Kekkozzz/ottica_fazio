@@ -21,7 +21,7 @@ export default function OurProducts() {
             image: "/models/mod2.avif",
             description: "Correzione visiva personalizzata per una visione perfetta.",
             features: ["👀 Esame della vista incluso", "🔍 Lenti progressive disponibili", "⚡ Consegna in 48h"],
-            cta: "Prenota visita",
+            cta: "Scopri di più",
             link: "/prodotti/occhiali-vista"
         },
         {

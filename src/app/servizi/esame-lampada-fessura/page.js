@@ -119,16 +119,7 @@ export default function EsameLampadaFessura() {
 
                                 <StaggerItem direction="up">
                                     <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                                        <button 
-                                            className="group px-8 py-4 bg-primary hover:bg-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2"
-                                            aria-label="Prenota un esame in lampada a fessura"
-                                            type="button"
-                                        >
-                                            <Calendar className="w-5 h-5" />
-                                            Prenota Esame
-                                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                        </button>
-                                        <button 
+                                        <button
                                             className="px-8 py-4 border-2 border-warm-gray-300 text-warm-gray-700 font-semibold rounded-xl hover:border-primary hover:text-primary transition-all duration-300 flex items-center gap-2"
                                             aria-label="Chiama per informazioni sull'esame"
                                             type="button"
@@ -350,33 +341,25 @@ export default function EsameLampadaFessura() {
                     <StaggerContainer>
                         <StaggerItem direction="up">
                             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                                Prenota il Tuo Esame in Lampada a Fessura
+                                Contattaci per l&apos;Esame in Lampada a Fessura
                             </h2>
                             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-                                Una valutazione dettagliata e professionale per la salute dei tuoi occhi. 
+                                Una valutazione dettagliata e professionale per la salute dei tuoi occhi.
                                 Affidati alla nostra esperienza e strumentazione avanzata.
                             </p>
                         </StaggerItem>
 
                         <StaggerItem direction="up">
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button 
-                                    className="px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-warm-gray-50 transition-all duration-300 flex items-center gap-2 justify-center"
-                                    aria-label="Prenota online un esame in lampada a fessura"
-                                    type="button"
-                                >
-                                    <Calendar className="w-5 h-5" />
-                                    Prenota Online
-                                </button>
-                                <a 
+                                <a
                                     href="tel:0931521985"
-                                    className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-primary transition-all duration-300 flex items-center gap-2 justify-center"
-                                    aria-label="Chiama il numero 0931 521985 per prenotare"
+                                    className="px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-warm-gray-50 transition-all duration-300 flex items-center gap-2 justify-center"
+                                    aria-label="Chiama il numero 0931 521985"
                                 >
                                     <Phone className="w-5 h-5" />
                                     0931 521985
                                 </a>
-                                <a 
+                                <a
                                     href="mailto:otticafazio@outlook.it"
                                     className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-primary transition-all duration-300 flex items-center gap-2 justify-center"
                                     aria-label="Invia email a otticafazio@outlook.it"

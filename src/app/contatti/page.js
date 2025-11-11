@@ -28,10 +28,10 @@ export default function Contatti() {
             action: "Chiama Ora"
         },
         {
-            title: "Appuntamento Personalizzato",
-            description: "Prenota la tua visita in totale comodità",
+            title: "Consulenza Personalizzata",
+            description: "Richiedi informazioni sui nostri servizi",
             icon: Calendar,
-            action: "Prenota Online"
+            action: "Richiedi Informazioni"
         },
         {
             title: "Assistenza Post-Vendita",
@@ -196,7 +196,6 @@ export default function Contatti() {
                                         >
                                             <option value="">Seleziona un oggetto</option>
                                             <option value="informazioni">Richiesta Informazioni</option>
-                                            <option value="appuntamento">Prenotazione Appuntamento</option>
                                             <option value="assistenza">Assistenza Post-Vendita</option>
                                             <option value="altro">Altro</option>
                                         </select>

@@ -64,15 +64,7 @@ export default function Hero() {
 
                         <StaggerItem direction="up">
                             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                                <button 
-                                    className="group px-8 py-3 bg-black hover:text-white/70 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg cursor-pointer"
-                                    aria-label="Prenota un appuntamento per visita optometrica"
-                                    type="button"
-                                >
-                                    Prenota un appuntamento
-                                </button>
-
-                                <button 
+                                <button
                                     className="group px-8 py-3 border border-black hover:bg-black hover:text-white text-black font-medium rounded-full transition-all duration-300 cursor-pointer"
                                     aria-label="Guarda il video promozionale Nuance Audio"
                                     type="button"
@@ -133,14 +125,7 @@ export default function Hero() {
 
                             <StaggerItem direction="up">
                                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                    <button 
-                                        className="bg-black text-white py-3 px-5 rounded-full cursor-pointer hover:shadow-xl transition duration-300 text-sm"
-                                        aria-label="Prenota un appuntamento per visita optometrica"
-                                        type="button"
-                                    >
-                                        Prenota un appuntamento
-                                    </button>
-                                    <button 
+                                    <button
                                         className="border border-gray-400 text-gray-800 py-3 px-5 rounded-full transition cursor-pointer hover:bg-black hover:text-white text-sm"
                                         aria-label="Guarda il video promozionale Nuance Audio"
                                         type="button"
@@ -186,14 +171,7 @@ export default function Hero() {
 
                             <StaggerItem direction="up">
                                 <div className="flex flex-col sm:flex-row gap-4">
-                                    <button 
-                                        className="bg-black text-white py-5 px-8 rounded-full cursor-pointer hover:shadow-xl transition duration-300 text-lg"
-                                        aria-label="Prenota un appuntamento per visita optometrica"
-                                        type="button"
-                                    >
-                                        Prenota un appuntamento
-                                    </button>
-                                    <button 
+                                    <button
                                         className="border border-gray-400 text-gray-800 py-5 px-5 rounded-full transition cursor-pointer hover:bg-gray-100 hover:text-black text-lg"
                                         aria-label="Guarda il video promozionale Nuance Audio"
                                         type="button"

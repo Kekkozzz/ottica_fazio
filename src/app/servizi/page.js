@@ -92,7 +92,7 @@ export default function Servizi() {
           <FadeInView>
             <div className="bg-bordeaux rounded-2xl p-12 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">
-                Prenota la Tua Visita
+                Contattaci per i Nostri Servizi
               </h2>
               <p className="text-bordeaux-100 mb-8 text-lg">
                 Il primo passo per prenderti cura della tua vista inizia qui.

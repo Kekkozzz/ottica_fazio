@@ -21,7 +21,7 @@ export default function ContactUs() {
                     CONTATTACI
                 </h2>
                 <p className="text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed">
-                    Siamo qui per te. Contattaci per prenotare una visita o per qualsiasi informazione.
+                    Siamo qui per te. Contattaci per qualsiasi informazione sui nostri servizi.
                 </p>
             </div>
 
@@ -199,7 +199,6 @@ export default function ContactUs() {
                                 >
                                     <option value="">Seleziona un oggetto</option>
                                     <option value="informazioni">Richiesta Informazioni</option>
-                                    <option value="appuntamento">Prenotazione Appuntamento</option>
                                     <option value="assistenza">Assistenza Post-Vendita</option>
                                     <option value="altro">Altro</option>
                                 </select>

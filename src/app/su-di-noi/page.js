@@ -229,7 +229,7 @@ export default function ChiSiamo() {
                 Vieni a conoscerci di persona e sperimenta il nostro approccio professionale e personalizzato.
               </p>
               <button className="bg-gold hover:bg-gold-600 text-warm-gray-900 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
-                Prenota un Appuntamento
+                Contattaci
               </button>
             </div>
           </FadeInView>

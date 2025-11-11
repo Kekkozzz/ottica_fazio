@@ -182,9 +182,6 @@ export default function Prodotti() {
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <button className="bg-gold hover:bg-gold-600 text-warm-gray-900 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
-                                    Prenota una Consulenza
-                                </button>
-                                <button className="border-2 border-white text-white hover:bg-white hover:text-bordeaux px-8 py-4 rounded-xl font-semibold transition-all duration-300">
                                     Sfoglia il Catalogo
                                 </button>
                             </div>

@@ -75,9 +75,6 @@ export default function ContactLensTypes() {
                                     <p className="text-sm font-semibold text-primary uppercase tracking-wider">
                                         {lens.subtitle}
                                     </p>
-                                    <p className="text-gray-600 text-sm leading-relaxed">
-                                        {lens.description}
-                                    </p>
                                 </div>
 
                                 {/* Decorative element */}

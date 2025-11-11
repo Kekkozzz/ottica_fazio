@@ -84,15 +84,12 @@ export default function OcchialiSole() {
 
                             {/* CTA */}
                             <StaggerItem direction="up" blur>
-                                <div className="mt-5 space-y-3">
+                                <div className="mt-5">
                                     <button className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-red-700 active:scale-[0.99]">
                                         Scopri la Collezione
                                         <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0-4 4m4-4H3" />
                                         </svg>
-                                    </button>
-                                    <button className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:border-red-600 hover:text-red-600 active:scale-[0.99]">
-                                        Prenota Appuntamento
                                     </button>
                                 </div>
                             </StaggerItem>
@@ -142,17 +139,12 @@ export default function OcchialiSole() {
                             </StaggerItem>
 
                             <StaggerItem direction="up" blur>
-                                <div className="flex gap-4">
-                                    <button className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2">
-                                        Scopri la Collezione
-                                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
-                                        </svg>
-                                    </button>
-                                    <button className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-red-600 hover:text-red-600 transition-all duration-300">
-                                        Prenota Appuntamento
-                                    </button>
-                                </div>
+                                <button className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-2">
+                                    Scopri la Collezione
+                                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0-4 4m4-4H3" />
+                                    </svg>
+                                </button>
                             </StaggerItem>
 
                             <StaggerItem direction="up" blur>
