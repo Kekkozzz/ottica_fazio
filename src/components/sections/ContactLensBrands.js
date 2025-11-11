@@ -6,42 +6,42 @@ export default function ContactLensBrands() {
     const brands = [
         {
             name: 'Alcon',
-            logo: '/lenti-contatto/alcon.svg',
+            logo: '/lenti-contatto/alcon.png',
             alt: 'Alcon - Lenti a Contatto'
         },
         {
             name: 'Cooper Vision',
-            logo: '/lenti-contatto/cooper-vision.svg',
+            logo: '/lenti-contatto/cooper-vision.png',
             alt: 'Cooper Vision - Lenti a Contatto'
         },
         {
             name: 'Johnson & Johnson',
-            logo: '/lenti-contatto/johnson-johnson.svg',
+            logo: '/lenti-contatto/johnson.png',
             alt: 'Johnson & Johnson - Lenti a Contatto'
         },
         {
             name: 'Mark Ennovy',
-            logo: '/lenti-contatto/mark-ennovy.svg',
+            logo: '/lenti-contatto/markennovy.png',
             alt: 'Mark Ennovy - Lenti a Contatto'
         },
         {
             name: 'Soleko',
-            logo: '/lenti-contatto/soleko.svg',
+            logo: '/lenti-contatto/soleko.png',
             alt: 'Soleko - Lenti a Contatto'
         },
         {
             name: 'Schalcon',
-            logo: '/lenti-contatto/schalcon.svg',
+            logo: '/lenti-contatto/schalcon.png',
             alt: 'Schalcon - Lenti a Contatto'
         },
         {
             name: 'Bausch + Lomb',
-            logo: '/lenti-contatto/bausch-lomb.svg',
+            logo: '/lenti-contatto/Bausch.png',
             alt: 'Bausch + Lomb - Lenti a Contatto'
         },
         {
             name: 'OxoLens',
-            logo: '/lenti-contatto/oxolens.svg',
+            logo: '/lenti-contatto/OXO.png',
             alt: 'OxoLens - Lenti a Contatto'
         }
     ];

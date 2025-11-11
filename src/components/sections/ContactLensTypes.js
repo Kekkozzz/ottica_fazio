@@ -24,6 +24,13 @@ export default function ContactLensTypes() {
             subtitle: 'Per Presbiopia',
             description: 'Visione perfetta a tutte le distanze per chi soffre di presbiopia',
             color: 'from-purple-500 to-purple-600'
+        },
+        {
+            icon: Eye,
+            title: 'Lenti per Cheratocono',
+            subtitle: 'Specializzate per Cheratocono',
+            description: 'Lenti rigide gas permeabili e ibride per la gestione del cheratocono',
+            color: 'from-orange-500 to-orange-600'
         }
     ];
 
@@ -47,7 +54,7 @@ export default function ContactLensTypes() {
                 </div>
 
                 {/* Grid Tipologie */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                     {lensTypes.map((lens, index) => {
                         const Icon = lens.icon;
                         return (
