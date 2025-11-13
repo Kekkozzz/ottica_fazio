@@ -23,7 +23,7 @@ export default function OcchialiVista() {
     const images = ['/models/mod1.jpg', '/models/mod2.avif', '/models/mod3.webp'];
 
     // Opzioni filtri
-    const brands = ["Emporio Armani", "Persol", "Polo Ralph Lauren", "Ray-Ban"];
+    const brands = ["Burberry", "Dolce & Gabbana", "Emporio Armani", "Gucci", "Jimmy Choo", "Michael Kors", "Persol", "Polo Ralph Lauren", "Ray-Ban", "Swarovski"];
     const badges = ["NUOVO", "BESTSELLER", "PREMIUM", "ICONICO"];
     const priceRanges = [
         { label: "€ 0 - 150", min: 0, max: 150 },
@@ -140,6 +140,90 @@ export default function OcchialiVista() {
             description: "Icona intramontabile",
             badge: "BESTSELLER",
             features: ["Stile Wayfarer", "Comfort garantito", "Qualità Ray-Ban"]
+        },
+        {
+            id: 10,
+            code: "RA7180",
+            brand: "Ray-Ban",
+            model: "RA 7180",
+            image: "/occhiali/vista/RA7180.png",
+            images: ["/occhiali/vista/RA7180.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 150",
+            description: "Design versatile e pratico",
+            badge: null,
+            features: ["Montatura leggera", "Comfort tutto il giorno", "Stile casual"]
+        },
+        {
+            id: 11,
+            code: "JC3050",
+            brand: "Jimmy Choo",
+            model: "JC 3050",
+            image: "/occhiali/vista/JC3050.png",
+            images: ["/occhiali/vista/JC3050.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 320",
+            description: "Glamour e sofisticatezza",
+            badge: "PREMIUM",
+            features: ["Design esclusivo", "Dettagli luxury", "Made in Italy"]
+        },
+        {
+            id: 12,
+            code: "DG3430",
+            brand: "Dolce & Gabbana",
+            model: "DG 3430",
+            image: "/occhiali/vista/DG3430.png",
+            images: ["/occhiali/vista/DG3430.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 295",
+            description: "Eleganza italiana audace",
+            badge: "PREMIUM",
+            features: ["Stile inconfondibile", "Acetato premium", "Artigianato italiano"]
+        },
+        {
+            id: 13,
+            code: "MK3961",
+            brand: "Michael Kors",
+            model: "MK 3961",
+            image: "/occhiali/vista/MK3961.png",
+            images: ["/occhiali/vista/MK3961.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 210",
+            description: "Lusso accessibile",
+            badge: "BESTSELLER",
+            features: ["Design contemporaneo", "Logo distintivo", "Qualità superiore"]
+        },
+        {
+            id: 14,
+            code: "GG1998",
+            brand: "Gucci",
+            model: "GG 1998",
+            image: "/occhiali/vista/GG1998.png",
+            images: ["/occhiali/vista/GG1998.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 420",
+            description: "Alta moda fiorentina",
+            badge: "PREMIUM",
+            features: ["Design iconico", "Artigianato esclusivo", "Made in Italy"]
+        },
+        {
+            id: 15,
+            code: "SK2044",
+            brand: "Swarovski",
+            model: "SK 2044",
+            image: "/occhiali/vista/SK2044.png",
+            images: ["/occhiali/vista/SK2044.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 260",
+            description: "Eleganza cristallina",
+            badge: "NUOVO",
+            features: ["Dettagli con cristalli", "Design femminile", "Raffinatezza unica"]
+        },
+        {
+            id: 16,
+            code: "B2439",
+            brand: "Burberry",
+            model: "B 2439",
+            image: "/occhiali/vista/B2439.png",
+            images: ["/occhiali/vista/B2439.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 310",
+            description: "Heritage britannico",
+            badge: "ICONICO",
+            features: ["Stile classico britannico", "Qualità premium", "Design senza tempo"]
         }
     ];
 

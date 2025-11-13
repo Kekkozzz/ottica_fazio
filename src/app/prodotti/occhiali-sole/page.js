@@ -199,6 +199,30 @@ export default function OcchialiSole() {
             description: "Raffinatezza francese",
             badge: null,
             features: ["Acetato premium", "Lenti polarizzate", "Custodia luxury"]
+        },
+        {
+            id: 15,
+            code: "RA5342U",
+            brand: "Ray-Ban",
+            model: "RA 5342U",
+            image: "/occhiali/sole/RA5342U.png",
+            images: ["/occhiali/sole/RA5342U.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 155",
+            description: "Stile casual e versatile",
+            badge: null,
+            features: ["Design leggero", "Protezione UV", "Comfort quotidiano"]
+        },
+        {
+            id: 16,
+            code: "BB4458",
+            brand: "Ray-Ban",
+            model: "BB 4458",
+            image: "/occhiali/sole/BB4458.png",
+            images: ["/occhiali/sole/BB4458.png", "/models/mod1.jpg", "/models/mod1.jpg", "/models/mod1.jpg"],
+            price: "€ 145",
+            description: "Design sportivo e moderno",
+            badge: "NUOVO",
+            features: ["Montatura resistente", "Lenti anti-riflesso", "Stile dinamico"]
         }
     ];
 
