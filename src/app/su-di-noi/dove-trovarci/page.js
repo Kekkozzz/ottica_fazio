@@ -32,11 +32,11 @@ export default function DoveTrovarci() {
             nome: "Villasmundo",
             indirizzo: "Via Vittorio Emanuele 67",
             cap: "96010 Villasmundo (SR)",
-            telefono: "0931 859647",
+            telefono: "0931 959425",
             email: "otticafazio@outlook.it",
             orari: {
-                lunVen: "09:00 - 13:00 / 16:00 - 20:00",
-                sabato: "09:00 - 13:00",
+                lunVen: "09:00 - 20:00",
+                sabato: "09:00 - 13:00 / 16:00 - 20:00",
                 domenica: "Chiuso"
             },
             coordinate: { lat: 37.1756, lng: 15.1267 },
@@ -296,13 +296,13 @@ export default function DoveTrovarci() {
                                     <Phone className="w-5 h-5" />
                                     Augusta: 0931 521985
                                 </a>
-                                <a 
-                                    href="tel:0931859647"
+                                <a
+                                    href="tel:0931959425"
                                     className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-primary transition-all duration-300 flex items-center gap-2 justify-center"
-                                    aria-label="Chiama Villasmundo: 0931 859647"
+                                    aria-label="Chiama Villasmundo: 0931 959425"
                                 >
                                     <Phone className="w-5 h-5" />
-                                    Villasmundo: 0931 859647
+                                    Villasmundo: 0931 959425
                                 </a>
                             </div>
                         </StaggerItem>
