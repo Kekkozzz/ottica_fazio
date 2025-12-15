@@ -1,6 +1,82 @@
-import { MapPin, Mail, Phone, Clock, Navigation, Car, Bus, Train } from "lucide-react";
+'use client';
+
+import { useState } from 'react';
+import { MapPin, Mail, Phone, Clock, Navigation, Car, Bus, Train, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
 export default function ContactUs() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+        privacy: false
+    });
+
+    const [status, setStatus] = useState({
+        loading: false,
+        success: false,
+        error: null
+    });
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Reset status
+        setStatus({ loading: true, success: false, error: null });
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Errore durante l\'invio');
+            }
+
+            // Success
+            setStatus({ loading: false, success: true, error: null });
+
+            // Reset form
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: '',
+                privacy: false
+            });
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                setStatus(prev => ({ ...prev, success: false }));
+            }, 5000);
+
+        } catch (error) {
+            console.error('Error:', error);
+            setStatus({
+                loading: false,
+                success: false,
+                error: error.message || 'Si è verificato un errore. Riprova più tardi.'
+            });
+        }
+    };
     const contatti = {
         telefono: "0931 521985",
         email: "otticafazio@outlook.it",
@@ -127,7 +203,29 @@ export default function ContactUs() {
                             Inviaci un Messaggio
                         </h3>
 
-                        <form className="space-y-6" role="form" aria-label="Modulo di contatto">
+                        <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-label="Modulo di contatto">
+                            {/* Success Message */}
+                            {status.success && (
+                                <div className="bg-green-500/10 border border-green-500 rounded-lg p-4 flex items-start gap-3">
+                                    <CheckCircle className="text-green-500 flex-shrink-0 mt-0.5" size={20} />
+                                    <div>
+                                        <p className="text-green-500 font-semibold">Messaggio inviato con successo!</p>
+                                        <p className="text-green-400 text-sm mt-1">Ti risponderemo al più presto.</p>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Error Message */}
+                            {status.error && (
+                                <div className="bg-red-500/10 border border-red-500 rounded-lg p-4 flex items-start gap-3">
+                                    <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
+                                    <div>
+                                        <p className="text-red-500 font-semibold">Errore nell&apos;invio</p>
+                                        <p className="text-red-400 text-sm mt-1">{status.error}</p>
+                                    </div>
+                                </div>
+                            )}
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-200 mb-2">
@@ -137,9 +235,12 @@ export default function ContactUs() {
                                         type="text"
                                         id="firstName"
                                         name="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
                                         required
                                         aria-required="true"
-                                        className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
+                                        disabled={status.loading}
+                                        className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                                         placeholder="Il tuo nome"
                                     />
                                 </div>
@@ -151,9 +252,12 @@ export default function ContactUs() {
                                         type="text"
                                         id="lastName"
                                         name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
                                         required
                                         aria-required="true"
-                                        className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
+                                        disabled={status.loading}
+                                        className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                                         placeholder="Il tuo cognome"
                                     />
                                 </div>
@@ -167,9 +271,12 @@ export default function ContactUs() {
                                     type="email"
                                     id="email"
                                     name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     required
                                     aria-required="true"
-                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
+                                    disabled={status.loading}
+                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                                     placeholder="la-tua-email@esempio.com"
                                 />
                             </div>
@@ -182,7 +289,10 @@ export default function ContactUs() {
                                     type="tel"
                                     id="phone"
                                     name="phone"
-                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    disabled={status.loading}
+                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                                     placeholder="+39 123 456 7890"
                                 />
                             </div>
@@ -191,10 +301,13 @@ export default function ContactUs() {
                                 <label htmlFor="subject" className="block text-sm font-medium text-gray-200 mb-2">
                                     Oggetto
                                 </label>
-                                <select 
+                                <select
                                     id="subject"
                                     name="subject"
-                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    disabled={status.loading}
+                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 text-white disabled:opacity-50 disabled:cursor-not-allowed"
                                     aria-describedby="subject-help"
                                 >
                                     <option value="">Seleziona un oggetto</option>
@@ -214,10 +327,13 @@ export default function ContactUs() {
                                 <textarea
                                     id="message"
                                     name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     required
                                     aria-required="true"
+                                    disabled={status.loading}
                                     rows={5}
-                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 resize-none text-white placeholder-gray-400"
+                                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-white focus:outline-none transition-all duration-300 resize-none text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                                     placeholder="Scrivi qui il tuo messaggio..."
                                 ></textarea>
                             </div>
@@ -227,9 +343,12 @@ export default function ContactUs() {
                                     type="checkbox"
                                     id="privacy"
                                     name="privacy"
+                                    checked={formData.privacy}
+                                    onChange={handleChange}
                                     required
                                     aria-required="true"
-                                    className="mt-1 w-4 h-4 text-white border-gray-600 rounded focus:ring-0 focus:ring-offset-0 bg-black/50"
+                                    disabled={status.loading}
+                                    className="mt-1 w-4 h-4 text-white border-gray-600 rounded focus:ring-0 focus:ring-offset-0 bg-black/50 disabled:opacity-50 disabled:cursor-not-allowed"
                                 />
                                 <label htmlFor="privacy" className="text-xs text-gray-200">
                                     Accetto il trattamento dei dati personali secondo la privacy policy *
@@ -238,10 +357,18 @@ export default function ContactUs() {
 
                             <button
                                 type="submit"
-                                className="w-full bg-white hover:bg-gray-200 text-black py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-[1.02]"
+                                disabled={status.loading}
+                                className="w-full bg-white hover:bg-gray-200 text-black py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
                                 aria-describedby="submit-help"
                             >
-                                Invia Messaggio
+                                {status.loading ? (
+                                    <>
+                                        <Loader2 className="animate-spin" size={20} />
+                                        Invio in corso...
+                                    </>
+                                ) : (
+                                    'Invia Messaggio'
+                                )}
                             </button>
                             <div id="submit-help" className="sr-only">
                                 Invia il modulo di contatto per ricevere una risposta entro 24 ore
