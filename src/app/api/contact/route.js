@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { firstName, lastName, email, phone, subject, message } = body;
+    const { firstName, lastName, email, phone, subject, message, preferredDate } = body;
 
     // Validazione base
     if (!firstName || !lastName || !email || !message) {
@@ -29,6 +29,7 @@ export async function POST(request) {
     const subjectMap = {
       'informazioni': 'Richiesta Informazioni',
       'assistenza': 'Assistenza Post-Vendita',
+      'studio-forma-viso': 'Prenotazione Consulenza Studio Forma Viso',
       'altro': 'Altro',
     };
 
@@ -61,6 +62,17 @@ export async function POST(request) {
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #666;">Telefono:</td>
                 <td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #b91c1c;">${phone}</a></td>
+              </tr>
+              ` : ''}
+              ${preferredDate ? `
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Data Preferita:</td>
+                <td style="padding: 8px 0;">${new Date(preferredDate).toLocaleDateString('it-IT', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}</td>
               </tr>
               ` : ''}
               <tr>
