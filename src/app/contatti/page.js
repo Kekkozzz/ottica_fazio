@@ -1,5 +1,6 @@
 import FadeInView from '@/components/animations/FadeInView';
 import StaggerContainer, { StaggerItem } from '@/components/animations/StaggerContainer';
+import ContactForm from '@/components/sections/ContactForm';
 import { MapPin, Phone, Mail, Clock, Calendar, Settings, PhoneCall, Car, Bus, Train, Navigation } from 'lucide-react';
 
 export const metadata = {
@@ -130,112 +131,7 @@ export default function Contatti() {
 
                         {/* Form di Contatto */}
                         <FadeInView>
-                            <div className="bg-white rounded-2xl shadow-xl p-8 border border-warm-gray-200">
-                                <h2 className="text-2xl font-bold text-bordeaux mb-6">
-                                    Invia un Messaggio
-                                </h2>
-
-                                <form className="space-y-6">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
-                                            <label className="block text-sm font-medium text-warm-gray-700 mb-2">
-                                                Nome *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300"
-                                                placeholder="Il tuo nome"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-warm-gray-700 mb-2">
-                                                Cognome *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300"
-                                                placeholder="Il tuo cognome"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-warm-gray-700 mb-2">
-                                            Email *
-                                        </label>
-                                        <input
-                                            type="email"
-                                            required
-                                            className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300"
-                                            placeholder="la-tua-email@esempio.com"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-warm-gray-700 mb-2">
-                                            Telefono
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300"
-                                            placeholder="+39 123 456 7890"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="subject-contatti" className="block text-sm font-medium text-warm-gray-700 mb-2">
-                                            Oggetto
-                                        </label>
-                                        <select 
-                                            id="subject-contatti"
-                                            name="subject"
-                                            className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300 bg-white text-warm-gray-900"
-                                            aria-describedby="subject-contatti-help"
-                                        >
-                                            <option value="">Seleziona un oggetto</option>
-                                            <option value="informazioni">Richiesta Informazioni</option>
-                                            <option value="assistenza">Assistenza Post-Vendita</option>
-                                            <option value="altro">Altro</option>
-                                        </select>
-                                        <div id="subject-contatti-help" className="sr-only">
-                                            Seleziona la categoria che meglio descrive la tua richiesta
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-warm-gray-700 mb-2">
-                                            Messaggio *
-                                        </label>
-                                        <textarea
-                                            required
-                                            rows={5}
-                                            className="w-full px-4 py-3 border border-warm-gray-300 rounded-lg focus:border-bordeaux focus:outline-none transition-all duration-300 resize-none"
-                                            placeholder="Scrivi qui il tuo messaggio..."
-                                        ></textarea>
-                                    </div>
-
-                                    <div className="flex items-start space-x-3">
-                                        <input
-                                            type="checkbox"
-                                            id="privacy"
-                                            required
-                                            className="mt-1 w-4 h-4 text-bordeaux border-warm-gray-300 rounded focus:ring-0 focus:ring-offset-0"
-                                        />
-                                        <label htmlFor="privacy" className="text-sm text-warm-gray-600">
-                                            Accetto il trattamento dei dati personali secondo la privacy policy *
-                                        </label>
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        className="w-full bg-bordeaux hover:bg-bordeaux-600 text-white py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-[1.02] shadow-lg"
-                                    >
-                                        Invia Messaggio
-                                    </button>
-                                </form>
-                            </div>
+                            <ContactForm />
                         </FadeInView>
                     </div>
                 </div>
