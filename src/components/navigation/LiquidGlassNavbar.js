@@ -63,7 +63,6 @@ export default function LiquidGlassNavbar() {
             href: '/su-di-noi',
             dropdown: [
                 { label: 'La nostra storia', href: '/su-di-noi/storia' },
-                { label: 'Il nostro Team', href: '/su-di-noi/team' },
                 { label: 'Dove trovarci', href: '/su-di-noi/dove-trovarci' },
             ]
         },
