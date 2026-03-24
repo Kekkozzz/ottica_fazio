@@ -67,24 +67,6 @@ export default function LaNostraStoria() {
                 </div>
             </section>
 
-            {/* ───── INTRO SECTION ───── */}
-            <section className="relative py-20 px-4 bg-gradient-to-b from-transparent via-primary/5 to-transparent">
-                <div className="max-w-2xl mx-auto text-center">
-                    <FadeInView direction="up">
-                        <div className="space-y-6">
-                            <p className="text-3xl sm:text-4xl lg:text-5xl font-light text-warm-gray-900 leading-relaxed">
-                                {introB}
-                            </p>
-                            <div className="flex items-center justify-center gap-3">
-                                <div className="w-8 h-0.5 bg-primary" />
-                                <span className="w-2 h-2 rounded-full bg-gold-400" />
-                                <div className="w-8 h-0.5 bg-primary" />
-                            </div>
-                        </div>
-                    </FadeInView>
-                </div>
-            </section>
-
             {/* ───── RACCONTO ───── */}
             <section className="py-20 px-4">
                 <div className="max-w-3xl mx-auto">
