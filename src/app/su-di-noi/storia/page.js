@@ -64,6 +64,13 @@ export default function LaNostraStoria() {
             <section className="py-20 px-4">
                 <div className="max-w-3xl mx-auto">
 
+                    {/* Intro */}
+                    <FadeInView direction="up" className="mb-14">
+                        <p className="text-xl sm:text-2xl text-warm-gray-700 font-light leading-relaxed italic border-l-4 border-primary pl-6">
+                            {introB}
+                        </p>
+                    </FadeInView>
+
                     {/* Paragrafi con anno a lato */}
                     <div className="space-y-12">
                         {paragrafiBStoria.map((paragrafo, index) => (
