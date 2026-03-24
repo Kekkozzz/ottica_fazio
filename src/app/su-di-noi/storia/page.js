@@ -56,13 +56,6 @@ export default function LaNostraStoria() {
                                 <span className="text-primary block">STORIA</span>
                             </h1>
                         </StaggerItem>
-
-                        <StaggerItem direction="up">
-                            <p className="text-xl text-warm-gray-600 leading-relaxed max-w-2xl mx-auto">
-                                Quasi settant&apos;anni di passione per la vista, di famiglie che ci scelgono e di una Sicilia
-                                che chiamiamo casa.
-                            </p>
-                        </StaggerItem>
                     </StaggerContainer>
                 </div>
             </section>
